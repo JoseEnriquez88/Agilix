@@ -64,5 +64,6 @@ Producto.belongsToMany(Venta, { through: Detalle_Venta });
 Venta.belongsToMany(Producto, { through: Detalle_Venta });
 
 module.exports = {
+  ...sequelize.models,
   conn: sequelize,
 };
