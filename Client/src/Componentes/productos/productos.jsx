@@ -1,17 +1,40 @@
-// import { useSelector } from 'react-redux'
-// export const cosas = () => {
-//     const producto = useSelector(state => state.producto)
-//     return (
-//         <cosas>
-//             <h1>nombre: {producto.nombre}</h1>
-//             <h1><img src="" alt="" />: {producto.img}</h1>
-//             <h1>precio: {producto.precio}</h1>
-//         </cosas>
-//     )
-// }
-<div>
-    <h1>imagen</h1>
-    <h2>producto</h2>
-    <h3>precio</h3>
-    
+import imagen from './ejemplo.png'
+import styles from './productos.module.css'
+const Productos = () => {
+    return (
+  <div className={styles.contenedor}>
+<div className={styles.cards}>
+    <img  className={styles.imagen} src={imagen} alt=""/>
+    <div className={styles.contenedorPP}>
+    <h2 className={styles.nombre}>producto</h2>
+    <h3 className={styles.precio}>50$</h3>
+    </div>
 </div>
+<div className={styles.cards}>
+    <img  className={styles.imagen} src={imagen} alt=""/>
+    <div className={styles.contenedorPP}>
+    <h2 className={styles.nombre}>producto</h2>
+    <h3 className={styles.precio}>80$</h3>
+    </div>
+</div>
+<div className={styles.cards}>
+    <img  className={styles.imagen} src={imagen} alt=""/>
+    <div className={styles.contenedorPP}>
+    <h2 className={styles.nombre}>producto</h2>
+    <h3 className={styles.precio}>120$</h3>
+    </div>
+</div>
+<div className={styles.cards}>
+    <img  className={styles.imagen} src={imagen} alt=""/>
+    <div className={styles.contenedorPP}>
+    <h2 className={styles.nombre}>producto</h2>
+    <h3 className={styles.precio}>190$</h3>
+    </div>
+</div>
+</div>   
+
+
+
+ )
+}
+export default Productos;
