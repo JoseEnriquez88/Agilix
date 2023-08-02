@@ -1,5 +1,5 @@
 const express = require('express');
-const mainRouter = require('../express/mainRouter');
+//const mainRouter = require('../express/mainRouter');
 const morgan = require('morgan');
 const cors = require('cors');
 const app = express();
@@ -19,6 +19,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(mainRouter);
+//app.use(mainRouter);
 
 module.exports = app;
