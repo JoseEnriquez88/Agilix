@@ -5,7 +5,6 @@ import { Sidebar } from './Componentes/Sidebar/Sidebar.jsx';
 import { General, Cuentas, Actualizaciones, Ordenes, Configuracion } from './Componentes/CUENTAUSUARIO/exportador';
 import { AdminUsuario, ConfigPerfil } from './Componentes/USUARIOS/exportador';
 function App() {
-
   return (
     <div>
       <Sidebar />
@@ -23,4 +22,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
