@@ -6,7 +6,7 @@
     grid-row-gap: 8px;
 }
 .cards{
-    background-color: rgb(5, 3, 3);
+    background-color: rgb(44, 44, 44);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -14,6 +14,9 @@
     border-radius: 10px;
     cursor: pointer;
     margin: 9px;
+}
+.cards:hover{
+    transform: scale(1.05);
 }
 .imagen{
     width: 200px;
@@ -24,16 +27,16 @@
     flex-direction: column;
     align-items: center;
     margin: 10px;
-    color: aliceblue;
+    color: rgb(248, 248, 248);
     margin-left: 50px;
 }
 .tittle{
     color: aliceblue;
-    background-color: rgb(5, 3, 3);
+    background-color: rgb(41, 40, 40);
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(49, 49, 49);
     border-radius: 10px;
     cursor: pointer;
     margin: 9px;

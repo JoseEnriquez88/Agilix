@@ -29,8 +29,6 @@ const Productos = () => {
                 <h3> ${prod.precio}</h3>
               </div>
             </div>
-
-
           ))}
         </div>
       ) : null}

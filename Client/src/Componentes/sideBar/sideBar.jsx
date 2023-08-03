@@ -3,30 +3,31 @@ import {useState} from 'react'
 import {NavLink} from 'react-router-dom'
 
 
+
 export const Sidebar = () => {
     return (
         <nav className={styles.sidebar} >
             <h4 className={styles.botonCerrar} >X</h4>
             <h1 className={styles.logoAgilix} >AGILIX</h1>
             <div className={styles.contenedor} >
-                <h5>CUENTA/USUARIO</h5>++
-                <h4>General</h4>
-                <h4>Cuentas</h4>
-                <h4>Actualizaciones</h4>
-                <h4>Órdenes</h4>
-                <h4>Configuracion</h4>
+                <h5>CUENTA/USUARIO</h5>
+                <NavLink className={styles.NavLink} to ='/'>General</NavLink>
+                <NavLink className={styles.NavLink} to ='/cuentas'>Cuentas</NavLink>
+                <NavLink className={styles.NavLink} to ='/actualizaciones'>Actualizaciones</NavLink>
+                <NavLink className={styles.NavLink} to='/ordenes' >Órdenes</NavLink>
+                <NavLink className={styles.NavLink} to ='/configuracion' >Configuracion</NavLink>
             </div>
             <div  className={styles.contenedor}>
                 <h5>PRODUCTOS</h5>
-                <h4>Añadir Producto</h4>
-                <h4>Mis Productos</h4>
-                <h4>Inventario</h4>
+                <NavLink className={styles.NavLink} to ='/añadirProducto'>Añadir Producto</NavLink>
+                <NavLink className={styles.NavLink} to='/Productos'>Mis Productos</NavLink>
+                <NavLink className={styles.NavLink} to='/inventario'>Inventario</NavLink>
             </div>
             <div className={styles.contenedorUsuarios}>
                 <h5>USUARIOS</h5>
-                <h4>Configuración de Perfil</h4>
-                <h4>Administrar Usuario</h4>
-                <h4>Cerrar sesión</h4>
+                <NavLink className={styles.NavLink} to='/configPerfil' >Configuración de Perfil</NavLink>
+                <NavLink className={styles.NavLink} to= '/admin'>Administrar Usuario</NavLink>
+                <NavLink className={styles.NavLink}>Cerrar sesión</NavLink>
             </div>
         </nav>
     )

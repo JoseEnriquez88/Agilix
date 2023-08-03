@@ -7,3 +7,5 @@ export const ConfigPerfil = () => {
         </div>
     )
 }
+
+export default ConfigPerfil
