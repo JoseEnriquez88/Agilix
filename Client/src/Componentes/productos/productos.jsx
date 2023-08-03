@@ -1,63 +1,68 @@
-import cocacola from '../productos/Cocacola.png'
-import papa from '../productos/papa.png'
-import jamon from '../productos/jamon.png'
-import jabon from '../productos/jabon.png'
-import Pasta from '../productos/Pasta.png'
-import shampoo from '../productos/shampoo.png'
-import styles from './productos.module.css'
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../Redux/productSlice";
+
 const Productos = () => {
-    return (
-  <div className={styles.contenedor}>
-<div className={styles.cards}>
-    <img  className={styles.imagen} src={cocacola} alt=""/>
-    <div className={styles.contenedorPP}>
-    <h2 className={styles.nombre}>Coca - Cola</h2>
-    <h3 className={styles.precio}>1.5 $</h3>
+  const dispatch = useDispatch();
+  const product = useSelector((state) => state.product);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+  console.log(product);
+  return (
+    <div>
+      <h2>Listado de Productos</h2>
+      {product.loading && <div>Cargando...</div>}
+      {!product.loading && product.error ? (
+        <div>Error: {product.error}</div>
+      ) : null}
+      {!product.loading && product.allProducts.length ? (
+        <ul>
+          {product.allProducts.map((prod) => (
+            <li key={prod.id}>
+              {prod.nombre} - ${prod.precio}
+            </li>
+          ))}
+        </ul>
+      ) : null}
     </div>
-</div>
-<div className={styles.cards}>
-    <img  className={styles.imagen} src={papa} alt=""/>
-    <div className={styles.contenedorPP}>
-    <h2 className={styles.nombre}>Papa</h2>
-    <h3 className={styles.precio}>0.5 $</h3>
-    </div>
-</div>
-<div className={styles.cards}>
-    <img  className={styles.imagen} src={jamon} alt=""/>
-    <div className={styles.contenedorPP}>
-    <h2 className={styles.nombre}>Jamón (1kg)</h2>
-    <h3 className={styles.precio}>5 $</h3>
-    </div>
-</div>
+  );
+};
 
-<div className={styles.cards}>
-    <img  className={styles.imagen} src={jabon} alt=""/>
-    <div className={styles.contenedorPP}>
-    <h2 className={styles.nombre}>Jabon (Protex)</h2>
-    <h3 className={styles.precio}>5 $</h3>
-    </div>
-</div>
-
-<div className={styles.cards}>
-    <img  className={styles.imagen} src={Pasta} alt=""/>
-    <div className={styles.contenedorPP}>
-    <h2 className={styles.nombre}>Pasta (Barilla)</h2>
-    <h3 className={styles.precio}>3.5 $</h3>
-    </div>
-</div>
-
-<div className={styles.cards}>
-    <img  className={styles.imagen} src={shampoo} alt=""/>
-    <div className={styles.contenedorPP}>
-    <h2 className={styles.nombre}>Shampoo(Dove)</h2>
-    <h3 className={styles.precio}>1.5 $</h3>
-    </div>
-</div>
-
-</div>   
-
-
-
- )
-}
 export default Productos;
+
+// import imagen from './ejemplo.png'
+// import styles from './productos.module.css'
+// const Productos = () => {
+//     return (
+//   <div className={styles.contenedor}>
+// <div className={styles.cards}>
+//     <img  className={styles.imagen} src={imagen} alt=""/>
+//     <div className={styles.contenedorPP}>
+//     <h2 className={styles.nombre}>producto</h2>
+//     <h3 className={styles.precio}>50$</h3>
+//     </div>
+// </div>
+// <div className={styles.cards}>
+//     <img  className={styles.imagen} src={imagen} alt=""/>
+//     <div className={styles.contenedorPP}>
+//     <h2 className={styles.nombre}>producto</h2>
+//     <h3 className={styles.precio}>80$</h3>
+//     </div>
+// </div>
+// <div className={styles.cards}>
+//     <img  className={styles.imagen} src={imagen} alt=""/>
+//     <div className={styles.contenedorPP}>
+//     <h2 className={styles.nombre}>producto</h2>
+//     <h3 className={styles.precio}>120$</h3>
+//     </div>
+// </div>
+// <div className={styles.cards}>
+//     <img  className={styles.imagen} src={imagen} alt=""/>
+//     <div className={styles.contenedorPP}>
+//     <h2 className={styles.nombre}>producto</h2>
+//     <h3 className={styles.precio}>190$</h3>
+//     </div>
+// </div>
+// </div>   
+
