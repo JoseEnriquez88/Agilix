@@ -1,4 +1,4 @@
-const { Producto } = require('../../db');
+const { Producto } = require("../../db");
 
 const getAllProducts = async () => {
     const productos = await Producto.findAll({

@@ -7,7 +7,7 @@ const Productos = () => {
   const product = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [ dispatch ]);
   console.log(product);
   return (
     <div>

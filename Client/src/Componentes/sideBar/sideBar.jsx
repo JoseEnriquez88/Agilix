@@ -1,4 +1,6 @@
 import styles from "./Sidebar.module.css"
+import {useState} from 'react'
+import {NavLink} from 'react-router-dom'
 
 
 export const Sidebar = () => {
@@ -7,7 +9,7 @@ export const Sidebar = () => {
             <h4 className={styles.botonCerrar} >X</h4>
             <h1 className={styles.logoAgilix} >AGILIX</h1>
             <div className={styles.contenedor} >
-                <h5>CUENTA/USUARIO</h5>
+                <h5>CUENTA/USUARIO</h5>++
                 <h4>General</h4>
                 <h4>Cuentas</h4>
                 <h4>Actualizaciones</h4>
