@@ -1,4 +1,4 @@
-import styles from './productos.module.css'
+import styles from './Actualizaciones.module.css'
 
 
  const Actualizaciones = () => {
