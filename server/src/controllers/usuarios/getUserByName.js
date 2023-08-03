@@ -1,13 +1,15 @@
-const getAllUsers = require('./getAllUsers');
+const { Usuario } = require('../../db');
+const { Op } = require('sequelize'); 
 
 const getUserByName = async (nombre) => {
-    const usuariosEncontrados = await getAllUsers();
     if(nombre){
-        const usuariosFiltrados = usuariosEncontrados.filter((user) => user.nombre.toLowerCase().includes(nombre.toLowerCase()));
-        if(usuariosFiltrados.length) return usuariosFiltrados;
-        throw new Error(`No se encontró el usuario con el nombre: ${nombre}`);
-        
-    }else return usuariosEncontrados;
+        const nombreUsuario = await Usuario.findAll({
+            where:{
+                nombre: { [Op.iLike]: `${nombre}%`,}
+            },
+        });
+        return [...nombreUsuario];
+    }
 };
 
 module.exports = getUserByName;
