@@ -21,8 +21,8 @@ const CrearProducto = () => {
     const previewImage = document.getElementById('preview');
     const reader = new FileReader();
 
-    reader.onload = function (e) {
-      previewImage.src = e.target.result;
+    reader.onload = function (event) {
+      previewImage.src = event.target.result;
       previewImage.style.display = 'block';
     };
 
