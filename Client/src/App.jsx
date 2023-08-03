@@ -1,13 +1,14 @@
-import './App.css';
-import {Sidebar} from  './Componentes/sideBar/sideBar.jsx';
+import "./App.css";
+import Productos from "./Componentes/productos/productos";
+import { Sidebar } from "./Componentes/sideBar/sideBar.jsx";
 
 function App() {
-
   return (
-      <div>
-        <Sidebar/>
-      </div>
-  )
+    <div>
+      <Sidebar />
+      <Productos />
+    </div>
+  );
 }
 
-export default App
+export default App;
