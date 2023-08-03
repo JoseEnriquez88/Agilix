@@ -4,10 +4,13 @@ const router = Router();
 const getAllProductsHandler = require("../handlers/productos/getAllProductsHandler");
 const postProductHandler = require("../handlers/productos/postProductHandler");
 const getByIdProductHandler = require("../handlers/productos/getByIdProductHandler");
-
+// handlers cliente
 const getAllClienteHandler = require("../handlers/Cliente/getAllUsuarioHandler");
 const postAllClienteHandlers = require("../handlers/Cliente/postClienteHandler");
-
+const deleteCliente = require ('../handlers/Cliente/deleteCliente');
+const getByIdCliente = require ('../handlers/Cliente/getByIdCliente')
+const getClienteByEmail = require ('../handlers/Cliente/getClienteByEmail')
+const getByNameCliente = require ('../handlers/Cliente/getByNameCliente')
 //!handlers de usuario
 const deleteUser = require('../handlers/usuarios/deleteUserHandler');
 const getAllUserHandler = require('../handlers/usuarios/getAllUserHandler');
@@ -34,8 +37,13 @@ router.get('/usersName', getUserByNameHandler);
 router.get('/:id', getuserByIdHandler);
 router.post('/postUser', postUserHandler)
 
+//rutas cliente
 
 router.get("/cliente", getAllClienteHandler);
+router.post('/:nombre', deleteCliente)
+router.get('/:id', getByIdCliente)
+router.get('/clienteEmail', getClienteByEmail)
+router.get('/clienteName', getByNameCliente)
 router.post("/crearCliente", postAllClienteHandlers);
 
 
