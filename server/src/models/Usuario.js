@@ -14,8 +14,8 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      fono: {
-        type: DataTypes.INTEGER,
+      telefono: {
+        type: DataTypes.STRING,
         allowNull: false,
       },
       email: {
@@ -27,6 +27,10 @@ module.exports = (sequelize) => {
           },
         },
       },
+      activo: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      }
     },
     { timestamps: false, freezeTableName: true }
   );
