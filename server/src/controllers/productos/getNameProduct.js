@@ -5,14 +5,11 @@ const getByNameProductValidation = require("../../helpers/producto/getNameProduc
 const getByNameProduct = async (name) => {
     getByNameProductValidation(name)
     const data=await Productos.find({
-        where:{nombre:{[Op.ilike]: `%${name}%`}}
+        where:{nombre:{[Op.iLike]: `%${name}%`}}
     })
     if (data.length === 0) throw new Error(`No se encontraron productos para mostrar.`);
-    const filter=data.filter(country=>country.nombre).toLowerCase().startsWith(name.toLowerCase());
-
+    const filter=data.filter(producto=>producto.nombre).toLowerCase().startsWith(name.toLowerCase());
     return [...filter];
-    
-
 }
 
 

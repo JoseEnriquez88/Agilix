@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
+      activo:{
+        type:DataTypes.BOOLEAN,
+        defaultValue:activo
+      }
     },
     { timestamps: false, freezeTableName: true }
   );
