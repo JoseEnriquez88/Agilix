@@ -1,6 +1,5 @@
 const getAllProducts = require('../../controllers/productos/getAllProducts');
 
-
 const getAllProductsHandlers = async (req, res) => {
     try {
         const productos = await getAllProducts();
@@ -8,6 +7,6 @@ const getAllProductsHandlers = async (req, res) => {
     } catch (error) {
         return res.status(400).json({ error: error.message });
     }
-}
+};
 
 module.exports = getAllProductsHandlers;

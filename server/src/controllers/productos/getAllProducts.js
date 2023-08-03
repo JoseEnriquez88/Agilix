@@ -6,6 +6,6 @@ const getAllProducts = async () => {
     });
     if(productos.length === 0) throw new Error('No se encontraron productos para mostrar.'); 
     return productos;
-}
+};
 
 module.exports = getAllProducts;
