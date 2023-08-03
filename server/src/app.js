@@ -4,7 +4,6 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const server = express();
 const routes = require("./routes/router");
-
 server.use(morgan("dev"));
 server.use(express.json());
 server.use(cors());
@@ -22,5 +21,4 @@ server.use((req, res, next) => {
 });
 
 server.use("/", routes);
-
 module.exports = server;
