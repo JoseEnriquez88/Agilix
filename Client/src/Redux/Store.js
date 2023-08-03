@@ -1,8 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { crearProductoSlice } from './crearProductosSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import productoCreado from './crearProductoSlice';
 
-export const store = configureStore({
+const store = configureStore({
   reducer: {
-    crearProducto: crearProductoSlice,
+    productoCreado: productoCreado,
   },
 });
+
+export default store;
