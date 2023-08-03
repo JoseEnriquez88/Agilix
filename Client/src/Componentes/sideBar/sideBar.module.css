@@ -5,9 +5,11 @@
 }
 :root{
     --sidebarColor--: #1a1a1a;
+    --letraBlanca--: rgba(255, 255, 255, 0.87);
 }
 .logoAgilix{
     color: #4cbb17;
+    font-size: 40px;
 }
 .sidebar{
     position: fixed;
@@ -42,6 +44,7 @@
     width: 225px;
     border-radius: 8px;
     cursor: pointer;
+    color: var(--letraBlanca--);
 }
 .contenedor > h5{
     display: flex;
@@ -75,6 +78,7 @@
     width: 225px;
     border-radius: 8px;
     cursor: pointer;
+    color: var(--letraBlanca--);
 }
 .contenedorUsuarios > h5{
     display: flex;
@@ -101,7 +105,6 @@
     border:0px;
     background-color: #4cbb17;
     color: white;
-    border: 1px solid black;
     width: 30px;
     height: 28px;
     border-radius: 20px;   
