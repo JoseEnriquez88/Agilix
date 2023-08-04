@@ -20,7 +20,7 @@ export const Sidebar = () => {
             <div  className={styles.contenedor}>
                 <h5>PRODUCTOS</h5>
                 <NavLink className={styles.NavLink} to ='/añadirProducto'>Añadir Producto</NavLink>
-                <NavLink className={styles.NavLink} to='/misProductos'>Mis Productos</NavLink>
+                <NavLink className={styles.NavLink} to='/Productos'>Mis Productos</NavLink>
                 <NavLink className={styles.NavLink} to='/inventario'>Inventario</NavLink>
             </div>
             <div className={styles.contenedorUsuarios}>
