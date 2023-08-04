@@ -1,0 +1,20 @@
+.ContenedorSaldos {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.ContenedorSaldoD {
+    color: #181818;
+    width: 49%;
+    background-color: #43B643;
+    border-radius: 10px;
+}
+
+.ContenedorSaldoP {
+    color: #181818;
+    width: 49%;
+    background-color: #89289C;
+    border-radius: 10px;
+}
