@@ -1,68 +1,37 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../Redux/productSlice";
+import { fetchProducts } from "../../Redux/productosSlice";
+import styles from "./productos.module.css";
 
 const Productos = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
   console.log(product);
   return (
     <div>
-      <h2>Listado de Productos</h2>
+      <h1 className={styles.tittle}>Listado de Productos</h1>
       {product.loading && <div>Cargando...</div>}
       {!product.loading && product.error ? (
         <div>Error: {product.error}</div>
       ) : null}
-      {!product.loading && product.allProducts.length ? (
-        <ul>
+      {!product.loading && product.allProducts ? (
+        <div className={styles.contenedor}>
           {product.allProducts.map((prod) => (
-            <li key={prod.id}>
-              {prod.nombre} - ${prod.precio}
-            </li>
+            <div className={styles.cards} key={prod.id}>
+              <img className={styles.imagen} src={prod.img} />
+              <div className={styles.contenedorLetras}>
+                <h1>{prod.nombre} </h1>
+                <h3> ${prod.precio}</h3>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : null}
     </div>
   );
 };
-
 export default Productos;
-
-// import imagen from './ejemplo.png'
-// import styles from './productos.module.css'
-// const Productos = () => {
-//     return (
-//   <div className={styles.contenedor}>
-// <div className={styles.cards}>
-//     <img  className={styles.imagen} src={imagen} alt=""/>
-//     <div className={styles.contenedorPP}>
-//     <h2 className={styles.nombre}>producto</h2>
-//     <h3 className={styles.precio}>50$</h3>
-//     </div>
-// </div>
-// <div className={styles.cards}>
-//     <img  className={styles.imagen} src={imagen} alt=""/>
-//     <div className={styles.contenedorPP}>
-//     <h2 className={styles.nombre}>producto</h2>
-//     <h3 className={styles.precio}>80$</h3>
-//     </div>
-// </div>
-// <div className={styles.cards}>
-//     <img  className={styles.imagen} src={imagen} alt=""/>
-//     <div className={styles.contenedorPP}>
-//     <h2 className={styles.nombre}>producto</h2>
-//     <h3 className={styles.precio}>120$</h3>
-//     </div>
-// </div>
-// <div className={styles.cards}>
-//     <img  className={styles.imagen} src={imagen} alt=""/>
-//     <div className={styles.contenedorPP}>
-//     <h2 className={styles.nombre}>producto</h2>
-//     <h3 className={styles.precio}>190$</h3>
-//     </div>
-// </div>
-// </div>   
-
