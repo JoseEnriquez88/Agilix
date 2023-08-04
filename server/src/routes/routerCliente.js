@@ -1,4 +1,4 @@
-const { Router } = require("Router");
+const { Router } = require("express");
 const {
   getAllClientesHandler,
 } = require("../handlers/cliente/getAllClientesHandler");
@@ -9,9 +9,10 @@ const {
 
 const routerCliente = Router();
 
-routerUsuario.get("/", getAllClientesHandler);
+console.log("en el router de cliente");
+//routerCliente.get("/", getAllClientesHandler);
 //routerUsuario.get("/:id", getUserByIdHandler); --> ID
-routerUsuario.post("/", postClienteHandler);
+//routerCliente.post("/", postClienteHandler);
 // routerUsuario.put('/', ); --> UPDATE
 // routerUsuario.put('/', ); --> DELETE
 

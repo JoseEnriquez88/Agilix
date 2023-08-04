@@ -1,4 +1,4 @@
-const { Router } = require("Router");
+const { Router } = require("express");
 const {
   getAllUserHandler,
   getUserByIdHandler,
@@ -10,7 +10,7 @@ const routerUsuario = Router();
 
 routerUsuario.get("/", getAllUserHandler);
 routerUsuario.get("/:id", getUserByIdHandler);
-routerUsuario.post("/", postUserHandler);
+//routerUsuario.post("/", postUserHandler);
 // routerUsuario.put('/', ); --> UPDATE
 // routerUsuario.put('/', ); --> DELETE
 

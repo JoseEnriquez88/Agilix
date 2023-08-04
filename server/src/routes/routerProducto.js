@@ -1,4 +1,4 @@
-const { Router } = require("Router");
+const { Router } = require("express");
 const {
   getAllProductsHandlers,
   getProductByIdHandler,
@@ -11,10 +11,11 @@ const {
 //const { deleteUserHandler } = require("../handlers/productos/");
 
 const routerProducto = Router();
+console.log("en el router de producto");
 
-routerUsuario.get("/", getAllProductsHandlers);
-routerUsuario.get("/:id", getProductByIdHandler);
-routerUsuario.post("/", postProductHandler);
+routerProducto.get("/", getAllProductsHandlers);
+routerProducto.get("/:id", getProductByIdHandler);
+//routerProducto.post("/", postProductHandler);
 // routerUsuario.put('/', ); --> UPDATE
 // routerUsuario.put('/', ); --> DELETE
 

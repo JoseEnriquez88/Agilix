@@ -1,7 +1,7 @@
 const { Producto } = require("../../db");
 
 const getAllProducts = async () => {
-
+  console.log("en el handler de getallproductos");
   const productos = await Producto.findAll({
     attributes: ["id", "nombre", "img", "precio"],
   });

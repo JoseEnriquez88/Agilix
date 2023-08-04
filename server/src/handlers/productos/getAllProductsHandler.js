@@ -1,12 +1,6 @@
-const {
-  getAllProducts,
-} = require("../../controllers/productos/getAllProducts");
-const {
-  getProductById,
-} = require("../../controllers/productos/getProductById");
-const {
-  getProductByName,
-} = require("../../controllers/productos/getProductByName");
+const getAllProducts = require("../../controllers/productos/getAllProducts");
+const getProductById = require("../../controllers/productos/getProductById");
+const getProductByName = require("../../controllers/productos/getProductByName");
 
 const getAllProductsHandlers = async (req, res) => {
   const { nombre } = req.query;
