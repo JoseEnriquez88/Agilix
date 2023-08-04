@@ -1,10 +1,10 @@
 import './App.css';
-// import  CrearProducto  from './Componentes/FormCrearProducto/CrearProducto';
 import { Routes, Route } from 'react-router-dom';
 import { Sidebar } from './Componentes/Sidebar/Sidebar.jsx';
 import { Cuentas, Actualizaciones, Ordenes, Configuracion } from './Componentes/CUENTAUSUARIO/exportador';
 import { AñadirProducto, Inventario, MisProductos } from './Componentes/PRODUCTO/exportador';
 import { AdminUsuario, ConfigPerfil } from './Componentes/USUARIOS/exportador';
+
 
 import Productos from './Componentes/productos/productos'; //joan
 import CrearProducto  from './Componentes/FormCrearProducto/CrearProducto';
@@ -13,11 +13,12 @@ import Clientes from './Componentes/Views/Clientes/Clientes';
 import Cuenta from './Componentes/Views/Cuenta/Cuenta';
 import Pagos from './Componentes/Views/Pagos/Pagos';
 
+
 function App() {
   return (
 
     <div>
-      <Sidebar />
+       <Sidebar /> 
       <Routes>
         <Route path='/' element={<General/>} />  
         <Route path='/cuentas' element={<Cuentas />} />

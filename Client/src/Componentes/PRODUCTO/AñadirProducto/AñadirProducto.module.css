@@ -1,0 +1,87 @@
+.form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background-color: #181818;
+    color: rgba(243, 244, 246, 1);
+    width: 90%; 
+    max-width: 600px; 
+    height: auto; 
+    padding: 20px; 
+}
+
+.titituloForm {
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 900;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    width: 250px; 
+    margin: 0 auto;
+}
+
+.inputGropLabel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    display: block;
+    color: rgba(156, 163, 175, 1);
+    margin-bottom: 4px; 
+    margin: 0 auto;
+}
+
+.image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 250px; 
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (max-width: 600px) {
+    .form {
+        width: 90%;
+        max-width: 400px; 
+    }
+}
+
+.buttonDelete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+.buttonCreate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5;
+    width: 150px;
+    height: 40px;
+    border-radius: 10px;
+}

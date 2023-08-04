@@ -1,9 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-
-const API_URL = 'http://localhost:3001/producto';
-
+const API_URL = 'http://localhost:3001/crearProducto';
 
 export const crearProducto = createAsyncThunk(
   'producto/crear',
@@ -20,7 +18,7 @@ export const crearProducto = createAsyncThunk(
 const initialState = {
   nombre: '',
   precio: '',
-  img: null,
+  img: '',
 };
 
 const crearProductoSlice = createSlice({
