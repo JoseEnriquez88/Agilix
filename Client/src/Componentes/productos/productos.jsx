@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../Redux/productosSlice";
 import styles from "./productos.module.css";
@@ -17,11 +18,9 @@ const Productos = () => {
       {!product.loading && product.error ? (
         <div>Error: {product.error}</div>
       ) : null}
-      {!product.loading && product.allProducts.length ? (
-
+      {!product.loading && product.allProducts ? (
         <div className={styles.contenedor}>
           {product.allProducts.map((prod) => (
-
             <div className={styles.cards} key={prod.id}>
               <img className={styles.imagen} src={prod.img} />
               <div className={styles.contenedorLetras}>
