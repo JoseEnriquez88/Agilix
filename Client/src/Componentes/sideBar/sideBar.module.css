@@ -8,6 +8,14 @@
     --letraBlanca--: rgba(255, 255, 255, 0.87);
 }
 .logoAgilix{
+    position: relative;
+    top: 10px;
+    color: #4cbb17;
+    font-size: 40px;
+}
+.logoAgilixReducido{
+    position: fixed;
+    top: 40px;
     color: #4cbb17;
     font-size: 40px;
 }
@@ -24,6 +32,19 @@
     align-items: center;
     border-right: #4b4b4b solid 3px;
 }
+.sidebarReducido{
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--sidebarColor--);
+    height: 100vh;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-right: #4b4b4b solid 3px;
+}
 
 .contenedor{
     display: flex;
@@ -33,6 +54,9 @@
     border-bottom: 3px solid #4b4b4b;
     width: 250px;
     line-height: 1;
+}
+.contenedorReducido{
+    opacity: 0;
 }
 .NavLink{
     display: flex;
@@ -69,6 +93,9 @@
     width: 250px;
     line-height: 1;
 }
+.contenedorUsuariosReducido{
+    opacity: 0;
+}
 .contenedorUsuarios > h5{
     display: flex;
     justify-content: center;
@@ -85,18 +112,24 @@
     justify-content: center;
     align-items: center;
     position: absolute;
-    right: 10px;
+    right: -15px;
     top: 0px;
     cursor: pointer;
-    border:0px;
     background-color: #4cbb17;
     color: white;
-    width: 30px;
+    width: 29px;
     height: 28px;
     border-radius: 20px;   
 }
 .botonCerrar:hover{
     background-color: grey;
     color: white;
+}
+.arrow{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 7px;
 }
 
