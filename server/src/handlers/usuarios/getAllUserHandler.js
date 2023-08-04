@@ -1,7 +1,7 @@
-const { getAllUsers } = require("../../controllers/usuarios/getAllUsers");
-const { getUserById } = require("../../controllers/usuarios/getUserById");
-const { getUserByName } = require("../../controllers/usuarios/getUserByName");
-const { getUserByEmail } = require("../../controllers/usuarios/getUserByEmail");
+const getAllUsers = require("../../controllers/usuarios/getAllUsers");
+const getUserById = require("../../controllers/usuarios/getUserById");
+const getUserByName = require("../../controllers/usuarios/getUserByName");
+const getUserByEmail = require("../../controllers/usuarios/getUserByEmail");
 
 const getAllUserHandler = async (req, res) => {
   const { nombre, email } = req.query;

@@ -8,6 +8,6 @@ const mainRouter = Router();
 
 mainRouter.use("/clientes", routerCliente);
 mainRouter.use("/usuarios", routerUsuario);
-mainRouter.use("/prod", routerProducto);
+mainRouter.use("/productos", routerProducto);
 
 module.exports = mainRouter;

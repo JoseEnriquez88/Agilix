@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../Redux/productSlice";
 
@@ -16,7 +16,7 @@ const Productos = () => {
       {!product.loading && product.error ? (
         <div>Error: {product.error}</div>
       ) : null}
-      {!product.loading && product.allProducts.length ? (
+      {!product.loading && product.allProducts ? (
         <ul>
           {product.allProducts.map((prod) => (
             <li key={prod.id}>
@@ -64,5 +64,4 @@ export default Productos;
 //     <h3 className={styles.precio}>190$</h3>
 //     </div>
 // </div>
-// </div>   
-
+// </div>

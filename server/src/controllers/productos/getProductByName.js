@@ -5,7 +5,7 @@ const getProductByNameValidation = require("../../helpers/producto/getProductByN
 const getProductByName = async (name) => {
   getProductByNameValidation(name);
   const data = await Productos.find({
-    where: { nombre: { [Op.ilike]: `${name}%` } },
+    where: { nombre: { [Op.iLike]: `${name}%` } },
   });
   if (data.length === 0)
     throw new Error(`No se encontraron productos para mostrar.`);
