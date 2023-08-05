@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../../Redux/productosSlice";
+import { fetchProducts } from "../../../Redux/productSlice";
 import styles from "./MisProductos.module.css";
 
 const MisProductos = () => {

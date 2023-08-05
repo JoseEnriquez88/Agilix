@@ -76,14 +76,6 @@ const AñadirProducto = () => {
   // // Llama al Thunk para enviar los datos al backend
   // await dispatch(crearProducto(formData));
 
-  // // Mostrar el mensaje de éxito
-  // setShowSuccessMessage(true);
-
-  // // Ocultar el mensaje después de un breve tiempo
-  // setTimeout(() => {
-  //   setShowSuccessMessage(false);
-  // }, 2000);
-
   // Limpiar los campos del formulario después de un breve tiempo
   //   setTimeout(() => {
   //     dispatch(setNombre(''));
