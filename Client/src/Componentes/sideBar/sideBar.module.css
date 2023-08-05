@@ -4,7 +4,7 @@
     font-family: 'Poppins', sans-serif;
 }
 :root{
-    --sidebarColor--: #1a1a1a;
+    --sidebarColor--: #000000;
     --letraBlanca--: rgba(255, 255, 255, 0.87);
 }
 .logoAgilix{
@@ -12,12 +12,14 @@
     top: 10px;
     color: #4cbb17;
     font-size: 40px;
+    transition: all 200ms linear;
 }
 .logoAgilixReducido{
     position: fixed;
     top: 40px;
     color: #4cbb17;
     font-size: 40px;
+    transition: all 200ms linear;
 }
 .sidebar{
     position: fixed;
@@ -31,6 +33,7 @@
     justify-content: center;
     align-items: center;
     border-right: #4b4b4b solid 3px;
+    transition: all 200ms linear;
 }
 .sidebarReducido{
     position: fixed;
@@ -44,6 +47,7 @@
     justify-content: center;
     align-items: center;
     border-right: #4b4b4b solid 3px;
+    transition: all 200ms linear;
 }
 
 .contenedor{
@@ -54,6 +58,7 @@
     border-bottom: 3px solid #4b4b4b;
     width: 250px;
     line-height: 1;
+    transition: all 200ms linear;
 }
 .contenedorReducido{
     opacity: 0;
@@ -70,6 +75,7 @@
     cursor: pointer;
     color: var(--letraBlanca--);
     text-decoration: none;
+    transition: all 200ms linear;
 }
 .contenedor > h5{
     display: flex;
@@ -80,6 +86,7 @@
     height: 30px;
     width: 250px;
     color: #8b8b8b;
+    transition: all 200ms linear;
 }
 .NavLink:hover{
     background-color: #4b4b4b;
@@ -92,6 +99,7 @@
     align-items: center;
     width: 250px;
     line-height: 1;
+    transition: all 200ms linear;
 }
 .contenedorUsuariosReducido{
     opacity: 0;
@@ -105,6 +113,7 @@
     height: 30px;
     width: 250px;
     color: #8b8b8b;
+    transition: all 200ms linear;
 }
 
 .botonCerrar{
@@ -119,7 +128,8 @@
     color: white;
     width: 29px;
     height: 28px;
-    border-radius: 20px;   
+    border-radius: 20px;
+     
 }
 .botonCerrar:hover{
     background-color: grey;
