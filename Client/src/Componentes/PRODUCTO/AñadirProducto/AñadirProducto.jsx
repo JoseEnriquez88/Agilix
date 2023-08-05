@@ -13,7 +13,7 @@ const InitialCreate = {
 const AñadirProducto = () => {
   // const dispatch = useDispatch();
   // const { nombre, precio, img } = useSelector((state) => state.productoCreado);
-  // const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [input, setInput] = useState(InitialCreate);
 
   const handleChange = (event) => {
@@ -27,6 +27,7 @@ const AñadirProducto = () => {
 
   const handleImageChange = (event) => {
     const file = event.target.files[0];
+    console.log(event.target.files[0]);
     setInput({ ...input, [event.target.name]: event.target.value });
     // const previewImage = document.getElementById('preview');
     // previewImage.src = file ? URL.createObjectURL(file) : '#';
@@ -55,6 +56,13 @@ const AñadirProducto = () => {
         `http://localhost:3001/productos`,
         input
       );
+      // Mostrar el mensaje de éxito
+      setShowSuccessMessage(true);
+
+      // Ocultar el mensaje después de un breve tiempo
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -68,14 +76,6 @@ const AñadirProducto = () => {
 
   // // Llama al Thunk para enviar los datos al backend
   // await dispatch(crearProducto(formData));
-
-  // // Mostrar el mensaje de éxito
-  // setShowSuccessMessage(true);
-
-  // // Ocultar el mensaje después de un breve tiempo
-  // setTimeout(() => {
-  //   setShowSuccessMessage(false);
-  // }, 2000);
 
   // Limpiar los campos del formulario después de un breve tiempo
   //   setTimeout(() => {
@@ -149,7 +149,9 @@ const AñadirProducto = () => {
       >
         Crear Producto
       </button>
-      {/* {showSuccessMessage && <div className="success-modal">¡Producto creado exitosamente!</div>} */}
+      {showSuccessMessage && (
+        <div className="success-modal">¡Producto creado exitosamente!</div>
+      )}
     </form>
   );
 };
