@@ -26,12 +26,11 @@ const AñadirProducto = () => {
   };
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    console.log(event.target.files[0]);
+    // const file = event.target.files[0];
     setInput({ ...input, [event.target.name]: event.target.value });
-    // const previewImage = document.getElementById('preview');
-    // previewImage.src = file ? URL.createObjectURL(file) : '#';
-    // previewImage.style.display = file ? 'block' : 'none';
+    // const previewImage = document.getElementById("preview");
+    // previewImage.src = file ? URL.createObjectURL(file) : "#";
+    // previewImage.style.display = file ? "block" : "none";
   };
 
   const handleRemoveImage = () => {
@@ -129,9 +128,12 @@ const AñadirProducto = () => {
         <br />
         <br />
         {/* {input.img && (
-            
-            <img className={styles.image} id="preview" src={URL.createObjectURL(input.img)} alt="Preview"/>
-        
+          <img
+            className={styles.image}
+            id="preview"
+            src={URL.createObjectURL(input.img)}
+            alt="Preview"
+          />
         )} */}
       </div>
       <button
