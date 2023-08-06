@@ -1,10 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit';
-import productoCreado from './crearProductoSlice';
+import { configureStore } from "@reduxjs/toolkit";
 import productReducer from "./productSlice";
 
 const store = configureStore({
   reducer: {
-    productoCreado: productoCreado,
     product: productReducer,
   },
 });
