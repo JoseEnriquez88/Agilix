@@ -4,6 +4,11 @@ import allUsersReducer from './usuarios/getAllUsersSlice';
 import usersByNameReducer from './usuarios/getUsersByNameSlice';
 import userByEmailReducer from './usuarios/getUserByEmailSlice';
 import userByIdReducer from './usuarios/getUserByIdSlice';
+import allClientsReducer from './clientes/getAllClientsSlice';
+import clientsByNameReducer from './clientes/getClientsByNameSlice';
+import clientByEmailReducer from './clientes/getClientByEmailSlice';
+import clientByIdReducer from './clientes/getClientByIdSlice';
+
 
 const store = configureStore({
   reducer: {
@@ -12,6 +17,10 @@ const store = configureStore({
     usersByName : usersByNameReducer,
     userByEmail : userByEmailReducer,
     userById: userByIdReducer,
+    allClients: allClientsReducer,
+    clientsByName: clientsByNameReducer,
+    clientByEmail: clientByEmailReducer,
+    clientById: clientByIdReducer
   },
 });
 

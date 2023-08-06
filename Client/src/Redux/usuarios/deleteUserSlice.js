@@ -10,7 +10,7 @@ export const deleteUser = (nombre) => {
             alert("Se borró con éxito")
             dispatch(getAllUsers());
         } catch (error) {
-            alert(error.message)
+            alert(error.response.data.error)
         }
     }
 }

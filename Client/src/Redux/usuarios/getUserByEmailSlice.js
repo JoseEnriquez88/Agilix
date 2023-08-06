@@ -16,7 +16,7 @@ export const getUserByEmail = (email) => {
             const { data } = await axios(`${URL}${email}`)
             dispatch(getUserByEmailFulfilled(data))
         } catch (error) {
-            dispatch(getUserByEmailRejected(error.message))
+            dispatch(getUserByEmailRejected(error.response.data.error))
         }
     }
 }

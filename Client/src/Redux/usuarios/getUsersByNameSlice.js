@@ -16,7 +16,7 @@ export const getUsersByName = (nombre) => {
             const { data } = await axios(`${URL}${nombre}`)
             dispatch(getUsersByNameFulfilled(data))
         } catch (error) {
-            dispatch(getUsersByNameRejected(error.message))
+            dispatch(getUsersByNameRejected(error.response.data.error))
         }
     }
 }
