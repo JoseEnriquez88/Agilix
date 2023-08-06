@@ -16,7 +16,7 @@ export const getUserById = (id) => {
             const { data } = await axios(`${URL}${id}`)
             dispatch(getUserByIdFulfilled(data))
         } catch (error) {
-            dispatch(getUserByIdRejected(error.message))
+            dispatch(getUserByIdRejected(error.response.data.error))
         }
     }
 }

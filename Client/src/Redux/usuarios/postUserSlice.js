@@ -6,11 +6,11 @@ const URL = "http://localhost:3001/usuarios";
 export const postUser = (usuario) => {
     return async (dispatch) => {
         try {
-            await axios.post(URL, usuario)
-            alert("Se creó con éxito")
-            dispatch(getAllUsers());
+            const {data} = await axios.post(URL, usuario)
+            alert(data.message)
+            dispatch(getAllUsers());  //después de crear el usuario quiero que se actualicen los usuarios
         } catch (error) {
-            alert(error.message)
+            alert(error.response.data.error); //entro al response que da axios luego a su data.error
         }
     }
 }

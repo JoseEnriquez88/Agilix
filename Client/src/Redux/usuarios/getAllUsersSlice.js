@@ -16,7 +16,7 @@ export const getAllUsers = ()=>{
             const {data} = await axios(URL)
             dispatch(getAllUsersFulfilled(data))
         } catch (error) {
-            dispatch(getAllUsersRejected(error.message))
+            dispatch(getAllUsersRejected(error.response.data.error))
         }
     }
 }
