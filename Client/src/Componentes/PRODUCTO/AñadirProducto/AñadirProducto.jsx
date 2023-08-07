@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../../../Redux/productSlice";
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setNombre, setPrecio, setImg, crearProducto } from '../../../Redux/crearProductoSlice';
 import styles from "../AñadirProducto/AñadirProducto.module.css";
@@ -11,7 +13,7 @@ const InitialCreate = {
 };
 
 const AñadirProducto = () => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   // const { nombre, precio, img } = useSelector((state) => state.productoCreado);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [input, setInput] = useState(InitialCreate);
@@ -57,6 +59,9 @@ const AñadirProducto = () => {
       );
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
+
+      // Recarga el estado de productos para añadir el producto agregado 
+      dispatch(fetchProducts());
 
       // Ocultar el mensaje después de un breve tiempo
       setTimeout(() => {
