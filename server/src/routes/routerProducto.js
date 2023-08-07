@@ -6,13 +6,13 @@ const {
 
 const postProductHandler = require("../handlers/productos/postProductHandler");
 
-//const { deleteUserHandler } = require("../handlers/productos/");
+const updateProductoHandler = require("../handlers/productos/updateProductoHandler");
 
 const routerProducto = Router();
 
 routerProducto.get("/", getAllProductsHandlers);
 routerProducto.get("/:id", getProductByIdHandler);
 routerProducto.post("/", postProductHandler);
-// routerUsuario.put('/', ); --> UPDATE/DELETE
+routerProducto.put('/:id', updateProductoHandler); //--> UPDATE/DELETE
 
 module.exports = routerProducto;
