@@ -10,13 +10,12 @@
 .logoAgilix {
   position: relative;
   color: #45b545;
-  font-size: 40px;
+  font-size: 45px;
   transition: all 200ms linear;
 }
 
 .logoAgilixReducido {
-  position: fixed;
-  top: 40px;
+  position: relative;
   color: #45b545;
   font-size: 40px;
   transition: all 200ms linear;
@@ -62,7 +61,14 @@
   transition: all 200ms linear;
 }
 .contenedorReducido {
-  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid #4b4b4b;
+  width: 30px;
+  line-height: 1;
+  transition: all 200ms linear;
 }
 .NavLink {
   display: flex;
@@ -103,7 +109,12 @@
   transition: all 200ms linear;
 }
 .contenedorUsuariosReducido {
-  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  transition: all 200ms linear;
 }
 .contenedorUsuarios > h5 {
   display: flex;
@@ -130,6 +141,7 @@
   height: 30px;
   margin-left: 230px;
   transition: all 200ms linear;
+  border-radius: 5px;
 
 }
 .botonCerrar:hover {
@@ -142,6 +154,7 @@
   align-items: center;
   position: absolute;
   left: 13px;
+  transition: all 200ms linear;
 }
 
 .botonAbrir {
@@ -153,12 +166,29 @@
   cursor: pointer;
   background-color: #45b545;
   color: white;
-  width: 50px;
+  width: 49px;
   height: 30px;
+  border-radius: 2px;
   transition: all 200ms linear;
+}
+.botonAbrir:hover {
+  background-color: grey;
+  color: white;
 }
 
 
 .iconSideBar {
-padding-left: 15px;
+padding-right: 15px;
 }
+.iconSideBarReducido {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 12px;
+  padding: 12px;
+  height: 30px;
+  border-radius: 8px;
+  color: var(--letraBlanca--);
+  text-decoration: none;
+  transition: all 200ms linear;
+  }
