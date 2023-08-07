@@ -42,9 +42,18 @@ const AñadirProducto = () => {
     event.preventDefault();
 
     try {
+      const fileName = input.img.split("\\").pop();
+
+      const formData = new FormData();
+      formData.append("nombre", input.nombre);
+      formData.append("precio", input.precio);
+      formData.append("img", fileName);
+
+      const formDataObject = Object.fromEntries(formData);
+
       const response = await axios.post(
         `http://localhost:3001/productos`,
-        input //Estado local
+        formDataObject
       );
 
       //Actualiza el estado global
@@ -64,7 +73,7 @@ const AñadirProducto = () => {
         setPreviewImage("");
       }, 2000);
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.error);
     }
   };
 

@@ -71,14 +71,14 @@ const MisProductos = () => {
 
       {product.loading && <div>Cargando...</div>}
       {!product.loading && product.error ? (
-        <div>Error: {product.error}</div>
+        <div style={{ color: "white" }}>{product.error}</div>
       ) : null}
 
       {!product.loading && product.allProducts ? (
         <div className={styles.contenedor}>
           {product.productosFiltrados.map((prod) => (
             <div className={styles.cards} key={prod.id}>
-              <img className={styles.imagen} src={prod.img} />
+              <img className={styles.imagen} src={`/assets/${prod.img}`} />
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
