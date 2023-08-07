@@ -1,12 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ordenAlfabetico, ordenPorPrecio, restablecerOrdenamientos, fetchProducts } from "../../../Redux/productSlice";
+import {
+  ordenAlfabetico,
+  ordenPorPrecio,
+  restablecerOrdenamientos,
+  fetchProducts,
+} from "../../../Redux/productSlice";
 import { useState, useEffect } from "react";
 import styles from "./MisProductos.module.css";
 
 const MisProductos = () => {
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product);
-  console.log(product);
   const [resetSeleccion, setResetSeleccion] = useState({
     ordenAlfabetico: "",
     ordenPorPrecio: "",
@@ -14,8 +18,8 @@ const MisProductos = () => {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, [dispatch]);
-  
+  }, []);
+
   // Handler del ordenamiento alfabetico
   const handleChange = (event) => {
     setResetSeleccion({
@@ -47,10 +51,7 @@ const MisProductos = () => {
     <div>
       <h1 className={styles.tittle}>Listado de Productos</h1>
       <div>
-        <select
-          onChange={handleChange}
-          value={resetSeleccion.ordenAlfabetico}
-        >
+        <select onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
           <option disabled={true}>Orden Alfabético</option>
           <option value="A_Z_predeterminado">Predeterminado</option>
           <option value="asc">A-Z</option>
@@ -77,13 +78,11 @@ const MisProductos = () => {
         <div className={styles.contenedor}>
           {product.productosFiltrados.map((prod) => (
             <div className={styles.cards} key={prod.id}>
-
               <img className={styles.imagen} src={prod.img} />
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
               </div>
-
             </div>
           ))}
         </div>

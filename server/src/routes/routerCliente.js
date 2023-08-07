@@ -4,13 +4,13 @@ const {
   getClienteByIdHandler,
 } = require("../handlers/cliente/getAllClientesHandler");
 const postClienteHandler = require("../handlers/cliente/postClienteHandler");
-//const { deleteUserHandler } = require("../handlers/usuarios/deleteUserHandler");
+const  updateClienteHandler = require("../handlers/Cliente/updateClienteHandler");
 
 const routerCliente = Router();
 
 routerCliente.get("/", getAllClientesHandler);
 routerCliente.get("/:id", getClienteByIdHandler);
 routerCliente.post("/", postClienteHandler);
-//routerCliente.put('/', ); --> UPDATE/DELETE
+routerCliente.put('/:id', updateClienteHandler);// --> UPDATE/DELETE
 
 module.exports = routerCliente;
