@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Saldos from '../Saldos/Saldos';
 import Comparacion_de_ventas from '../Comparacion_de_ventas/Comparacion_de_ventas';

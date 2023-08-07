@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ClearIcon from '@mui/icons-material/Clear';
+import DensityMediumIcon from '@mui/icons-material/DensityMedium';
 import styles from "./sideBar.module.css";
 
 export const Sidebar = () => {
   const [direccionFlecha, setDireccionFlecha] = useState("atras");
-  const [anchoReducido, setAnchoReducido] = useState(false);
+  const [anchoReducido, setAnchoReducido] = useState(true);
   const cambiarDireccionFlecha = () => {
     setDireccionFlecha(direccionFlecha === "atras" ? "adelante" : "atras");
     setAnchoReducido(!anchoReducido);
@@ -15,11 +15,11 @@ export const Sidebar = () => {
     <nav className={anchoReducido ? styles.sidebarReducido : styles.sidebar}>
       {direccionFlecha === "atras" ? (
         <h1 className={styles.botonCerrar} onClick={cambiarDireccionFlecha}>
-          <ArrowBackIosIcon className={styles.arrow} />
+          <DensityMediumIcon className={styles.arrow} />
         </h1>
       ) : (
         <h1 className={styles.botonCerrar} onClick={cambiarDireccionFlecha}>
-          <ArrowForwardIosIcon className={styles.arrow} />
+          <ClearIcon className={styles.arrow} />
         </h1>
       )}
 
@@ -44,11 +44,8 @@ export const Sidebar = () => {
             <NavLink className={styles.NavLink} to="/cuentas">
               Cuentas
             </NavLink>
-            <NavLink className={styles.NavLink} to="/actualizaciones">
-              Actualizaciones
-            </NavLink>
-            <NavLink className={styles.NavLink} to="/ordenes">
-              Órdenes
+            <NavLink className={styles.NavLink} to="/clientes">
+              Clientes
             </NavLink>
             <NavLink className={styles.NavLink} to="/configuracion">
               Configuracion

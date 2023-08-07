@@ -57,7 +57,7 @@ const AñadirProducto = () => {
       <div>
         <p className={styles.titituloForm}>Crear Productos</p>
         <label className={styles.inputGropLabel} htmlFor="name">
-          Nombre:{" "}
+          Nombre :{" "}
         </label>
         <input
           className={styles.inputGroup}
@@ -70,7 +70,7 @@ const AñadirProducto = () => {
       </div>
       <div>
         <label className={styles.inputGropLabel} htmlFor="price">
-          Precio:{" "}
+          Precio :{" "}
         </label>
         <input
           className={styles.inputGroup}
@@ -82,20 +82,12 @@ const AñadirProducto = () => {
         />
       </div>
       <div>
-        <label className={styles.inputGropLabel} htmlFor="image">
-          Imagen:{" "}
-        </label>
-        <input
-          className={styles.inputGroup}
-          type="file"
-          id="image"
-          name="img"
-          value={input.img}
-          onChange={handleImageChange}
-        />
+        <span className={styles.ImagenTittle}>Imagen :</span>
         <br />
+      <label className={styles.inputGropLabel} htmlFor="image">
         <br />
-      </div>
+        <span className={styles.uploadButton}>Seleccionar archivo</span>
+      </label>
       <button
         className={styles.buttonDelete}
         type="button"
@@ -103,7 +95,15 @@ const AñadirProducto = () => {
       >
         Eliminar imagen
       </button>
-      <br />
+      <input
+        className={styles.customFileInput}
+        type="file"
+        id="image"
+        name="img"
+        value={input.img}
+        onChange={handleImageChange}
+      />
+      </div>
       <button
         className={styles.buttonCreate}
         type="submit"
