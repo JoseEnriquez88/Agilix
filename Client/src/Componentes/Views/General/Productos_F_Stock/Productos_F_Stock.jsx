@@ -6,19 +6,19 @@ import { useSelector } from "react-redux";
 const Productos_F_Stock = ({ productos }) => {
   const prod = useSelector((state) => state.product);
 
-  if (!prod.allProducts) {
-    return <span>No hay productos fuera de stock</span>;
-  }
-
   return (
     <div className={styles.ContenedorProductos}>
       <div className={styles.ContenedorTitulo}>
         <h2>Productos fuera de stock</h2>
       </div>
       <div className={styles.ContenedorCards}>
-        {productos.allProducts.map(({ id, nombre, img, precio }) => (
-          <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
-        ))}
+        {prod.allProducts ? (
+          productos.allProducts.map(({ id, nombre, img, precio }) => (
+            <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
+          ))
+        ) : (
+          <span className={styles.NoHayProductos}>No hay productos fuera de stock</span>
+        )}
       </div>
     </div>
   );

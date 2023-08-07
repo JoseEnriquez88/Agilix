@@ -1,7 +1,10 @@
+.NoHayProductos {
+    color: white;
+    text-align: center;
+}
+
 .ContenedorProductos {
     width: 100%;
     height: 100%;
     color: white;
-    background-color: #010101;
-    margin-top: 0;
 }

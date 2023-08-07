@@ -50,14 +50,14 @@ const MisProductos = () => {
   return (
     <div>
       <h1 className={styles.tittle}>Listado de Productos</h1>
-      <div>
-        <select onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
+      <div className={styles.contenedorSelector}>
+        <select className={styles.selectores} onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
           <option disabled={true}>Orden Alfabético</option>
           <option value="A_Z_predeterminado">Predeterminado</option>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
-        <select
+        <select className={styles.selectores}
           onChange={handleSortPrecio}
           value={resetSeleccion.ordenPorPrecio}
         >
@@ -66,19 +66,19 @@ const MisProductos = () => {
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
-        <button onClick={handleReset}>Restablecer Ordenamiento</button>
+        <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
 
       {product.loading && <div>Cargando...</div>}
       {!product.loading && product.error ? (
-        <div>Error: {product.error}</div>
+        <div style={{ color: "white" }}>{product.error}</div>
       ) : null}
 
       {!product.loading && product.allProducts ? (
         <div className={styles.contenedor}>
           {product.productosFiltrados.map((prod) => (
             <div className={styles.cards} key={prod.id}>
-              <img className={styles.imagen} src={prod.img} />
+              <img className={styles.imagen} src={`/assets/${prod.img}`} />
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>

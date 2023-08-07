@@ -42,9 +42,18 @@ const AñadirProducto = () => {
     event.preventDefault();
 
     try {
+      const fileName = input.img.split("\\").pop();
+
+      const formData = new FormData();
+      formData.append("nombre", input.nombre);
+      formData.append("precio", input.precio);
+      formData.append("img", fileName);
+
+      const formDataObject = Object.fromEntries(formData);
+
       const response = await axios.post(
         `http://localhost:3001/productos`,
-        input //Estado local
+        formDataObject
       );
 
       //Actualiza el estado global
@@ -53,7 +62,6 @@ const AñadirProducto = () => {
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
 
-      // Ocultar el mensaje después de un breve tiempo
       setTimeout(() => {
         setShowSuccessMessage(false);
         setInput({
@@ -65,7 +73,7 @@ const AñadirProducto = () => {
         setPreviewImage("");
       }, 2000);
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.error);
     }
   };
 
@@ -76,7 +84,7 @@ const AñadirProducto = () => {
       <div>
         <p className={styles.titituloForm}>Crear Productos</p>
         <label className={styles.inputGropLabel} htmlFor="name">
-          Nombre:{" "}
+          Nombre :{" "}
         </label>
         <input
           className={styles.inputGroup}
@@ -89,7 +97,7 @@ const AñadirProducto = () => {
       </div>
       <div>
         <label className={styles.inputGropLabel} htmlFor="price">
-          Precio:{" "}
+          Precio :{" "}
         </label>
         <input
           className={styles.inputGroup}
@@ -101,19 +109,12 @@ const AñadirProducto = () => {
         />
       </div>
       <div>
+        <span className={styles.ImagenTittle}>Imagen :</span>
+        <br />
         <label className={styles.inputGropLabel} htmlFor="image">
-          Imagen:{" "}
+          <br />
+          <span className={styles.uploadButton}>Seleccionar archivo</span>
         </label>
-        <input
-          className={styles.inputGroup}
-          type="file"
-          id="image"
-          name="img"
-          value={input.img}
-          onChange={handleImageChange}
-        />
-        <br />
-        <br />
         {previewImage && (
           <img
             className={styles.image}
@@ -122,15 +123,22 @@ const AñadirProducto = () => {
             alt="Preview"
           />
         )}
+        <button
+          className={styles.buttonDelete}
+          type="button"
+          onClick={handleRemoveImage}
+        >
+          Eliminar imagen
+        </button>
+        <input
+          className={styles.customFileInput}
+          type="file"
+          id="image"
+          name="img"
+          value={input.img}
+          onChange={handleImageChange}
+        />
       </div>
-      <button
-        className={styles.buttonDelete}
-        type="button"
-        onClick={handleRemoveImage}
-      >
-        Eliminar imagen
-      </button>
-      <br />
       <button
         className={styles.buttonCreate}
         type="submit"

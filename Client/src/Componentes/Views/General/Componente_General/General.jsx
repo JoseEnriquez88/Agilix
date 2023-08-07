@@ -1,8 +1,6 @@
 import React from "react";
-
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-
 import Saldos from "../Saldos/Saldos";
 import Comparacion_de_ventas from "../Comparacion_de_ventas/Comparacion_de_ventas";
 import Pagos_recibidos from "../Pagos_recibidos/Pagos_recibidos";
