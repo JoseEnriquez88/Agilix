@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../../../Redux/productSlice";
 import styles from "../AñadirProducto/AñadirProducto.module.css";
 import axios from "axios";
 
@@ -13,6 +15,7 @@ const AñadirProducto = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false); //Estado para mostrar mensaje de confirmacion de creacion
   const [previewImage, setPreviewImage] = useState(""); //Estado para previsualizacion de imagen subida
   const [input, setInput] = useState(InitialCreate); //Estado para almacenamiento de datos en estado local
+  const dispatch = useDispatch();
 
   //Funcion que captura la data de los inputs y la almacena en el estado local
   const handleChange = (event) => {
@@ -43,6 +46,10 @@ const AñadirProducto = () => {
         `http://localhost:3001/productos`,
         input //Estado local
       );
+
+      //Actualiza el estado global
+      dispatch(fetchProducts());
+
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
 
