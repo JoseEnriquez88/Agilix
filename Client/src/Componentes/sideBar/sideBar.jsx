@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ClearIcon from '@mui/icons-material/Clear';
-import DensityMediumIcon from '@mui/icons-material/DensityMedium';
+import ClearIcon from "@mui/icons-material/Clear";
+import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import styles from "./sideBar.module.css";
 
 export const Sidebar = () => {
@@ -28,7 +28,7 @@ export const Sidebar = () => {
           anchoReducido ? styles.logoAgilixReducido : styles.logoAgilix
         }
       >
-        {anchoReducido ? "A" : "Agilix"}
+        {anchoReducido ? "Ax" : "Agilix"}
       </h1>
       <div
         className={

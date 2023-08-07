@@ -4,13 +4,13 @@ const {
   getUserByIdHandler,
 } = require("../handlers/usuarios/getAllUserHandler");
 const postUserHandler = require("../handlers/usuarios/postUserHandler");
-const deleteUserHandler = require("../handlers/usuarios/deleteUserHandler");
+const updateUserHandler = require("../handlers/usuarios/updateUserHandler");
 
 const routerUsuario = Router();
 
 routerUsuario.get("/", getAllUserHandler);
 routerUsuario.get("/:id", getUserByIdHandler);
 routerUsuario.post("/", postUserHandler);
-// routerUsuario.put('/', ); --> UPDATE/DELETE
+routerUsuario.put('/:id', updateUserHandler); //--> UPDATE/DELETE
 
 module.exports = routerUsuario;

@@ -18,13 +18,23 @@ import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
 import Pagos from "./Componentes/Views/Pagos/Pagos";
 
+import { fetchProducts } from "./Redux/productSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <div>
       <Sidebar />
       <Routes>
         <Route path="/" element={<General />} />
-        <Route path="/cuentas" element={<Cuentas />} />  
+        <Route path="/cuentas" element={<Cuentas />} />
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/crearcliente" element={<CrearCliente />} />
         <Route path="/configuracion" element={<Configuracion />} />
