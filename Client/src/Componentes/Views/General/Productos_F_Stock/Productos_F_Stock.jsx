@@ -4,10 +4,10 @@ import styles from './Productos_F_Stock.module.css';
 
 const Productos_F_Stock = ({productos}) => {
 
-    // if(productos.allProducts.length === 0){ {
-    //     return (<span>No hay productos fuera de stock</span>);
-    // }
-
+    if(!productos) {
+        return <div><span>No hay productos fuera de stock.</span></div>
+    }
+    
     return (
         <div className={styles.ContenedorProductos}>
             <div className={styles.ContenedorTitulo}>
