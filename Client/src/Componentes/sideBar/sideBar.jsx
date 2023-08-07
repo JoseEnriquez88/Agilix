@@ -28,7 +28,7 @@ export const Sidebar = () => {
           anchoReducido ? styles.logoAgilixReducido : styles.logoAgilix
         }
       >
-        {anchoReducido ? "Ax" : "Agilix"}
+        {anchoReducido ? "A" : "Agilix"}
       </h1>
       <div
         className={

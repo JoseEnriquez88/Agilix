@@ -6,24 +6,32 @@ const URL = "http://localhost:3001/productos";
 const initialState = {
   loading: false,
   allProducts: [],
-  productosFiltrados : [],
+  productosFiltrados: [],
   error: "",
 };
 
-export const fetchProducts = createAsyncThunk("product/fetchProducts", () => {
-  return axios.get(URL).then((response) => response.data);
-});
+export const fetchProducts = createAsyncThunk(
+  "product/fetchProducts",
+  async (_, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.get(URL);
+      return data;
+    } catch (error) {
+      return rejectWithValue(error.response.data);
+    }
+  }
+);
 
 const productSlice = createSlice({
   name: "product",
-  initialState, 
+  initialState,
   reducers: {
     //Ordenamiento alfabético
     ordenAlfabetico: (state, action) => {
       let productos = [...state.productosFiltrados];
-      if(action.payload === "asc"){
+      if (action.payload === "asc") {
         productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
-      } else if(action.payload === "desc"){
+      } else if (action.payload === "desc") {
         productos.sort((a, b) => b.nombre.localeCompare(a.nombre));
       }
       state.productosFiltrados = productos;
@@ -31,17 +39,17 @@ const productSlice = createSlice({
     //Ordenamiento por precio
     ordenPorPrecio: (state, action) => {
       let productos = [...state.productosFiltrados];
-      if(action.payload === "precioMin"){
+      if (action.payload === "precioMin") {
         productos.sort((a, b) => a.precio - b.precio);
-      } else if(action.payload === "precioMax"){
+      } else if (action.payload === "precioMax") {
         productos.sort((a, b) => b.precio - a.precio);
       }
       state.productosFiltrados = productos;
     },
     //Restablecer ordenamientos
     restablecerOrdenamientos: (state) => {
-    state.productosFiltrados = state.allProducts;
-    }
+      state.productosFiltrados = state.allProducts;
+    },
   },
 
   extraReducers: (builder) => {
@@ -57,13 +65,14 @@ const productSlice = createSlice({
     });
     builder.addCase(fetchProducts.rejected, (state, action) => {
       state.loading = false;
-      state.allProducts = action.payload;
+      //state.allProducts = action.payload;
       // para que el estado copia se inicialize con el mismo valor que el estado original
-      state.productosFiltrados = action.payload;
-      state.error = action.error.message;
+      //state.productosFiltrados = action.payload;
+      state.error = action.payload.error;
     });
   },
 });
 
 export default productSlice.reducer;
-export const { ordenAlfabetico, ordenPorPrecio, restablecerOrdenamientos } = productSlice.actions;
+export const { ordenAlfabetico, ordenPorPrecio, restablecerOrdenamientos } =
+  productSlice.actions;
