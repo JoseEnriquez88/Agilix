@@ -1,5 +1,8 @@
 import React from 'react';
+
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import Saldos from '../Saldos/Saldos';
 import Comparacion_de_ventas from '../Comparacion_de_ventas/Comparacion_de_ventas';
 import Pagos_recibidos from '../Pagos_recibidos/Pagos_recibidos';
@@ -8,6 +11,9 @@ import SearchBar from '../SearchBar/SearchBar';
 import styles from './General.module.css';
 
 const General = () => {
+    let productos = useSelector((state) => state.product);
+    console.log(productos);
+    
     return (
         //Contiene todos los componentes
         <div className={styles.DivComponenteGeneral}>
@@ -41,7 +47,7 @@ const General = () => {
                 </div>
                 <div className={styles.ContenedorProductos}>
                     <div className={styles.ContenedorProductosFStock}>
-                        <Productos_F_Stock />
+                        <Productos_F_Stock productos={productos}/>
                     </div>
                     
                 </div>

@@ -46,7 +46,7 @@ const AñadirProducto = () => {
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
 
-      // Ocultar el mensaje e imagen previsualizada después de un breve tiempo
+      // Ocultar el mensaje después de un breve tiempo
       setTimeout(() => {
         setShowSuccessMessage(false);
         setInput({

@@ -19,7 +19,17 @@ import Clientes from "./Componentes/Views/Clientes/Clientes";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
 import Pagos from "./Componentes/Views/Pagos/Pagos";
 
+import { fetchProducts } from "./Redux/productSlice";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+
   return (
     <div>
       <Sidebar />
