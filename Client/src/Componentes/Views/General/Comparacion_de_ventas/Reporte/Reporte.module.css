@@ -61,3 +61,27 @@
     width: 50%;
     height: 100%;
 }
+
+
+.ContenedorBotonBack {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 5%;
+    align-items: center;
+}
+
+.BotonBack {
+    padding-top: 0.5rem;
+    color: white;
+    font-size: 1.3rem;
+    margin-left: 4rem;
+    width: 4rem;
+    background-color: #181818;
+    transition: 0.5s;
+}
+
+.BotonBack:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
