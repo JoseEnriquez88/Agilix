@@ -5,8 +5,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import styles from "./sideBar.module.css";
 
 export const Sidebar = () => {
-  const [direccionFlecha, setDireccionFlecha] = useState("atras");
-  const [anchoReducido, setAnchoReducido] = useState(false);
+  const [direccionFlecha, setDireccionFlecha] = useState("adelante");
+  const [anchoReducido, setAnchoReducido] = useState(true);
   const cambiarDireccionFlecha = () => {
     setDireccionFlecha(direccionFlecha === "atras" ? "adelante" : "atras");
     setAnchoReducido(!anchoReducido);
@@ -28,7 +28,7 @@ export const Sidebar = () => {
           anchoReducido ? styles.logoAgilixReducido : styles.logoAgilix
         }
       >
-        {anchoReducido ? "A" : "Agilix"}
+        {anchoReducido ? "Ax" : "Agilix"}
       </h1>
       <div
         className={

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { ordenAlfabetico, ordenPorPrecio, restablecerOrdenamientos } from "../../../Redux/productSlice";
+import { ordenAlfabetico, ordenPorPrecio, restablecerOrdenamientos, fetchProducts } from "../../../Redux/productSlice";
 import { useState, useEffect } from "react";
 import styles from "./MisProductos.module.css";
 
@@ -12,6 +12,10 @@ const MisProductos = () => {
     ordenPorPrecio: "",
   });
 
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+  
   // Handler del ordenamiento alfabetico
   const handleChange = (event) => {
     setResetSeleccion({

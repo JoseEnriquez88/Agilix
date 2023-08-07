@@ -1,6 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import { Sidebar } from "./Componentes/Sidebar/Sidebar.jsx";
+import { Sidebar } from './Componentes/Sidebar/sideBar.jsx';
 import {
   Cuentas,
   Actualizaciones,
