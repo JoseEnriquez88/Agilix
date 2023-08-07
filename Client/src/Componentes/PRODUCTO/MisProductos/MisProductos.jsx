@@ -50,14 +50,14 @@ const MisProductos = () => {
   return (
     <div>
       <h1 className={styles.tittle}>Listado de Productos</h1>
-      <div>
-        <select onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
+      <div className={styles.contenedorSelector}>
+        <select className={styles.selectores} onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
           <option disabled={true}>Orden Alfabético</option>
           <option value="A_Z_predeterminado">Predeterminado</option>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
-        <select
+        <select className={styles.selectores}
           onChange={handleSortPrecio}
           value={resetSeleccion.ordenPorPrecio}
         >
@@ -66,7 +66,7 @@ const MisProductos = () => {
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
-        <button onClick={handleReset}>Restablecer Ordenamiento</button>
+        <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
 
       {product.loading && <div>Cargando...</div>}

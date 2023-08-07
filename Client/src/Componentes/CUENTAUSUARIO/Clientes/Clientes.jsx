@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchClientes } from "../../../Redux/clientesSlice";
 import { NavLink } from "react-router-dom";
+// import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import styles from "./Clientes.module.css";
 
 const Clientes = () => {
@@ -14,7 +15,7 @@ const Clientes = () => {
 
   if (!clientes.allClientes) {
     return (
-      <div>
+      <div className={styles.buttonContainer}>
       <button className={styles.CrearCliente}>
         <NavLink to='/crearcliente' style={{ textDecoration: 'none' }}>
           Crear Cliente
@@ -26,10 +27,12 @@ const Clientes = () => {
   }
   return (
     <div>
+      <h1 className={styles.tittle}>Lista de Clientes</h1>
     <div className={styles.container}>
       <button className={styles.CrearCliente}>
         <NavLink to='/crearcliente' style={{ textDecoration: 'none' }}>
           Crear Cliente
+          {/* <PersonAddIcon className={styles.icon} /> */}
         </NavLink>
       </button>
 

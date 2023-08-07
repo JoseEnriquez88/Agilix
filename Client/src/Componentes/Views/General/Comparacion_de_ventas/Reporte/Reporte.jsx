@@ -1,4 +1,6 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import styles from './Reporte.module.css';
 
 const Reporte = () => {
@@ -107,6 +109,11 @@ const Reporte = () => {
 
     return (
         <div className={styles.ContenedorCardsPagos}>
+            <div className={styles.ContenedorBotonBack}>
+                <NavLink to='/' className={styles.BotonBack}>
+                    <ArrowBackIosNewIcon className={styles.IconoBack}/>
+                </NavLink>
+            </div>
             <div className={styles.TituloReporte}>
                 <h1>Reporte de ventas</h1>
             </div>

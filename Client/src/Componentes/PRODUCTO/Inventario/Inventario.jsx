@@ -3,7 +3,7 @@ import styles from "./Inventario.module.css";
 const Inventario = () => {
     return (
         <div>
-            <h1>hola</h1>
+            <h1>Control de Inventario</h1>
         </div>
     )
 }

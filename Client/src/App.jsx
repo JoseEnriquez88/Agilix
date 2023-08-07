@@ -13,6 +13,7 @@ import {
   MisProductos,
 } from "./Componentes/PRODUCTO/exportador";
 import { AdminUsuario, ConfigPerfil } from "./Componentes/USUARIOS/exportador";
+import CrearUsuario from './Componentes/USUARIOS/AdminUsuario/CrearUsuario/CrearUsuario'
 
 import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
@@ -40,6 +41,7 @@ function App() {
         <Route path="/crearcliente" element={<CrearCliente />} />
         <Route path="/configuracion" element={<Configuracion />} />
         <Route path="/añadirProducto" element={<AñadirProducto />} />
+        <Route path="/crearusuario" element={<CrearUsuario />} />
         <Route path="/inventario" element={<Inventario />} />
         <Route path="/misProductos" element={<MisProductos />} />
         <Route path="/admin" element={<AdminUsuario />} />
