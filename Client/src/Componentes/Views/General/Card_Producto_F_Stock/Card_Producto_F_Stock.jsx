@@ -9,7 +9,8 @@ const Card = (props) => {
                 <img src={img} alt={nombre} className={styles.Imagen}/>
             </div>
             <div className={styles.ContenedorInfo}>
-                <p>{nombre}</p>
+                <h3>{nombre}</h3>
+                <p>Precio:</p>
                 <p>${precio}</p>
             </div>
         </div>
