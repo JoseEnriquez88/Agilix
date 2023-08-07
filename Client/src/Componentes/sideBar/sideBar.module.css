@@ -1,135 +1,142 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
-*{
-    font-family: 'Poppins', sans-serif;
+* {
+  font-family: "Poppins", sans-serif;
 }
-:root{
-    --sidebarColor--: #1a1a1a;
-    --letraBlanca--: rgba(255, 255, 255, 0.87);
+:root {
+  --sidebarColor--: #000000;
+  --letraBlanca--: rgba(255, 255, 255, 0.87);
 }
-.logoAgilix{
-    position: relative;
-    top: 10px;
-    color: #4cbb17;
-    font-size: 40px;
+.logoAgilix {
+  position: relative;
+  top: 10px;
+  color: #45b545;
+  font-size: 40px;
+  transition: all 200ms linear;
 }
-.logoAgilixReducido{
-    position: fixed;
-    top: 40px;
-    color: #4cbb17;
-    font-size: 30px;
+.logoAgilixReducido {
+  position: fixed;
+  top: 40px;
+  color: #45b545;
+  font-size: 40px;
+  transition: all 200ms linear;
 }
-.sidebar{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: var(--sidebarColor--);
-    height: 100vh;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-right: #4b4b4b solid 3px;
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--sidebarColor--);
+  height: 100vh;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: #4b4b4b solid 3px;
+  transition: all 200ms linear;
 }
-.sidebarReducido{
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: var(--sidebarColor--);
-    height: 100vh;
-    width: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-right: #4b4b4b solid 3px;
-}
-
-.contenedor{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 3px solid #4b4b4b;
-    width: 250px;
-    line-height: 1;
-}
-.contenedorReducido{
-    opacity: 0;
-}
-.NavLink{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 5px;
-    padding: 5px;
-    height: 30px;
-    width: 225px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: var(--letraBlanca--);
-    text-decoration: none;
-}
-.contenedor > h5{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 5px;
-    height: 30px;
-    width: 250px;
-    color: #8b8b8b;
-}
-.NavLink:hover{
-    background-color: #4b4b4b;
+.sidebarReducido {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: var(--sidebarColor--);
+  height: 100vh;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-right: #4b4b4b solid 3px;
+  transition: all 200ms linear;
 }
 
-.contenedorUsuarios{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 250px;
-    line-height: 1;
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 3px solid #4b4b4b;
+  width: 250px;
+  line-height: 1;
+  transition: all 200ms linear;
 }
-.contenedorUsuariosReducido{
-    opacity: 0;
+.contenedorReducido {
+  opacity: 0;
 }
-.contenedorUsuarios > h5{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    padding: 5px;
-    height: 30px;
-    width: 250px;
-    color: #8b8b8b;
+.NavLink {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 5px;
+  padding: 5px;
+  height: 30px;
+  width: 225px;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--letraBlanca--);
+  text-decoration: none;
+  transition: all 200ms linear;
 }
-
-.botonCerrar{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: -15px;
-    top: 0px;
-    cursor: pointer;
-    background-color: #4cbb17;
-    color: white;
-    width: 29px;
-    height: 28px;
-    border-radius: 20px;   
+.contenedor > h5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  height: 30px;
+  width: 250px;
+  color: #8b8b8b;
+  transition: all 200ms linear;
 }
-.botonCerrar:hover{
-    background-color: grey;
-    color: white;
-}
-.arrow{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    left: 7px;
+.NavLink:hover {
+  background-color: #4b4b4b;
 }
 
+.contenedorUsuarios {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  line-height: 1;
+  transition: all 200ms linear;
+}
+.contenedorUsuariosReducido {
+  opacity: 0;
+}
+.contenedorUsuarios > h5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 5px;
+  height: 30px;
+  width: 250px;
+  color: #8b8b8b;
+  transition: all 200ms linear;
+}
+
+.botonCerrar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 15 px;
+  top: 0px;
+  cursor: pointer;
+  background-color: #45b545;
+  color: white;
+  width: 50px;
+  height: 30px;
+}
+.botonCerrar:hover {
+  background-color: grey;
+  color: white;
+}
+.arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 13px;
+}
