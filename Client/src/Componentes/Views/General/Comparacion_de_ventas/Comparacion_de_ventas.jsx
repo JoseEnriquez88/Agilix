@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import grafico from '../../../../assets/Captura de pantalla 2023-08-03 230812.png'
 import styles from './Comparacion_de_ventas.module.css';
 
@@ -15,7 +16,7 @@ const Comparacion_de_ventas = () => {
             </div>
 
             <div className={styles.ContenedorBoton}>
-                <button className={styles.BotonReporte}>Ver reporte</button>
+                <NavLink to='/reporte' className={styles.BotonReporte}>Ver reporte</NavLink>
             </div>
         </div>
     );

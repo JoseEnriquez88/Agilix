@@ -3,6 +3,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    padding-left: 15px;
 }
 
 .ContenedorSearchBar {
@@ -51,14 +55,10 @@
  }
 
  .ContenedorProductos {
-    height: 100%;
-    width:25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    background-color: #181818;
+   display: block;
+   width: 20%;
+   height: 100%;
+   text-align: center;
  }
 
  .ContenedorBotones {

@@ -1,9 +1,10 @@
 import { useState } from "react";
-// import { useDispatch, useSelector } from 'react-redux';
-// import { setNombre, setPrecio, setImg, crearProducto } from '../../../Redux/crearProductoSlice';
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "../../../Redux/productSlice";
 import styles from "../AñadirProducto/AñadirProducto.module.css";
 import axios from "axios";
 
+//Creacion de estado local para envio de data de producto
 const InitialCreate = {
   nombre: "",
   precio: "",
@@ -11,85 +12,79 @@ const InitialCreate = {
 };
 
 const AñadirProducto = () => {
-  // const dispatch = useDispatch();
-  // const { nombre, precio, img } = useSelector((state) => state.productoCreado);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [input, setInput] = useState(InitialCreate);
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false); //Estado para mostrar mensaje de confirmacion de creacion
+  const [previewImage, setPreviewImage] = useState(""); //Estado para previsualizacion de imagen subida
+  const [input, setInput] = useState(InitialCreate); //Estado para almacenamiento de datos en estado local
+  const dispatch = useDispatch();
 
+  //Funcion que captura la data de los inputs y la almacena en el estado local
   const handleChange = (event) => {
-    // dispatch(setNombre(event.target.value));
     setInput({ ...input, [event.target.name]: event.target.value });
-
-    // const handlePriceChange = (event) => {
-    //   dispatch(setPrecio(event.target.value));
-    // };
   };
 
+  //Funcion que maneja subida de imagenes y previsualizacion
   const handleImageChange = (event) => {
-    // const file = event.target.files[0];
+    const imgFile = event.target.files[0];
     setInput({ ...input, [event.target.name]: event.target.value });
-    // const previewImage = document.getElementById("preview");
-    // previewImage.src = file ? URL.createObjectURL(file) : "#";
-    // previewImage.style.display = file ? "block" : "none";
+    setPreviewImage(URL.createObjectURL(imgFile));
   };
 
+  //Funcion que limpia los datos de imagenes por subir
   const handleRemoveImage = () => {
-    // Limpiar el input de tipo "file" para permitir seleccionar otra imagen
     const fileInput = document.getElementById("image");
     fileInput.value = "";
-
-    // Restablecer la vista previa
-    const previewImage = document.getElementById("preview");
-    previewImage.src = "#";
-    previewImage.style.display = "none";
-
-    // Eliminar la imagen del estado Redux
+    setPreviewImage(""); //
     setInput({ ...input, img: "" });
   };
 
+  //Funcion para boton de creacion de producto
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(input);
+
     try {
+      const fileName = input.img.split("\\").pop();
+
+      const formData = new FormData();
+      formData.append("nombre", input.nombre);
+      formData.append("precio", input.precio);
+      formData.append("img", fileName);
+
+      const formDataObject = Object.fromEntries(formData);
+
       const response = await axios.post(
         `http://localhost:3001/productos`,
-        input
+        formDataObject
       );
+
+      //Actualiza el estado global
+      dispatch(fetchProducts());
+
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
 
-      // Ocultar el mensaje después de un breve tiempo
       setTimeout(() => {
         setShowSuccessMessage(false);
+        setInput({
+          ...input,
+          nombre: "",
+          precio: "",
+          img: "",
+        });
+        setPreviewImage("");
       }, 2000);
     } catch (error) {
-      console.log(error);
+      alert(error.response.data.error);
     }
   };
 
-  // // Crea un objeto formData con los datos del producto
-  // const formData = new FormData();
-  // formData.append('nombre', nombre);
-  // formData.append('precio', precio);
-  // formData.append('img', img);
-
-  // // Llama al Thunk para enviar los datos al backend
-  // await dispatch(crearProducto(formData));
-
-  // Limpiar los campos del formulario después de un breve tiempo
-  //   setTimeout(() => {
-  //     dispatch(setNombre(''));
-  //     dispatch(setPrecio(''));
-  //     dispatch(setImg(null));
-  //   }, 2500);
-  // };
+  //FORMULARIO
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <p className={styles.titituloForm}>Crear Productos</p>
         <label className={styles.inputGropLabel} htmlFor="name">
-          Nombre:{" "}
+          Nombre :{" "}
         </label>
         <input
           className={styles.inputGroup}
@@ -102,7 +97,7 @@ const AñadirProducto = () => {
       </div>
       <div>
         <label className={styles.inputGropLabel} htmlFor="price">
-          Precio:{" "}
+          Precio :{" "}
         </label>
         <input
           className={styles.inputGroup}
@@ -114,36 +109,36 @@ const AñadirProducto = () => {
         />
       </div>
       <div>
+        <span className={styles.ImagenTittle}>Imagen :</span>
+        <br />
         <label className={styles.inputGropLabel} htmlFor="image">
-          Imagen:{" "}
+          <br />
+          <span className={styles.uploadButton}>Seleccionar archivo</span>
         </label>
+        {previewImage && (
+          <img
+            className={styles.image}
+            id="preview"
+            src={previewImage}
+            alt="Preview"
+          />
+        )}
+        <button
+          className={styles.buttonDelete}
+          type="button"
+          onClick={handleRemoveImage}
+        >
+          Eliminar imagen
+        </button>
         <input
-          className={styles.inputGroup}
+          className={styles.customFileInput}
           type="file"
           id="image"
           name="img"
           value={input.img}
           onChange={handleImageChange}
         />
-        <br />
-        <br />
-        {/* {input.img && (
-          <img
-            className={styles.image}
-            id="preview"
-            src={URL.createObjectURL(input.img)}
-            alt="Preview"
-          />
-        )} */}
       </div>
-      <button
-        className={styles.buttonDelete}
-        type="button"
-        onClick={handleRemoveImage}
-      >
-        Eliminar imagen
-      </button>
-      <br />
       <button
         className={styles.buttonCreate}
         type="submit"

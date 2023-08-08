@@ -1,0 +1,87 @@
+.TituloReporte {
+    color: white;
+}
+
+.Columnas {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    color: white;
+}
+
+.ColumnaProducto {
+    width: 50%;
+    height: 100%;
+}
+
+.ColumnaPrecio {
+    width: 50%;
+    height: 100%;
+}
+
+.ContenedorCardsPagos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
+}
+
+.ContenedorPagos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80%;
+}
+
+.CardPago {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+    background-color: #181818;
+    margin-bottom: 1rem;
+    color: white;
+    border-radius: 10px;
+}
+
+.ContenedorProducto {
+    width: 50%;
+    height: 100%;
+}
+
+.ContenedorPrecio {
+    width: 50%;
+    height: 100%;
+}
+
+
+.ContenedorBotonBack {
+    display: flex;
+    justify-content: start;
+    width: 100%;
+    height: 5%;
+    align-items: center;
+}
+
+.BotonBack {
+    padding-top: 0.5rem;
+    color: white;
+    font-size: 1.3rem;
+    margin-left: 4rem;
+    width: 4rem;
+    background-color: #181818;
+    transition: 0.5s;
+}
+
+.BotonBack:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
