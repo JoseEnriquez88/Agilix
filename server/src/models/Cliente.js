@@ -32,7 +32,7 @@ module.exports = (sequelize) => {
           },
         },
       },
-      activo: {
+      estado: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },

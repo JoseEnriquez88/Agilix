@@ -22,7 +22,7 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
-      activo: {
+      estado: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
