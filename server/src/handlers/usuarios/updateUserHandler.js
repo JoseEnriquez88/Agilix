@@ -6,7 +6,6 @@ const updateUserHandler = async (req, res, next) => {
   const { nombre, email, telefono, dni, estado} = req.body;
 
   try {
-    console.log(typeof estado)
    const respuesta =(typeof estado!=="boolean")? await updateUser(id, nombre, email, telefono, dni):await deleteUser(id, estado); // Llamada a la función updateUser con el parámetro estado
     res.status(200).json({ message: `Actualización exitosa del cliente ${respuesta}` });
   } catch (err) {
