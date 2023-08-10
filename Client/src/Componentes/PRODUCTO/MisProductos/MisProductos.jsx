@@ -4,6 +4,7 @@ import {
   ordenPorPrecio,
   restablecerOrdenamientos,
   fetchProducts,
+  deleteProduct,
 } from "../../../Redux/productSlice";
 import { useState, useEffect } from "react";
 import styles from "./MisProductos.module.css";
@@ -46,6 +47,9 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
+  const handleDelete = (productId) => {
+    dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
+  };
 
   return (
     <div>
@@ -74,7 +78,7 @@ const MisProductos = () => {
         <div style={{ color: "white" }}>{product.error}</div>
       ) : null}
 
-      {!product.loading && product.allProducts ? (
+{!product.loading && product.allProducts ? (
         <div className={styles.contenedor}>
           {product.productosFiltrados.map((prod) => (
             <div className={styles.cards} key={prod.id}>
@@ -82,6 +86,7 @@ const MisProductos = () => {
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
+                <button className={styles.botonEliminar}onClick={() => handleDelete(prod.id)}>Eliminar</button>
               </div>
             </div>
           ))}
