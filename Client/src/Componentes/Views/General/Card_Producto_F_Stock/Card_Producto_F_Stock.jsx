@@ -10,8 +10,8 @@ const Card = (props) => {
       </div>
       <div className={styles.ContenedorInfo}>
         <h3>{nombre}</h3>
-        <p>Precio:</p>
-        <p>${precio}</p>
+        <p>Precio: ${precio}</p>
+        {/* <p>${precio}</p> */}
       </div>
     </div>
   );
