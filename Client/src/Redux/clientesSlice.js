@@ -13,6 +13,9 @@ const initialState = {
 export const fetchClientes = createAsyncThunk("clientes/fetchClientes", () => {
   return axios.get(URL).then((response) => response.data);
 });
+export const deleteClientes = createAsyncThunk("clientes/putClientes", (input) => {
+  return axios.put(`${URL}`,input).then((response) => response.data);
+});
 
 export const getClientsByName = createAsyncThunk("clientes/getClientsByName",async (nombre) => {
     const {data} = await axios(`${URL}?nombre=${nombre}`);
