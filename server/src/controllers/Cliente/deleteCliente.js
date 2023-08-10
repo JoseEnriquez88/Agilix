@@ -1,7 +1,6 @@
 const { Cliente } = require('../../db');
 
 const deleteCliente = async (id, estado) => {
-    console.log (typeof estado);
     // primero busco el cliente antes de "borrarlo"
     const cliente = await Cliente.findOne({ where: { id: id } });
     if(!cliente) throw new Error(`El cliente ${id} no existe`);

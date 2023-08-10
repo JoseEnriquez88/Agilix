@@ -6,7 +6,6 @@ const updateProductoHandler = async (req, res, next) => {
   const { nombre,img,precio,estado } = req.body;
 
   try {
-    console.log(typeof estado)
     const respuesta = (typeof estado!=="boolean")? await updateProducto(id,nombre,img,precio): await deleteProducto(id,estado);
     res.status(200).json({ message: `Actualización exitosa del cliente ${respuesta}` });
   } catch (err) {

@@ -6,7 +6,6 @@ const updateClienteHandler = async (req, res, next) => {
   const { nombre, email, telefono, dni, estado} = req.body;
   try {
     const respuesta = (typeof estado!=="boolean")?await updateCliente(id,nombre, email, telefono, dni):await deleteCliente(id,estado);
-  console.log(respuesta);
     res.status(200).json({respuesta});
   } catch (err) {
     console.error('Error:', err);
