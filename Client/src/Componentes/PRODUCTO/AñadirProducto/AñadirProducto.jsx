@@ -9,6 +9,7 @@ const InitialCreate = {
   nombre: "",
   precio: "",
   img: "",
+  tipo: "",
 };
 
 const AñadirProducto = () => {
@@ -47,7 +48,8 @@ const AñadirProducto = () => {
       const formData = new FormData();
       formData.append("nombre", input.nombre);
       formData.append("precio", input.precio);
-      formData.append("img", fileName);
+      formData.append("tipo", input.tipo);
+      formData.append("img", fileName);   //para agregar los datos a FormData
 
       const formDataObject = Object.fromEntries(formData);
 
@@ -69,6 +71,7 @@ const AñadirProducto = () => {
           nombre: "",
           precio: "",
           img: "",
+          tipo: "",
         });
         setPreviewImage("");
       }, 2000);
@@ -76,6 +79,13 @@ const AñadirProducto = () => {
       alert(error.response.data.error);
     }
   };
+
+  const seleccionarTipo = (event) => {   //esto es para select del tipo de producto
+    setInput({
+      ...input,
+      tipo: event.target.value,
+    })
+  }
 
   //FORMULARIO
 
@@ -107,6 +117,19 @@ const AñadirProducto = () => {
           value={input.precio}
           onChange={handleChange}
         />
+      </div>
+      <div>
+        <label className={styles.inputGropLabel} htmlFor="price">
+          Tipo :{" "}
+        </label>
+        <select className={styles.inputGroup} defaultValue="escoger" onChange={seleccionarTipo} >
+          <option disabled={true} value="escoger">Escoger Tipo</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="abarrotes">Abarrotes</option>
+          <option value="carnes">Carnes</option>
+        </select>
       </div>
       <div>
         <span className={styles.ImagenTittle}>Imagen :</span>

@@ -2,10 +2,10 @@ const updateProducto = require('../../controllers/productos/updateProducts');
 
 const updateProductoHandler = async (req, res, next) => {
   const { id } = req.params;
-  const { nombre,img,precio } = req.body;
+  const { nombre,img,precio, tipo } = req.body;
 
   try {
-    const respuesta = await updateProducto(id,nombre,img,precio);
+    const respuesta = await updateProducto(id,nombre,img,precio,tipo);
     res.status(200).json({ message: `Actualización exitosa del cliente ${respuesta}` });
   } catch (err) {
     console.error('Error:', err);

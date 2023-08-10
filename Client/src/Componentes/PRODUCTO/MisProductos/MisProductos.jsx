@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ordenAlfabetico,
   ordenPorPrecio,
+  filtroPorTipo,
   restablecerOrdenamientos,
   fetchProducts,
 } from "../../../Redux/productSlice";
@@ -46,6 +47,9 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
+  const filtrarProductoPorTipo = (event) => {
+    dispatch(filtroPorTipo(event.target.value))
+  }
 
   return (
     <div>
@@ -66,6 +70,15 @@ const MisProductos = () => {
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
+        <select onChange={filtrarProductoPorTipo} className={styles.selectores}>
+          <option disabled={true}>Filtrar Producto</option>
+          <option value="todos">Todos</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="abarrotes">Abarrotes</option>
+          <option value="carnes">Carnes</option>
+        </select>
         <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
 
@@ -82,6 +95,7 @@ const MisProductos = () => {
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
+                <h3>{prod.tipo}</h3>
               </div>
             </div>
           ))}

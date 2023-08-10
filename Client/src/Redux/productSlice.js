@@ -50,6 +50,12 @@ const productSlice = createSlice({
     restablecerOrdenamientos: (state) => {
       state.productosFiltrados = state.allProducts;
     },
+    filtroPorTipo : (state, action) =>{
+      let todoProductosCopia = [...state.allProducts];
+      let productos  = [...state.allProducts];
+      productos = productos.filter(producto => producto.tipo === action.payload);
+      state.productosFiltrados = action.payload==="todos"?todoProductosCopia:productos;
+    }
   },
 
   extraReducers: (builder) => {
@@ -74,5 +80,5 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const { ordenAlfabetico, ordenPorPrecio, restablecerOrdenamientos } =
+export const { ordenAlfabetico, ordenPorPrecio, filtroPorTipo, restablecerOrdenamientos } =
   productSlice.actions;
