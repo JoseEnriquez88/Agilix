@@ -60,7 +60,7 @@ const Clientes = () => {
                 <span className={styles.tituloPrincipal}><button>{cliente.estado?"Activo":"Inactivo"}</button></span>
               </div>
               <div className={styles.clienteInfo}>
-                {/* <NavLink to={`/clientes/${cliente.id}`} className={styles.nombreCliente}>Detalle</NavLink> */}
+                <NavLink to={`/clientes/${cliente.id}`} className={styles.nombreCliente}>Detalle</NavLink>
               </div>
             </li>
           ))}

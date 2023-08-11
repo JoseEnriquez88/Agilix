@@ -9,7 +9,7 @@ const DetailCliente = () => {
     const { id } = useParams();
     useEffect(() => {
         dispatch(getClientById(id));
-     }, []);
+     },[dispatch]);
     return (
         <div>
             <h1>Detalle del Cliente {cliente.nombre}</h1>
