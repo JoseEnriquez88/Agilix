@@ -5,7 +5,7 @@ const getUserByEmail = require("../../controllers/usuarios/getUserByEmail");
 
 const getAllUserHandler = async (req, res) => {
   const { nombre, email } = req.query;
-
+  
   //Handler Buscar Usuario por Nombre
 
   if (nombre && !email) {

@@ -1,11 +1,7 @@
-import styles from './ConfigPerfil.module.css'
+import React from "react";
 
-export const ConfigPerfil = () => {
-    return (
-        <div>
-            <h1>Configuración de Perfil</h1>
-        </div>
-    )
-}
+const ConfigPerfil = () => {
+  return <div>ConfigPerfil</div>;
+};
 
-export default ConfigPerfil
+export default ConfigPerfil;

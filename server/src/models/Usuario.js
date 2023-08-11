@@ -28,7 +28,11 @@ module.exports = (sequelize) => {
           },
         },
       },
-      activo: {
+      dni:{
+        type: DataTypes.STRING, 
+        allowNull: false,
+      },
+      estado: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       }
