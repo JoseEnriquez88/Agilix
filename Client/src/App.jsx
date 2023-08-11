@@ -1,4 +1,4 @@
-import React from "react";
+
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Sidebar } from "./Componentes/sideBar/sideBar";
@@ -7,6 +7,7 @@ import {
   Cuentas,
   Clientes,
   Configuracion,
+  // DetailCliente,
 } from "./Componentes/CUENTAUSUARIO/exportador";
 import {
   AñadirProducto,
@@ -39,6 +40,7 @@ function App() {
         <Route path="/" element={<General />} />
         <Route path="/cuentas" element={<Cuentas />} />
         <Route path="/clientes" element={<Clientes />} />
+        {/* <Route path="/clientes/:id" element={<DetailCliente/>} /> */}
         <Route path="/crearcliente" element={<CrearCliente />} />
         <Route path="/configuracion" element={<Configuracion />} />
         <Route path="/añadirProducto" element={<AñadirProducto />} />

@@ -31,11 +31,10 @@ export const getClientById = createAsyncThunk("clientes/getClientById", async(id
           const { data } = await axios(`${URL}/${id}`)
           return data;
 })
-export const putClient = createAsyncThunk("clientes/putClient", async (id, usuario, {dispatch}) => {
+export const putClient = createAsyncThunk("clientes/putClient", async (id, usuario) => {
       try {
           const { data } = await axios.put(`${URL}/${id}`, usuario);
           alert(data);
-          dispatch(getAllClients());
       } catch (error) {
           alert(error.message);
       }

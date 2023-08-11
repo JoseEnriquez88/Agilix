@@ -1,4 +1,3 @@
-import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchClientes } from "../../../Redux/clientesSlice";
@@ -52,6 +51,16 @@ const Clientes = () => {
               <div className={styles.clienteInfo}>
                 <span className={styles.tituloPrincipal}>Email:</span>
                 <p className={styles.clienteEmail}>{cliente.email}</p>
+              </div>
+              <div className={styles.clienteInfo}>
+                <span className={styles.tituloPrincipal}>Dni:</span>
+                <p className={styles.clienteEmail}>{cliente.dni}</p>
+              </div>
+              <div className={styles.clienteInfo}>
+                <span className={styles.tituloPrincipal}><button>{cliente.estado?"Activo":"Inactivo"}</button></span>
+              </div>
+              <div className={styles.clienteInfo}>
+                {/* <NavLink to={`/clientes/${cliente.id}`} className={styles.nombreCliente}>Detalle</NavLink> */}
               </div>
             </li>
           ))}
