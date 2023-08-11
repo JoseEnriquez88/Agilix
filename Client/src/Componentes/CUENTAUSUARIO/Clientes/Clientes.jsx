@@ -5,6 +5,7 @@ import { fetchClientes } from "../../../Redux/clientesSlice";
 import { NavLink } from "react-router-dom";
 // import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import styles from "./Clientes.module.css";
+import SearchBar from "../SearchBar/SearchBar";
 
 const Clientes = () => {
   const dispatch = useDispatch();
@@ -28,6 +29,7 @@ const Clientes = () => {
   return (
     <div>
       <h1 className={styles.tittle}>Lista de Clientes</h1>
+      <SearchBar />
       <div className={styles.container}>
         <button className={styles.CrearCliente}>
           <NavLink to="/crearcliente" style={{ textDecoration: "none" }}>
@@ -52,6 +54,10 @@ const Clientes = () => {
               <div className={styles.clienteInfo}>
                 <span className={styles.tituloPrincipal}>Email:</span>
                 <p className={styles.clienteEmail}>{cliente.email}</p>
+              </div>
+              <div className={styles.clienteInfo}>
+                <span className={styles.tituloPrincipal}>DNI:</span>
+                <p className={styles.clienteEmail}>{cliente.dni}</p>
               </div>
             </li>
           ))}
