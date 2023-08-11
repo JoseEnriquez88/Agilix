@@ -85,9 +85,9 @@ export const Sidebar = () => {
               <LiquorIcon className={styles.iconSideBar} />
               Mis Productos
             </NavLink>
-            <NavLink className={styles.NavLink} to="/inventario" onClick ={cambiarDireccionFlecha}>
+            <NavLink className={styles.NavLink} to="/vender" onClick ={cambiarDireccionFlecha}>
               <InventoryIcon className={styles.iconSideBar} />
-              Inventario
+              Vender
             </NavLink>
           </>
         ):

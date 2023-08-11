@@ -50,6 +50,12 @@ const productSlice = createSlice({
     restablecerOrdenamientos: (state) => {
       state.productosFiltrados = state.allProducts;
     },
+    //Filtro por tipo de producto
+    filtrarPorTipo: (state, action) => {
+      state.productosFiltrados = state.productosFiltrados.filter(
+        (producto) => producto.tipo === action.payload
+      );
+    }
   },
 
   extraReducers: (builder) => {

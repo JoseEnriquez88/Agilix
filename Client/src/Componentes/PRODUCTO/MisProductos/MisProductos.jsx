@@ -3,9 +3,8 @@ import {
   ordenAlfabetico,
   ordenPorPrecio,
   restablecerOrdenamientos,
-  fetchProducts,
 } from "../../../Redux/productSlice";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./MisProductos.module.css";
 
 const MisProductos = () => {
@@ -15,10 +14,8 @@ const MisProductos = () => {
     ordenAlfabetico: "",
     ordenPorPrecio: "",
   });
-
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, []);
+  // Lista de tipos de productos
+  const tipos = ["Químicos", "Consumibles", "Hogar", "Otros"];
 
   // Handler del ordenamiento alfabetico
   const handleChange = (event) => {
@@ -65,6 +62,12 @@ const MisProductos = () => {
           <option value="Precio_predeterminado">Predeterminado</option>
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
+        </select>
+        <select className={styles.selectores}>
+          <option disabled={true}>Filtrar por tipo</option>
+          {tipos.map((tipo) => (
+            <option value={tipo}>{tipo}</option>
+          ))}
         </select>
         <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>

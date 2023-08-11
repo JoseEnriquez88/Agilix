@@ -9,7 +9,7 @@ import {
 } from "./Componentes/CUENTAUSUARIO/exportador";
 import {
   AñadirProducto,
-  Inventario,
+  Vender,
   MisProductos,
 } from "./Componentes/PRODUCTO/exportador";
 import { AdminUsuario, ConfigPerfil } from "./Componentes/USUARIOS/exportador";
@@ -42,7 +42,7 @@ function App() {
         <Route path="/configuracion" element={<Configuracion />} />
         <Route path="/añadirProducto" element={<AñadirProducto />} />
         <Route path="/crearusuario" element={<CrearUsuario />} />
-        <Route path="/inventario" element={<Inventario />} />
+        <Route path="/vender" element={<Vender />} />
         <Route path="/misProductos" element={<MisProductos />} />
         <Route path="/admin" element={<AdminUsuario />} />
         <Route path="/configPerfil" element={<ConfigPerfil />} />
