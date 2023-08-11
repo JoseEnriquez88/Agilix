@@ -3,7 +3,7 @@ const { Cliente } = require('../../db');
 const getClienteByEmail = async (email) => {
     const clientePorEmail = await Cliente.findOne({
         where: { email },
-        attributes: ['id', 'nombre', 'telefono', 'email'],
+        attributes: ['id', 'nombre', 'telefono', 'email', 'dni', 'estado'],
     });
     if(!clientePorEmail) throw new Error(`No existe Cliente con el email: ${email}`);
     return clientePorEmail;

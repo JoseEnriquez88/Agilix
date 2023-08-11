@@ -1,8 +1,11 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ordenAlfabetico,
   ordenPorPrecio,
   restablecerOrdenamientos,
+  deleteProduct,
+  
 } from "../../../Redux/productSlice";
 import { useState } from "react";
 import styles from "./MisProductos.module.css";
@@ -43,18 +46,26 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
+  const handleDelete = (productId) => {
+    dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
+  };
 
   return (
     <div>
       <h1 className={styles.tittle}>Listado de Productos</h1>
       <div className={styles.contenedorSelector}>
-        <select className={styles.selectores} onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
+        <select
+          className={styles.selectores}
+          onChange={handleChange}
+          value={resetSeleccion.ordenAlfabetico}
+        >
           <option disabled={true}>Orden Alfabético</option>
           <option value="A_Z_predeterminado">Predeterminado</option>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
-        <select className={styles.selectores}
+        <select
+          className={styles.selectores}
           onChange={handleSortPrecio}
           value={resetSeleccion.ordenPorPrecio}
         >
@@ -62,12 +73,6 @@ const MisProductos = () => {
           <option value="Precio_predeterminado">Predeterminado</option>
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
-        </select>
-        <select className={styles.selectores}>
-          <option disabled={true}>Filtrar por tipo</option>
-          {tipos.map((tipo) => (
-            <option value={tipo}>{tipo}</option>
-          ))}
         </select>
         <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
@@ -85,6 +90,12 @@ const MisProductos = () => {
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
+                <button
+                  className={styles.botonEliminar}
+                  onClick={() => handleDelete(prod.id)}
+                >
+                  Eliminar
+                </button>
               </div>
             </div>
           ))}
