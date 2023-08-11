@@ -78,7 +78,7 @@ const Clientes = () => {
       </div>
       <div>
         <label className={styles.nombre} htmlFor="dni">
-          Dni :{" "}
+          DNI :{" "}
         </label>
         <input
           className={styles.inputGroup}

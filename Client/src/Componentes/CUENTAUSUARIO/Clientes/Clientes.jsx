@@ -6,6 +6,11 @@ import { NavLink } from "react-router-dom";
 // import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import styles from "./Clientes.module.css";
 import SearchBar from "../SearchBar/SearchBar";
+import RefreshIcon from "@mui/icons-material/Refresh";
+
+const handleRefresh = () => {
+  window.location.reload();
+};
 
 const Clientes = () => {
   const dispatch = useDispatch();
@@ -31,6 +36,9 @@ const Clientes = () => {
       <h1 className={styles.tittle}>Lista de Clientes</h1>
       <SearchBar />
       <div className={styles.container}>
+        <button id="refresh" className={styles.refresh} onClick={handleRefresh}>
+          <RefreshIcon />
+        </button>
         <button className={styles.CrearCliente}>
           <NavLink to="/crearcliente" style={{ textDecoration: "none" }}>
             Crear Cliente

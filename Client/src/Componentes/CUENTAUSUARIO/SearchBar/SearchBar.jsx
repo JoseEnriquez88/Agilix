@@ -1,39 +1,47 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-    getClientsByName,
-    getClientByEmail,
-    getClientById,
+  getClientsByName,
+  getClientByEmail,
+  getClientById,
 } from "../../../Redux/clientesSlice";
-import style from './searchbar.module.css';
-
+import styles from "../SearchBar/searchbar.module.css";
+import SearchIcon from "@mui/icons-material/Search";
 
 const SearchBar = () => {
-    const [searchValue, setSearchValue] = useState("");
-    const dispatch = useDispatch();
-    const loading = useSelector((state) => state.clientes.loading);
+  const [searchValue, setSearchValue] = useState("");
+  const dispatch = useDispatch();
+  const loading = useSelector((state) => state.clientes.loading);
 
-    const handleSearch = () => {
-        if (!isNaN(searchValue)) {
-            dispatch(getClientById(searchValue));
-        } else if (searchValue.includes("@") && searchValue.includes(".")) {
-            dispatch(getClientByEmail(searchValue));
-        } else {
-            dispatch(getClientsByName(searchValue));
-        }
-    };
+  const handleSearch = () => {
+    if (!isNaN(searchValue)) {
+      dispatch(getClientById(searchValue));
+    } else if (searchValue.includes("@") && searchValue.includes(".")) {
+      dispatch(getClientByEmail(searchValue));
+    } else {
+      dispatch(getClientsByName(searchValue));
+    }
+  };
 
-    return (
-        <div>
-            <input
-                type="text"
-                value={searchValue}
-                onChange={(event) => setSearchValue(event.target.value)}
-            />
-            <button onClick={handleSearch} disabled={loading}>
-                Buscar
-            </button>
-        </div>
-    );
-}
-export default SearchBar; 
+  return (
+    <div className={styles.Search}>
+      <div className={styles.searchBox}>
+        <input
+          className={styles.input}
+          placeholder=" Buscar..."
+          type="text"
+          value={searchValue}
+          onChange={(event) => setSearchValue(event.target.value)}
+        />
+        <button
+          className={styles.button}
+          onClick={handleSearch}
+          disabled={loading}
+        >
+          <SearchIcon />
+        </button>
+      </div>
+    </div>
+  );
+};
+export default SearchBar;
