@@ -76,6 +76,19 @@ const Clientes = () => {
           onChange={handleChange}
         />
       </div>
+      <div>
+        <label className={styles.nombre} htmlFor="dni">
+          Dni :{" "}
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="text"
+          id="dni"
+          name="dni"
+          value={input.dni}
+          onChange={handleChange}
+        />
+      </div>
       <br />
       <button className={styles.buttonCreate} type="submit">
         Crear Cliente
