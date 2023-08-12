@@ -122,12 +122,12 @@
     border-radius: 5px;
     border: 2px solid transparent;
     transition: border 0.2s;
-    border: 3px solid #45b545;
+    border: 2px solid transparent;
 }
 .input:focus {
     outline: none;
     border-radius: 5px;
-    border: 3px solid #4b4b4b;
+    border: 2px solid #45b545;
 }
 .inputTelefono{
     height: 37px;
@@ -138,12 +138,12 @@
     border-radius: 5px;
     border: 2px solid transparent;
     transition: border 0.2s;
-    border: 3px solid #45b545;
+    border: 2px solid transparent;
 }
 
 .inputTelefono:focus {
     outline: none;
-    border: 3px solid #4b4b4b;
+    border: 2px solid #45b545;
 }
 .containerClass{
     border: none;
