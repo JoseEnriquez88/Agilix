@@ -10,11 +10,20 @@ module.exports = (sequelize) => {
         primaryKey: true,
         allowNull: false,
       },
+      id_cliente: {
+        type: DataTypes.UUID,
+        allowNull: false,
+      },
+      id_usuario: {
+        type: DataTypes.UUID,
+        allowNull: false,
+      },
       fecha: {
         type: DataTypes.DATE,
         allowNull: false,
+        defaultValue: new Date(),
       },
-      total_venta: {
+      total_venta:{
         type: DataTypes.FLOAT,
         allowNull: false,
       },
