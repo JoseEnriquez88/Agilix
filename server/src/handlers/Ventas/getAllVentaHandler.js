@@ -1,3 +1,6 @@
+const getAllVenta =require ("../../controllers/Ventas/getAllVenta");
+const  getVentaById =require ("../../controllers/Ventas/getVentaById");
+
 const getAllVentaHandler = async (req, res) => {
     try {
         const ventas = await getAllVenta();

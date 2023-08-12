@@ -21,7 +21,6 @@ module.exports = (sequelize) => {
       fecha: {
         type: DataTypes.DATE,
         allowNull: false,
-        defaultValue: new Date(),
       },
       total_venta:{
         type: DataTypes.FLOAT,

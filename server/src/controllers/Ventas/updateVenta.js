@@ -1,9 +1,9 @@
 const AllVentaValidation = require("../../helpers/Venta/AllVentaValidation");
-const {Venta}=require("../db")
+const {Venta}=require("../../db")
 
 const updateVenta = async(id,id_cliente,id_usuario,total_venta) => {
     try {
-      AllVentaValidation(id)
+      // AllVentaValidation(id)
       if(id&&id_cliente && id_usuario && total_venta){
         const ventaupdate = await Venta.update(
           {
