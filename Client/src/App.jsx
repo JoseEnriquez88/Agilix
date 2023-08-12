@@ -20,6 +20,7 @@ import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
 import Pagos from "./Componentes/Views/Pagos/Pagos";
 import Reporte from "./Componentes/Views/General/Comparacion_de_ventas/Reporte/Reporte";
+import DetalleDeCompra from "./Componentes/PRODUCTO/Vender/Detalle_De_Compra/Detalle_De_Compra"
 
 import { fetchProducts } from "./Redux/productSlice";
 import { useEffect } from "react";
@@ -50,6 +51,7 @@ function App() {
         <Route path="/cuenta" element={<Cuenta />} />
         <Route path="/pagos" element={<Pagos />} />
         <Route path="/reporte" element={<Reporte />} />
+        <Route path="/detalle_de_compra" element={<DetalleDeCompra />} />
       </Routes>
     </div>
   );
