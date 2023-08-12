@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      dni:{
+        type: DataTypes.STRING, 
+        allowNull: false,
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -28,7 +32,7 @@ module.exports = (sequelize) => {
           },
         },
       },
-      activo: {
+      estado: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },

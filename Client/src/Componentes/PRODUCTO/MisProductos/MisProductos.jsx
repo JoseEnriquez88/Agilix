@@ -1,3 +1,4 @@
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   ordenAlfabetico,
@@ -43,18 +44,26 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
+  const handleDelete = (productId) => {
+    dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
+  };
 
   return (
     <div>
       <h1 className={styles.tittle}>Listado de Productos</h1>
       <div className={styles.contenedorSelector}>
-        <select className={styles.selectores} onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
+        <select
+          className={styles.selectores}
+          onChange={handleChange}
+          value={resetSeleccion.ordenAlfabetico}
+        >
           <option disabled={true}>Orden Alfabético</option>
           <option value="A_Z_predeterminado">Predeterminado</option>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
-        <select className={styles.selectores}
+        <select
+          className={styles.selectores}
           onChange={handleSortPrecio}
           value={resetSeleccion.ordenPorPrecio}
         >
@@ -85,6 +94,12 @@ const MisProductos = () => {
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
+                <button
+                  className={styles.botonEliminar}
+                  onClick={() => handleDelete(prod.id)}
+                >
+                  Eliminar
+                </button>
               </div>
             </div>
           ))}
