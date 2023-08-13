@@ -29,18 +29,8 @@ export const postVenta = createAsyncThunk("ventas/postVenta", async (usuario, { 
     }
 });
 
-export const deleteVenta = createAsyncThunk('ventas/deleteVenta', async (nombre, { dispatch }) => {  //el dispatch lo proporciona thunkAPI de createAsyncThunk
-  try {
-    await axios.put(`${URL}/${nombre}`)
-    alert("Se borró con éxito")
-    dispatch(fetchVentas());
-  } catch (error) {
-    alert(error.response.data.error)
-  }
-})
-
-export const putVenta = createAsyncThunk('ventas/putVenta', async (id, usuario, { dispatch }) => {
-  try {
+export const putVenta = createAsyncThunk('ventas/putVenta', async ( {id, usuario}, { dispatch }) => {
+  try {  //id y usuario deben ser pasados en forma de objeto
     const { data } = await axios.put(`${URL}/${id}`, usuario);
     alert(data);
     dispatch(fetchVentas());
