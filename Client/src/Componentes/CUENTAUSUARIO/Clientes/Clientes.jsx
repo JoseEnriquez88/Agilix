@@ -5,7 +5,6 @@ import { fetchClientes } from "../../../Redux/clientesSlice";
 import { NavLink } from "react-router-dom";
 // import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import styles from "./Clientes.module.css";
-import SearchBar from "../SearchBar/SearchBar";
 import RefreshIcon from "@mui/icons-material/Refresh";
 
 const handleRefresh = () => {
@@ -34,7 +33,6 @@ const Clientes = () => {
   return (
     <div>
       <h1 className={styles.tittle}>Lista de Clientes</h1>
-      <SearchBar />
       <div className={styles.container}>
         <button id="refresh" className={styles.refresh} onClick={handleRefresh}>
           <RefreshIcon />
