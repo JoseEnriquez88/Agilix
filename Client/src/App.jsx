@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Sidebar } from "./Componentes/sideBar/sideBar";
 import {
   CrearCliente,
@@ -20,36 +20,72 @@ import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
 import Pagos from "./Componentes/Views/Pagos/Pagos";
 import Reporte from "./Componentes/Views/General/Comparacion_de_ventas/Reporte/Reporte";
+import Login from "./Componentes/login/Login";
+import Logged from "./Componentes/Views/Logged/Logged";
 
 import { fetchProducts } from "./Redux/productSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import axios from "axios";
 
 function App() {
   const dispatch = useDispatch();
+
+  const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getUser = async () => {
+    try {
+      const url = `${import.meta.env.VITE_API_URL}/auth/login/success`;
+      const { data } = await axios.get(url, { withCredentials: true });
+      setUser(data.user._json);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   useEffect(() => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
-      <Sidebar />
+      {user ? <Sidebar /> : null}
       <Routes>
-        <Route path="/" element={<General />} />
-        <Route path="/cuentas" element={<Cuentas />} />
-        <Route path="/clientes" element={<Clientes />} />
-        <Route path="/crearcliente" element={<CrearCliente />} />
-        <Route path="/configuracion" element={<Configuracion />} />
-        <Route path="/añadirProducto" element={<AñadirProducto />} />
-        <Route path="/crearusuario" element={<CrearUsuario />} />
-        <Route path="/inventario" element={<Inventario />} />
-        <Route path="/misProductos" element={<MisProductos />} />
-        <Route path="/admin" element={<AdminUsuario />} />
-        <Route path="/configPerfil" element={<ConfigPerfil />} />
-        <Route path="/cuenta" element={<Cuenta />} />
-        <Route path="/pagos" element={<Pagos />} />
-        <Route path="/reporte" element={<Reporte />} />
+        {user ? (
+          <>
+            <Route path="/" element={<Navigate to="/general" />} />
+            <Route path="/general" element={<General user={user} />} />
+            <Route path="/cuentas" element={<Cuentas />} />
+            <Route path="/clientes" element={<Clientes />} />
+            <Route path="/logged" element={<Logged />} />
+            <Route path="/crearcliente" element={<CrearCliente />} />
+            <Route path="/configuracion" element={<Configuracion />} />
+            <Route path="/añadirProducto" element={<AñadirProducto />} />
+            <Route path="/inventario" element={<Inventario />} />
+            <Route path="/misProductos" element={<MisProductos />} />
+            <Route path="/admin" element={<AdminUsuario />} />
+            <Route path="/configPerfil" element={<ConfigPerfil />} />
+            <Route path="/cuenta" element={<Cuenta />} />
+            <Route path="/pagos" element={<Pagos />} />
+            <Route path="/reporte" element={<Reporte />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<Login />} />
+          </>
+        )}
       </Routes>
     </div>
   );
