@@ -1,34 +1,19 @@
-.contenedor {
-    color: #fff;
-    padding: 20px;
-    background-color:#2c2c2c;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.ContenedorGeneral {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
 }
 
-.itemContainer {
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #2c2c2c;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.ContenedorTitulo {
+    width: 100%;
+    height:10%;
+    display: flex;
+    background-color: blue;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
 }
-
-.imagen {
-    width: 20%;
-    height: 100%;
-}
-.botonEliminar{
-    color: white;
-    width: 90px;
-    height:40px;
-    background-color: #2c2c2c;
-    border-radius: 10px;
-   }
-   .botonAtras{
-    color: white;
-    width: 100px;
-    height:40px;
-    background-color: #2c2c2c;
-    border-radius: 10px;
-   }
