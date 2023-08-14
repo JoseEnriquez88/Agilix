@@ -52,6 +52,10 @@ const AdminUsuarios = () => {
                 <span className={styles.tituloPrincipal}>Email:</span>
                 <p className={styles.clienteEmail}>{usuario.email}</p>
               </div>
+              <div className={styles.clienteInfo}>
+                <span className={styles.tituloPrincipal}>DNI:</span>
+                <p className={styles.clienteEmail}>{usuario.dni}</p>
+              </div>
             </li>
           ))}
         </ol>
