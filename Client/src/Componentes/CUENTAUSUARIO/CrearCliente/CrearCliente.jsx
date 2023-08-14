@@ -10,6 +10,7 @@ const Clientes = () => {
     nombre: "",
     telefono: "",
     email: "",
+    dni:"",
   });
 
   const handleChange = (event) => {
