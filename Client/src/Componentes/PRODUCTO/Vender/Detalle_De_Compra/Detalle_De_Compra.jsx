@@ -57,31 +57,31 @@ const DetalleDeCompra = () => {
             <div className={styles.ContenedorTitulo}>
                 <h2>Detalle de Compra</h2>
             </div>
-            <div>
-                <div>
-                    <h3>Productos en el Carrito:</h3>
+            <div className={styles.ContenedorProductosYTotal}>
+                <div className={styles.ContenedorProductos}>
+                    <h2>Productos en el Carrito:</h2>
                     {carrito.map((item, index) => (
                         <div key={index} className={styles.ContenedorCard}>
-                            <p>Producto: {item.producto.nombre}</p>
-                            <p>Precio por unidad: ${item.producto.precio}</p>
-                            <p>Cantidad: {item.cantidad}</p>
-                            <img className={styles.imagen} src={item.producto.img} alt={item.producto.nombre} />
-                            <p>Precio total del producto: ${item.producto.precio * item.cantidad}</p>
+                            <h3>Producto: {item.producto.nombre}</h3>
+                            <h3>Precio por unidad: ${item.producto.precio}</h3>
+                            <h3>Cantidad: {item.cantidad}</h3>
+                            {/* <img className={styles.imagen} src={item.producto.img} alt={item.producto.nombre} /> */}
+                            <h3>Precio total del producto: ${item.producto.precio * item.cantidad}</h3>
                             <button className={styles.botonEliminar} onClick={() => handleEliminarProducto(item.producto.id)}>Eliminar</button>
                         </div>
                     ))}
                 </div>
-                <div>
-                    <h2>Total de la compra: ${precioTotalCarrito}</h2>
+                <div className={styles.ContenedorTotal}>
+                    <h2 className={styles.Total}>Total de la compra: ${precioTotalCarrito}</h2>
+                    <div className={styles.ContenedorQR}>
+                        {qrGenerado && <img className={styles.imagenQR} src='https://www.mercadopago.com/instore/merchant/qr/84881780/0e64ee574a0a442f9619410ab3e11bbd33e88a1f14e94cd5941993d725caf3d1.png' />}
+                    </div>
                 </div>
             </div>
-            <div>
+            <div styles={styles.ContenedorBotones}>
                 <button disabled={precioTotalCarrito <= 0} onClick={handleGenerarQR}>Generar orden</button>
                 <button disabled={!qrGenerado} onClick={handlerEliminarQR}>Eliminar orden</button>
                 <button className={styles.botonAtras} onClick={handleVolverAtras}>Volver</button>
-                <div className={styles.contenedorQR}>
-                    {qrGenerado && <img className={styles.imagenQR} src='https://www.mercadopago.com/instore/merchant/qr/84881780/template_0e64ee574a0a442f9619410ab3e11bbd33e88a1f14e94cd5941993d725caf3d1.png' />}
-                </div>
             </div>
 
 

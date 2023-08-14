@@ -39,3 +39,7 @@
 .btnAgregar {
     border-radius: 10px;
 }
+
+.btnAgregar:hover {
+    cursor: pointer;
+}

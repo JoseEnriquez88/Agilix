@@ -36,7 +36,6 @@ const Vender = () => {
                     )}
                 </div>
             </div>
-            
         </div>
     )
 }
