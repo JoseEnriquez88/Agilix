@@ -4,6 +4,8 @@ import {
   ordenAlfabetico,
   ordenPorPrecio,
   restablecerOrdenamientos,
+  deleteProduct,
+
 } from "../../../Redux/productSlice";
 import { useState } from "react";
 import styles from "./MisProductos.module.css";
@@ -72,6 +74,10 @@ const MisProductos = () => {
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
+        <button className={styles.buttonReset} onClick={handleReset}>
+          Restablecer Ordenamiento
+        </button>
+
         <select className={styles.selectores}>
           <option disabled={true}>Filtrar por tipo</option>
           {tipos.map((tipo) => (
