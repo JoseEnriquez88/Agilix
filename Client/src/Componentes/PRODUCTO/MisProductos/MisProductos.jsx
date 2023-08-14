@@ -102,7 +102,7 @@ const MisProductos = () => {
                 <h3> ${prod.precio}</h3>
                 <button
                   className={styles.botonEliminar}
-                  onClick={() => handleDelete(prod.id)}
+                  onClick={() => handleDelete(prod.id,prod.estado)}
                 >
                   Eliminar
                 </button>
