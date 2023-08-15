@@ -10,6 +10,7 @@ const Clientes = () => {
     nombre: "",
     telefono: "",
     email: "",
+    dni:"",
   });
 
   const handleChange = (event) => {
@@ -78,7 +79,7 @@ const Clientes = () => {
       </div>
       <div>
         <label className={styles.nombre} htmlFor="dni">
-          Dni :{" "}
+          DNI :{" "}
         </label>
         <input
           className={styles.inputGroup}
