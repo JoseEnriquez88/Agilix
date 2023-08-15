@@ -59,6 +59,13 @@ const Clientes = () => {
                 <span className={styles.tituloPrincipal}>DNI:</span>
                 <p className={styles.clienteEmail}>{cliente.dni}</p>
               </div>
+              <div className={styles.divDetalle} >
+                <button className={styles.botonDetalle}>
+                  <NavLink to={`/clientes/${cliente.id}`} >
+                    Detalle
+                  </NavLink>
+                </button>
+              </div>
             </li>
           ))}
         </ol>
