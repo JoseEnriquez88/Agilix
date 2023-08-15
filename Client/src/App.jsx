@@ -75,7 +75,6 @@ function App() {
             <Route path='/clientes/:id' element={<DetailCliente />} />
             <Route path="/configuracion" element={<Configuracion />} />
             <Route path="/añadirProducto" element={<AñadirProducto />} />
-            <Route path="/inventario" element={<Inventario />} />
             <Route path="/misProductos" element={<MisProductos />} />
             <Route path="/admin" element={<AdminUsuario />} />
             <Route path="/configPerfil" element={<ConfigPerfil />} />
@@ -83,6 +82,7 @@ function App() {
             <Route path="/pagos" element={<Pagos />} />
             <Route path="/reporte" element={<Reporte />} />
             <Route path="/detalle_de_compra" element={<DetalleDeCompra />} />
+            <Route path="/vender" element={<Vender />} />
           </>
         ) : (
           <>
