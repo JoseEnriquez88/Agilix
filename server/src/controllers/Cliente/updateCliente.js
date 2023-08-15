@@ -12,8 +12,8 @@ const updateCliente = async (id, nombre, email, telefono,dni,ventaId) => {
         }
       );
         if(ventaId){
-          unaVenta = await Venta.findByPk(ventaId);
-          elCliente = await Cliente.findByPk(id);
+          let unaVenta = await Venta.findByPk(ventaId);
+          let elCliente = await Cliente.findByPk(id);
           await elCliente.addVenta(unaVenta);//mejor dicho compra
         }
       return cliente;
