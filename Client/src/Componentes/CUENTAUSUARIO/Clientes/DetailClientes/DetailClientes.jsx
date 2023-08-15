@@ -17,19 +17,26 @@ const DetailCliente = () => {
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Productos</th>
             <th>ID de Compra</th>
+            <th>Productos</th>
             <th>Fecha</th>
+            <th>Total Compra </th>
           </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>{cliente.nombre}</td>
-          {/* falta relacion para el renderizado no hay producto ni id de compra ni fecha relacionados*/}
-          {/* <td>{cliente.productos}</td>
-          <td>{cliente.idCompra}</td>
-          <td>{cliente.fecha}</td> */}
-        </tr>
+          {cliente.Venta?.map((vent) => (
+            <tr key={vent.id} >
+              <td>{vent.nombre}</td>
+              <td>{vent.id}</td>
+              <td>
+                {vent.Productos?.map((prod) => (
+                  <p key={prod.id}>{prod.nombre}</p>
+                ))}
+              </td>
+              <td>{vent.fecha}</td>
+              <td>{vent.total_venta}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

@@ -41,7 +41,7 @@ function App() {
         <Route path="/cuentas" element={<Cuentas />} />
         <Route path="/clientes" element={<Clientes />} />
         <Route path="/crearcliente" element={<CrearCliente />} />
-        <Route path='/detail/:id' element={<DetailCliente />} />
+        <Route path='/clientes/:id' element={<DetailCliente />} />
         <Route path="/configuracion" element={<Configuracion />} />
         <Route path="/añadirProducto" element={<AñadirProducto />} />
         <Route path="/crearusuario" element={<CrearUsuario />} />
