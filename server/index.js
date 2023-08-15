@@ -8,3 +8,4 @@ conn.sync({ force: true }).then(() => {
     console.log("Servidor escuchando en el puerto:", PORT);
   });
 });
+
