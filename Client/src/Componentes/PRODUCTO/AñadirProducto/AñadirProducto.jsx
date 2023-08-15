@@ -158,6 +158,9 @@ const AñadirProducto = () => {
       />
     </div>
     <div>
+    <label className={styles.inputGropLabel} htmlFor="cantidad">
+        cantidad :
+      </label>
       <input
         className={styles.inputGroup}
         type="number"
