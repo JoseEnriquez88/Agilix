@@ -10,7 +10,7 @@ import {
 } from "./Componentes/CUENTAUSUARIO/exportador";
 import {
   AñadirProducto,
-  Inventario,
+  Vender,
   MisProductos,
 } from "./Componentes/PRODUCTO/exportador";
 import { AdminUsuario, ConfigPerfil } from "./Componentes/USUARIOS/exportador";
@@ -20,6 +20,7 @@ import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
 import Pagos from "./Componentes/Views/Pagos/Pagos";
 import Reporte from "./Componentes/Views/General/Comparacion_de_ventas/Reporte/Reporte";
+import DetalleDeCompra from "./Componentes/PRODUCTO/Vender/Detalle_De_Compra/Detalle_De_Compra"
 import Login from "./Componentes/login/Login";
 import Logged from "./Componentes/Views/Logged/Logged";
 
@@ -79,6 +80,7 @@ function App() {
             <Route path="/cuenta" element={<Cuenta />} />
             <Route path="/pagos" element={<Pagos />} />
             <Route path="/reporte" element={<Reporte />} />
+            <Route path="/detalle_de_compra" element={<DetalleDeCompra />} />
           </>
         ) : (
           <>
