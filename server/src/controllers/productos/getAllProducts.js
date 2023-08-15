@@ -2,7 +2,7 @@ const { Producto } = require("../../db");
 
 const getAllProducts = async () => {
   const productos = await Producto.findAll({
-    attributes: ["id", "nombre", "img", "precio","estado"],
+    attributes: ["id", "nombre", "img", "precio","estado", "cantidad"],
   });
   if (productos.length === 0)
     throw new Error("No se encontraron productos para mostrar.");
