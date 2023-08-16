@@ -1,0 +1,42 @@
+.contenedorPrincipal{
+    color: rgba(255, 255, 255, 0.87);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1{
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.tabla {
+    border-collapse: collapse;
+    background-color: #323232;
+    color: rgba(255, 255, 255, 0.87);
+    width: 90%;
+    padding: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+caption,
+th,
+td {
+    padding: 1rem;
+}
+
+caption {
+    text-align: left;
+    background-color: #45b545;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+th {
+    background: hsl(0 0% 0%/ 0.5);
+}
+tr:nth-of-type(2n){
+   background: hsl(0 0% 0%/ 0.125);
+}

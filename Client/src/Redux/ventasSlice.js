@@ -23,7 +23,6 @@ export const postVenta = createAsyncThunk("ventas/postVenta", async (usuario, { 
     try {
         const { data } = await axios.post(URL, usuario);
         alert(data.message);
-        dispatch(fetchVentas());
     } catch (error) {
         alert(error.response.data.error);
     }
