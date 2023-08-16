@@ -1,10 +1,10 @@
 const { Producto } = require("../../db");
 
-const updateProducto = async (id,nombre,img,precio,stock,ventaId,cantidad)  => {
+const updateProducto = async (id,nombre,img,precio,stock)  => {
   try {
     if (id && nombre && img && precio) {
       const [numUpdated, updatedProductos] = await Producto.update(
-        { nombre: nombre, img: img, precio: precio},
+        { nombre: nombre, img: img, precio: precio},  
         {
           where: {
             id: id,
@@ -22,15 +22,6 @@ const updateProducto = async (id,nombre,img,precio,stock,ventaId,cantidad)  => {
       if(stock){
         productoActualizado.stock = stock;
         await productoActualizado.save();
-      }
-      
-      // Si se proporciona un ID de venta, establecer la relación
-      if (ventaId) {
-        const detalleVenta = await Detalle_Venta.create({
-          cantidad: cantidad, 
-          ProductoId: productoActualizado.id,
-          VentaId: ventaId,
-        });
       }
 
       return nombre;

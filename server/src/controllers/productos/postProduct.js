@@ -2,11 +2,12 @@ const { Producto, Venta } = require("../../db");
 const postProductValidation = require("../../helpers/producto/postProductValidation");
 
 const postProduct = async (nombre, img, precio) => {
-  postProductValidation(nombre, img, precio);
+  postProductValidation(nombre, img, precio,stock);
   const productoNuevo = await Producto.create({
     nombre,
     img,
     precio,
+    stock,
   });
 
   //cuando se realice ventas aca iria la relacion entre venta y producto

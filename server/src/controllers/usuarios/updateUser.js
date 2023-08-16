@@ -12,11 +12,6 @@ const updateUser = async (id, nombre, email, telefono, dni, ventaId)  => {
           },
         }
       );
-      if (ventaId) {
-        unaVenta = await Venta.findByPk(ventaId);
-        elUsuario = await Usuario.findByPk(id);
-        await elUsuario.addVenta(unaVenta);
-      }
       return usuario;
     }
   } catch (error) {
