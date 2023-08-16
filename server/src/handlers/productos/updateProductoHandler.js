@@ -3,10 +3,10 @@ const deleteProducto = require('../../controllers/productos/deleteProducto');
 
 const updateProductoHandler = async (req, res, next) => {
   const { id } = req.params;
-  const { nombre,img,precio,estado, cantidad } = req.body;
+  const { nombre,img,precio,estado,stock } = req.body;
 
   try {
-    const respuesta = (typeof estado!=="boolean")? await updateProducto(id,nombre,img,precio,cantidad): await deleteProducto(id,estado);
+    const respuesta = (typeof estado!=="boolean")? await updateProducto(id,nombre,img,precio,stock): await deleteProducto(id,estado);
     res.status(200).json({ message: `Actualización exitosa del cliente ${respuesta}` });
   } catch (err) {
     console.error('Error:', err);

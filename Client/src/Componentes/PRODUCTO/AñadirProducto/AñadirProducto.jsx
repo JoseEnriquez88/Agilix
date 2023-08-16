@@ -16,15 +16,15 @@ const AñadirProducto = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false); //Estado para mostrar mensaje de confirmacion de creacion
   const [previewImage, setPreviewImage] = useState(""); //Estado para previsualizacion de imagen subida
   const [input, setInput] = useState(InitialCreate); //Estado para almacenamiento de datos en estado local
-  const [cantidad, setCantidad] = useState(1); // Estado para almacenar la cantidad de productos a crear
-  const [cantidadDisponible, setCantidadDisponible] = useState(0);
+  const [stock, setStock] = useState(1); // Estado para almacenar el  stock de productos a crear
+  const [stockDisponible, setStockDisponible] = useState(0);
   const dispatch = useDispatch();
 
   
-     // Función para manejar el cambio en el campo de cantidad
-     const handleCantidadChange = (event) => {
-      const nuevaCantidad = parseInt(event.target.value); // Convertir el valor a un número entero
-      setCantidadDisponible(nuevaCantidad);
+     // Función para manejar el cambio en el campo de stock
+     const handleStockChange = (event) => {
+      const nuevaStock = parseInt(event.target.value); // Convertir el valor a un número entero
+      setStockDisponible(nuevaStock);
     };
 
   //Funcion que captura la data de los inputs y la almacena en el estado local
@@ -59,7 +59,7 @@ const AñadirProducto = () => {
       formData.append("nombre", input.nombre);
       formData.append("precio", input.precio);
       formData.append("img", fileName);
-      formData.append("cantidad", cantidadDisponible); //  la cantidad al FormData
+      formData.append("stock", stockDisponible); //  la cantidad al FormData
 
       const formDataObject = Object.fromEntries(formData);
 
@@ -74,8 +74,8 @@ const AñadirProducto = () => {
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
 
-       // Actualiza la cantidad disponible
-      setCantidadDisponible(cantidad);
+       // Actualiza la stock disponible
+      setStockDisponible(stock);
 
 
       setTimeout(() => {
@@ -87,8 +87,8 @@ const AñadirProducto = () => {
           img: "",
         });
         setPreviewImage("");
-        setCantidad(1); // Restablecer la cantidad a 1 después de la creación
-        setCantidadDisponible(1); // Restablecer la cantidad disponible
+        setStock(1); // Restablecer la stocka 1 después de la creación
+        setStockDisponible(1); // Restablecer la stock disponible
       }, 2000);
     } catch (error) {
       alert(error.response.data.error);
@@ -127,6 +127,19 @@ const AñadirProducto = () => {
       />
     </div>
     <div>
+    <label className={styles.inputGropLabel} htmlFor="stock">
+    stock :
+      </label>
+      <input
+        className={styles.inputGroup}
+        type="number"
+        id="stock"
+        name="stock"
+        value={stockDisponible} // Usa stockDisponible para mostrar
+        onChange={handleStockChange}
+      />
+    </div>
+    <div>
       <span className={styles.ImagenTittle}>Imagen :</span>
       <br />
       <label className={styles.inputGropLabel} htmlFor="image">
@@ -155,19 +168,6 @@ const AñadirProducto = () => {
         name="img"
         value={input.img}
         onChange={handleImageChange}
-      />
-    </div>
-    <div>
-    <label className={styles.inputGropLabel} htmlFor="cantidad">
-        cantidad :
-      </label>
-      <input
-        className={styles.inputGroup}
-        type="number"
-        id="cantidad"
-        name="cantidad"
-        value={cantidadDisponible} // Usa cantidadDisponible para mostrar
-        onChange={handleCantidadChange}
       />
     </div>
     <button className={styles.buttonCreate} type="submit" onClick={handleSubmit}>

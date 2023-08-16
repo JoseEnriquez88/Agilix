@@ -105,11 +105,11 @@ const MisProductos = () => {
             <div className={styles.contenedorLetras}>
               <h1>{prod.nombre} </h1>
               <h3> ${prod.precio}</h3>
-              {prod.cantidad === 0 ? (
+              {prod.stock === 0 ? (
                 <p className={styles.agotado}>Agotado</p>
               ) : (
                
-                <p>Cantidad disponible: {prod.cantidad}</p>
+                <p>stocks disponibles: {prod.stock}</p>
               )}
               <button
                 className={styles.botonEliminar}

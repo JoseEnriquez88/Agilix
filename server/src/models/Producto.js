@@ -26,10 +26,9 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
-      cantidad: { // Nuevo campo para la cantidad de productos disponibles
-        type: DataTypes.INTEGER, // O el tipo de dato adecuado para la cantidad
-        allowNull: false,
-        defaultValue: 0, // Puedes ajustar el valor predeterminado según tus necesidades
+      stock: { 
+        type: DataTypes.INTEGER,
+        defaultValue: 0, 
       },
     },
     { timestamps: false, freezeTableName: true }
