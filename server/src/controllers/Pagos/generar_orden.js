@@ -11,6 +11,7 @@ const generar_Orden = async (InfoCarrito) => {
                     external_reference: "Factura Agilix",
                     title: "Venta de productos Agilix",
                     description: "Agilix - Venta de productos",
+                    notification_url:"https://031d-2800-810-517-9a4-e801-bfca-35e1-72e7.ngrok.io/notificar_pagos",
                     total_amount: InfoCarrito.map(item => item.precio * item.cantidad).reduce((a, b) => a + b, 0),
                     items: InfoCarrito.map(item => ({
                         sku_number: "A123K9191938",
