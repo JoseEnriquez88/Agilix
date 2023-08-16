@@ -2,9 +2,11 @@ const { Producto } = require("../../db");
 
 const updateProducto = async (id,nombre,img,precio,stock)  => {
   try {
-    if (id && nombre && img && precio) {
-      const [numUpdated, updatedProductos] = await Producto.update(
-        { nombre: nombre, img: img, precio: precio},  
+
+    if (id && nombre && img && precio && stock ) {
+      const cliente = await Producto.update(
+        { nombre: nombre, img: img, precio: precio,stock: stock},
+
         {
           where: {
             id: id,

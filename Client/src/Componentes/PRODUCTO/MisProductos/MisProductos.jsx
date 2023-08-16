@@ -95,7 +95,7 @@ const MisProductos = () => {
         <select className={styles.selectores}>
           <option disabled={true}>Filtrar por tipo</option>
           {tipos.map((tipo) => (
-            <option value={tipo}>{tipo}</option>
+            <option value={tipo} key={tipo}></option>
           ))}
         </select>
         <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
@@ -114,6 +114,12 @@ const MisProductos = () => {
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
+                {prod.stock === 0 ? (
+                <p className={styles.agotado}>Agotado</p>
+              ) : (
+
+                <p>stocks disponibles: {prod.stock}</p>
+              )}
                 <button
                   className={styles.botonEliminar}
                   onClick={() => handleDelete(prod.id)}
