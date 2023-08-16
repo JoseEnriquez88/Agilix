@@ -1,6 +1,6 @@
-const { Usuario } = require("../../db");
+const { Usuario,Venta } = require("../../db");
 
-const updateUser = async (id, nombre, email, telefono, dni)  => {
+const updateUser = async (id, nombre, email, telefono, dni, ventaId)  => {
   try {
     // Buscar el cliente por ID si se proporciona
     if (id && nombre && email && telefono) {

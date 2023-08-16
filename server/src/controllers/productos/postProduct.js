@@ -3,6 +3,7 @@ const postProductValidation = require("../../helpers/producto/postProductValidat
 
 const postProduct = async (nombre, img, precio, stock) => {
   postProductValidation(nombre, img, precio, stock);
+
   const productoNuevo = await Producto.create({
     nombre,
     img,
