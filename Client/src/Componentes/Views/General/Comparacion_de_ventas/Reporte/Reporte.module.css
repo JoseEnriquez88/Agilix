@@ -79,6 +79,7 @@
     width: 4rem;
     background-color: #181818;
     transition: 0.5s;
+    border-radius: 10px;
 }
 
 .BotonBack:hover {

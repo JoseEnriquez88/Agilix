@@ -1,8 +1,8 @@
+import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import styles from '../CrearCliente/CrearCliente.module.css'
-
+import styles from "../CrearCliente/CrearCliente.module.css";
 
 const Clientes = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -10,6 +10,7 @@ const Clientes = () => {
     nombre: "",
     telefono: "",
     email: "",
+    dni:"",
   });
 
   const handleChange = (event) => {
@@ -19,7 +20,10 @@ const Clientes = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/clientes", input);
+      const response = await axios.post(
+        "http://localhost:3001/clientes",
+        input
+      );
 
       setShowSuccessMessage(true);
 
@@ -32,7 +36,7 @@ const Clientes = () => {
   };
 
   return (
-    <form className={styles.form}onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <p className={styles.tittle}>Crear Cliente</p>
         <label className={styles.nombre} htmlFor="nombre">
@@ -48,7 +52,7 @@ const Clientes = () => {
         />
       </div>
       <div>
-        <label className={styles.telefono}htmlFor="telefono">
+        <label className={styles.telefono} htmlFor="telefono">
           Teléfono :{" "}
         </label>
         <input
@@ -61,7 +65,7 @@ const Clientes = () => {
         />
       </div>
       <div>
-        <label className={styles.email}htmlFor="email">
+        <label className={styles.email} htmlFor="email">
           Email :{" "}
         </label>
         <input
@@ -73,13 +77,25 @@ const Clientes = () => {
           onChange={handleChange}
         />
       </div>
+      <div>
+        <label className={styles.nombre} htmlFor="dni">
+          DNI :{" "}
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="text"
+          id="dni"
+          name="dni"
+          value={input.dni}
+          onChange={handleChange}
+        />
+      </div>
       <br />
-      <button className={styles.buttonCreate}
-        type="submit">
+      <button className={styles.buttonCreate} type="submit">
         Crear Cliente
-      </button> 
+      </button>
       <button className={styles.volverClientes}>
-        <NavLink to='/clientes' style={{ textDecoration: 'none' }}>
+        <NavLink to="/clientes" style={{ textDecoration: "none" }}>
           Volver a clientes
         </NavLink>
       </button>

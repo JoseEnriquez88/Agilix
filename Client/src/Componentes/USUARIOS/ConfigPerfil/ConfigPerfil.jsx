@@ -57,12 +57,12 @@ const ConfigPerfil = () => {
         <div className={styles.contenedorPrincipal}>
             <div className={styles.contenedorSecundario} >
                 <div className={styles.contenedorPerfil}>
-                    <h1>{nombreCompleto.length > 1 ? nombreCompleto : "Nombre Apellido"}</h1>
+                    <h1 className={styles.nombreApellido} >{nombreCompleto.length > 1 ? nombreCompleto : "Nombre Apellido"}</h1>
                     {/* el length tiene que ser mayor a 1 porque el " " de nombreCompleto cuenta como un elemento*/}
                     <h1 className={styles.divIconDeleteImage} onClick={eliminarAvatar}>
                         <DeleteIcon className={styles.iconDeleteImage} />
                     </h1>
-                    <img src={selectedImage || avatar} alt="avatar" className={styles.fotoAvatar} />
+                    <img src={selectedImage || avatar} alt="avatar" className={styles.fotoAvatar} onClick={() => document.getElementById('subirFoto').click()}/>
                     <label className={styles.labelSubirFoto} htmlFor="subirFoto">Subir Foto</label>
                     <input type="file" className={styles.inputSeleccionarArchivo} id="subirFoto" onChange={handleImageChange} />
                     <div className={styles.divDescripcionSubirFoto}>

@@ -1,0 +1,61 @@
+.ContenedorVender {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: start;
+    align-items: center;
+    color: white;
+    padding: 1rem;
+}
+
+.ContenedorGeneralCards {
+    width: 80%;
+    height: 100%;
+}
+
+.ContenedorCards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ContenedorBotonBackYCarrito {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: 5%;
+    align-items: center;
+}
+
+.BotonBack {
+    padding-top: 0.5rem;
+    color: white;
+    font-size: 1.3rem;
+    width: 4rem;
+    background-color: #181818;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+
+.BotonBack:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.BotonCarrito {
+    padding-top: 0.5rem;
+    color: white;
+    font-size: 1.3rem;
+    background-color: #181818;
+    transition: 0.5s;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.BotonCarrito:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}

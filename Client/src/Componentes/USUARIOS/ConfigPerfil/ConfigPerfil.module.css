@@ -28,6 +28,7 @@
     height: 200px;
     width: 200px;
     border-radius: 50%;
+    cursor: pointer;
 }
 .divDescripcionSubirFoto{
     background-color: #0E0E0E;
@@ -72,7 +73,11 @@
 }
 .configuracionPerfil{
     font-size: 50px;
+    color: white;
     
+}
+.nombreApellido{
+    color: white;
 }
 .inputsIzquierda{
     position: relative;
@@ -226,6 +231,9 @@
     background-color: #ffff;
     border-radius: 50%;
     cursor: pointer;
+}
+.divIconDeleteImage:hover{
+    background-color: #dddddd;
 }
 .iconDeleteImage{
     color: red;
