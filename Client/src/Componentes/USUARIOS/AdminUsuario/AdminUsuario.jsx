@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsuarios } from "../../../Redux/usuariosSlice";
@@ -50,6 +51,10 @@ const AdminUsuarios = () => {
               <div className={styles.clienteInfo}>
                 <span className={styles.tituloPrincipal}>Email:</span>
                 <p className={styles.clienteEmail}>{usuario.email}</p>
+              </div>
+              <div className={styles.clienteInfo}>
+                <span className={styles.tituloPrincipal}>DNI:</span>
+                <p className={styles.clienteEmail}>{usuario.dni}</p>
               </div>
             </li>
           ))}

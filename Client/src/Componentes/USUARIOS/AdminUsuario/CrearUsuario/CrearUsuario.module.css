@@ -1,8 +1,14 @@
 .tittle { 
-    text-align: center;
-    font-size: 1.5rem;
-    line-height: 2rem;
-    font-weight: 900;
+    color: aliceblue;
+    background-color: rgb(41, 40, 40);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    border: 1px solid rgb(49, 49, 49);
+    border-radius: 10px;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 

@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
@@ -9,6 +10,7 @@ const CrearUsuario = () => {
     nombre: "",
     telefono: "",
     email: "",
+    dni:""
   });
 
   const handleChange = (event) => {
@@ -18,7 +20,10 @@ const CrearUsuario = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("http://localhost:3001/usuarios", input);
+      const response = await axios.post(
+        "http://localhost:3001/usuarios",
+        input
+      );
 
       setShowSuccessMessage(true);
 
@@ -31,6 +36,8 @@ const CrearUsuario = () => {
   };
 
   return (
+    <div>
+      <h1 className={styles.tittle}>Lista de Usuarios</h1>
     <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <p className={styles.title}>Crear Usuario</p>
@@ -46,6 +53,7 @@ const CrearUsuario = () => {
           onChange={handleChange}
         />
       </div>
+    
       <div>
         <label className={styles.telefono} htmlFor="telefono">
           Teléfono :{" "}
@@ -71,6 +79,19 @@ const CrearUsuario = () => {
           value={input.email}
           onChange={handleChange}
         />
+        <div>
+        <label className={styles.telefono} htmlFor="dni">
+          DNI :{" "}
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="text"
+          id="dni"
+          name="dni"
+          value={input.dni}
+          onChange={handleChange}
+        />
+      </div>
       </div>
       <br />
       <button className={styles.buttonCreate} type="submit">
@@ -85,6 +106,7 @@ const CrearUsuario = () => {
         <div className={styles.msjCreado}>¡Usuario creado exitosamente!</div>
       )}
     </form>
+    </div>
   );
 };
 
