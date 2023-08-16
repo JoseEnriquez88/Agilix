@@ -7,6 +7,7 @@ import {
   deleteProduct,
 
 } from "../../../Redux/productSlice";
+import Paginado from "./Paginado/Paginado";
 import { useState } from "react";
 import styles from "./MisProductos.module.css";
 
@@ -17,8 +18,16 @@ const MisProductos = () => {
     ordenAlfabetico: "",
     ordenPorPrecio: "",
   });
+
   // Lista de tipos de productos
   const tipos = ["Químicos", "Consumibles", "Hogar", "Otros"];
+
+  // Estados para el paginado
+  const [currentPage, setCurrentPage] = useState(1);//pagina actual
+  const [productosPorPagina, setProductosPorPagina] = useState(6);//cantidad de items por pagina
+  const [order, setOrder] = useState("")//orden
+  const indexLastItem = currentPage * productosPorPagina;//indice del ultimo item
+  const indexFirstItem = indexLastItem - productosPorPagina;//indice del primer item
 
   // Handler del ordenamiento alfabetico
   const handleChange = (event) => {
@@ -49,80 +58,87 @@ const MisProductos = () => {
   const handleDelete = (productId) => {
     dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
   };
-  
+
+  const currentItem = product.productosFiltrados.slice(indexFirstItem, indexLastItem);//corta la cantidad de items que necesito mostrar según los indices a partir del estado global
+    const paginado = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    };
 
   return (
     <div>
-    <h1 className={styles.tittle}>Listado de Productos</h1>
-    <div className={styles.contenedorSelector}>
-      <select
-        className={styles.selectores}
-        onChange={handleChange}
-        value={resetSeleccion.ordenAlfabetico}
-      >
-        <option disabled={true}>Orden Alfabético</option>
-        <option value="A_Z_predeterminado">Predeterminado</option>
-        <option value="asc">A-Z</option>
-        <option value="desc">Z-A</option>
-      </select>
-      <select
-        className={styles.selectores}
-        onChange={handleSortPrecio}
-        value={resetSeleccion.ordenPorPrecio}
-      >
-        <option disabled={true}>Ordenar por precio</option>
-        <option value="Precio_predeterminado">Predeterminado</option>
-        <option value="precioMax">Mayor Precio</option>
-        <option value="precioMin">Menor Precio</option>
-      </select>
-      <button className={styles.buttonReset} onClick={handleReset}>
-        Restablecer Ordenamiento
-      </button>
+      <h1 className={styles.tittle}>Listado de Productos</h1>
+      <div className={styles.contenedorSelector}>
+        <select
+          className={styles.selectores}
+          onChange={handleChange}
+          value={resetSeleccion.ordenAlfabetico}
+        >
+          <option disabled={true}>Orden Alfabético</option>
+          <option value="A_Z_predeterminado">Predeterminado</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+        </select>
+        <select
+          className={styles.selectores}
+          onChange={handleSortPrecio}
+          value={resetSeleccion.ordenPorPrecio}
+        >
+          <option disabled={true}>Ordenar por precio</option>
+          <option value="Precio_predeterminado">Predeterminado</option>
+          <option value="precioMax">Mayor Precio</option>
+          <option value="precioMin">Menor Precio</option>
+        </select>
+        <button className={styles.buttonReset} onClick={handleReset}>
+          Restablecer Ordenamiento
+        </button>
 
-      <select className={styles.selectores}>
-        <option disabled={true}>Filtrar por tipo</option>
-        {tipos.map((tipo) => (
-          <option value={tipo} key={tipo}>
-            {tipo}
-          </option>
-        ))}
-      </select>
-      <button className={styles.buttonReset} onClick={handleReset}>
-        Restablecer Ordenamiento
-      </button>
-    </div>
+        <select className={styles.selectores}>
+          <option disabled={true}>Filtrar por tipo</option>
+          {tipos.map((tipo) => (
+            <option value={tipo} key={tipo}></option>
+          ))}
+        </select>
+        <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
+      </div>
 
-    {product.loading && <div>Cargando...</div>}
-    {!product.loading && product.error ? (
-      <div style={{ color: "white" }}>{product.error}</div>
-    ) : null}
+      {product.loading && <div>Cargando...</div>}
+      {!product.loading && product.error ? (
+        <div style={{ color: "white" }}>{product.error}</div>
+      ) : null}
 
-    {!product.loading && product.allProducts ? (
-      <div className={styles.contenedor}>
-        {product.productosFiltrados.map((prod) => (
-          <div className={styles.cards} key={prod.id}>
-            <img className={styles.imagen} src={`/assets/${prod.img}`} alt={prod.nombre} />
-            <div className={styles.contenedorLetras}>
-              <h1>{prod.nombre} </h1>
-              <h3> ${prod.precio}</h3>
-              {prod.stock === 0 ? (
+      {!product.loading && product.productosFiltrados ? (
+        <div className={styles.contenedor}>
+          {currentItem.map((prod) => (
+            <div className={styles.cards} key={prod.id}>
+              <img className={styles.imagen} src={`/assets/${prod.img}`} />
+              <div className={styles.contenedorLetras}>
+                <h1>{prod.nombre} </h1>
+                <h3> ${prod.precio}</h3>
+                {prod.stock === 0 ? (
                 <p className={styles.agotado}>Agotado</p>
               ) : (
-               
+
                 <p>stocks disponibles: {prod.stock}</p>
               )}
-              <button
-                className={styles.botonEliminar}
-                onClick={() => handleDelete(prod.id)}
-              >
-                Eliminar
-              </button>
+                <button
+                  className={styles.botonEliminar}
+                  onClick={() => handleDelete(prod.id)}
+                >
+                  Eliminar
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      ) : null}
+      <div className={styles.PaginadoContainer}>
+                <Paginado className={styles.Paginado}
+                    productosPorPagina={productosPorPagina}
+                    products={product.productosFiltrados}
+                    paginado={paginado}
+                    currentPage={currentPage} />
       </div>
-    ) : null}
-  </div>
-);
+    </div>
+  );
 };
 export default MisProductos;
