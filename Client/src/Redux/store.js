@@ -11,7 +11,7 @@ const store = configureStore({
     product: productReducer,
     clientes: clienteReducer,
     usuarios: usuarioReducer,
-    ventas: ventasSlice
+    ventas: ventasSlice,
     carrito: carritoDeComprasReducer,
   },
 });
