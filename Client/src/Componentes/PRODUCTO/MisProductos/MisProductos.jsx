@@ -77,7 +77,7 @@ const MisProductos = () => {
           value={resetSeleccion.ordenAlfabetico}
         >
           <option disabled={true}>Orden Alfabético</option>
-          <option value="A_Z_predeterminado">Predeterminado</option>
+          <option value="A_Z_predeterminado">Orden Alfabético</option>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
@@ -87,13 +87,13 @@ const MisProductos = () => {
           value={resetSeleccion.ordenPorPrecio}
         >
           <option disabled={true}>Ordenar por precio</option>
-          <option value="Precio_predeterminado">Predeterminado</option>
+          <option value="Precio_predeterminado">Ordenar por precio</option>
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
         <select onChange={filtrarProductoPorTipo} className={styles.selectores}>
           <option disabled={true}>Filtrar Producto</option>
-          <option value="todos">Todos</option>
+          <option value="todos">Tipos</option>
           <option value="frutas">Frutas</option>
           <option value="verduras">Verduras</option>
           <option value="bebidas">Bebidas</option>
@@ -121,7 +121,7 @@ const MisProductos = () => {
                 <p className={styles.agotado}>Agotado</p>
               ) : (
 
-                <p>stocks disponibles: {prod.stock}</p>
+                <p>Stock Disponible: {prod.stock}</p>
               )}
                 <button
                   className={styles.botonEliminar}
