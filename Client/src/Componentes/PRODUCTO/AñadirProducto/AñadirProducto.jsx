@@ -10,6 +10,7 @@ const InitialCreate = {
   nombre: "",
   precio: "",
   img: "",
+  stock:"",
 };
 
 const AñadirProducto = () => {
@@ -17,7 +18,7 @@ const AñadirProducto = () => {
   const [previewImage, setPreviewImage] = useState(""); //Estado para previsualizacion de imagen subida
   const [input, setInput] = useState(InitialCreate); //Estado para almacenamiento de datos en estado local
   const [stock, setStock] = useState(1); // Estado para almacenar el  stock de productos a crear
-  const [stockDisponible, setStockDisponible] = useState(0);
+  const [stockDisponible, setStockDisponible] = useState("");
   const dispatch = useDispatch();
 
   

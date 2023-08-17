@@ -98,7 +98,6 @@ const MisProductos = () => {
             <option value={tipo} key={tipo}></option>
           ))}
         </select>
-        <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
 
       {product.loading && <div>Cargando...</div>}
@@ -118,7 +117,7 @@ const MisProductos = () => {
                 <p className={styles.agotado}>Agotado</p>
               ) : (
 
-                <p>stocks disponibles: {prod.stock}</p>
+                <p>disponibles: {prod.stock}</p>
               )}
                 <button
                   className={styles.botonEliminar}

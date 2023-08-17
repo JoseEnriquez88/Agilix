@@ -1,15 +1,18 @@
 .ContenedorCard {
     display: flex;
-    flex-direction: row;
+    flex-direction:column;
     background-color: #181818;
     width: 100%;
     padding: 0.5rem;
     border-radius: 10px;
+    
+
 }
 
 .ContenedorImg {
     width: 20%;
     height: 100%;
+    margin-right:100px ;
 }
 
 .ContenedorInfo {
@@ -19,6 +22,7 @@
     width: 60%;
     height: 100%;
     font-size: 1rem;
+    margin-left: 150px;
 }
 
 .ContenedorBotones {
@@ -27,7 +31,12 @@
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    margin-right: 1rem;
+    margin-right:1rem;
+    
+}
+.ContenedorBotonStock{
+    margin-left: 600px;
+   
 }
 
 .btn {
@@ -38,4 +47,6 @@
 
 .btnAgregar {
     border-radius: 10px;
+    margin-left: 1300px;
+   
 }
