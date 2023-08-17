@@ -1,12 +1,10 @@
 const { Producto } = require("../../db");
 
-const updateProducto = async (id,nombre,img,precio,stock)  => {
+const updateProducto = async (id,nombre,img,precio, tipo, stock)  => {
   try {
-
-    if (id && nombre && img && precio && stock ) {
+    if (id && nombre && img && precio && tipo && stock) {
       const cliente = await Producto.update(
-        { nombre: nombre, img: img, precio: precio,stock: stock},
-
+        { nombre: nombre, img: img, precio: precio, tipo: tipo, stock: stock},
         {
           where: {
             id: id,
@@ -20,7 +18,7 @@ const updateProducto = async (id,nombre,img,precio,stock)  => {
         throw new Error('El producto no pudo actualizarse.');
       }
 
-      const productoActualizado = updatedProductos[0];
+      const productoActualizado = updateProducto[0];
       if(stock){
         productoActualizado.stock = stock;
         await productoActualizado.save();
@@ -34,4 +32,4 @@ const updateProducto = async (id,nombre,img,precio,stock)  => {
 };
 
 
-module.exports =updateProducto;
+module.exports = updateProducto;

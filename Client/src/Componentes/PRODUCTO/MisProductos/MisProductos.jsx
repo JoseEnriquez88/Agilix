@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ordenAlfabetico,
   ordenPorPrecio,
+  filtroPorTipo,
   restablecerOrdenamientos,
   deleteProduct,
 
@@ -55,14 +56,16 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
-  const handleDelete = (productId) => {
+    const handleDelete = (productId) => {
     dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
   };
-
   const currentItem = product.productosFiltrados.slice(indexFirstItem, indexLastItem);//corta la cantidad de items que necesito mostrar según los indices a partir del estado global
-    const paginado = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
+  const paginado = (pageNumber) => {
+      setCurrentPage(pageNumber);
+  };
+  const filtrarProductoPorTipo = (event) => {
+    dispatch(filtroPorTipo(event.target.value))
+  }
 
   return (
     <div>
@@ -88,15 +91,14 @@ const MisProductos = () => {
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
-        <button className={styles.buttonReset} onClick={handleReset}>
-          Restablecer Ordenamiento
-        </button>
-
-        <select className={styles.selectores}>
-          <option disabled={true}>Filtrar por tipo</option>
-          {tipos.map((tipo) => (
-            <option value={tipo} key={tipo}></option>
-          ))}
+        <select onChange={filtrarProductoPorTipo} className={styles.selectores}>
+          <option disabled={true}>Filtrar Producto</option>
+          <option value="todos">Todos</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="abarrotes">Abarrotes</option>
+          <option value="carnes">Carnes</option>
         </select>
         <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
@@ -114,6 +116,7 @@ const MisProductos = () => {
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
+                <h3>{prod.tipo}</h3>
                 {prod.stock === 0 ? (
                 <p className={styles.agotado}>Agotado</p>
               ) : (
