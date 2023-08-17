@@ -6,14 +6,17 @@ import Comparacion_de_ventas from "../Comparacion_de_ventas/Comparacion_de_venta
 import Pagos_recibidos from "../Pagos_recibidos/Pagos_recibidos";
 import Productos_F_Stock from "../Productos_F_Stock/Productos_F_Stock";
 import SearchBar from "../SearchBar/SearchBar";
+import Logged from "../../Logged/Logged"
 import styles from "./General.module.css";
 
-const General = () => {
+const General = (userDetails) => {
+  const user = userDetails.user
   let productos = useSelector((state) => state.product);
 
   return (
     //Contiene todos los componentes
     <div className={styles.DivComponenteGeneral}>
+      <Logged user={user} />
       <nav className={styles.ContenedorSearchBar}>
         <div className={styles.SearchBar}>
           <SearchBar />

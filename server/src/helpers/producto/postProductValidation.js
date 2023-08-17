@@ -2,8 +2,8 @@ const nombreRegex = /^[a-zA-Z0-9\s]+$/;
 const precioRegex = /^[+-]?\d+(\.\d{1,2})?$/;
 const imagenRegex = /^.+\.(jpeg|jpg|png)$/;
 const imagenRegexURL = /(https?:\/\/.*\.(?:png|jpg|jpeg))/i;
-
-const postProductValidation = (nombre, img, precio) => {
+const stockRegex = /^[0-9]+$/;
+const postProductValidation = (nombre, img, precio,stock) => {
   //validacion del nombre
   if (!nombreRegex.test(nombre))
     throw new Error(`El nombre ${nombre} no es válido para crear el producto.`);
@@ -34,6 +34,12 @@ const postProductValidation = (nombre, img, precio) => {
     throw new Error(
       `El campo precio del producto no puede estar vacio. Digite un valor poder crear el producto`
     );
-};
+     // Validación de la stock
+     if (!stockRegex.test(stock) || parseInt(stock) <= 0)
+     throw new Error(
+       `La stock debe ser un número mayor a 0 para poder crear el producto.`
+     );
+ };
+
 
 module.exports = postProductValidation;

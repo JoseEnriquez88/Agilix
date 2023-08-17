@@ -39,7 +39,7 @@ const Paginado = ({ productosPorPagina, products, paginado, currentPage }) => {
         <div className={styles.PaginationContainer}>
             <ul className={styles.ul}>
                 <li className={styles.li}>
-                    <button disabled={currentPage === 1} onClick={handleFirstPage} className={styles.PaginationButton}>start</button>
+                    <button disabled={currentPage === 1} onClick={handleFirstPage} className={styles.PaginationButton}>inicio</button>
                 </li>
                 <li className={styles.li}>
                     <button disabled={currentPage === 1} onClick={previusPage} className={styles.PaginationButton}>Prev</button>
@@ -50,10 +50,10 @@ const Paginado = ({ productosPorPagina, products, paginado, currentPage }) => {
                     </li >
                 ))}
                 <li className={styles.li}>
-                    <button disabled={currentPage === totalPages} onClick={nextPage} className={styles.PaginationButton}>Next</button>
+                    <button disabled={currentPage === totalPages} onClick={nextPage} className={styles.PaginationButton}>siguiente</button>
                 </li>
                 <li className={styles.li}>
-                    <button disabled={currentPage === totalPages} onClick={handleLastPage} className={styles.PaginationButton}>end</button>
+                    <button disabled={currentPage === totalPages} onClick={handleLastPage} className={styles.PaginationButton}>final</button>
                 </li>
             </ul>
         </div>
