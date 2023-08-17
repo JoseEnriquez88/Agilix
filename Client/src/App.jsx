@@ -7,6 +7,7 @@ import {
   Cuentas,
   Clientes,
   Configuracion,
+  DetailCliente
 } from "./Componentes/CUENTAUSUARIO/exportador";
 import {
   AñadirProducto,
@@ -70,6 +71,7 @@ function App() {
             <Route path="/clientes" element={<Clientes />} />
             <Route path="/logged" element={<Logged />} />
             <Route path="/crearcliente" element={<CrearCliente />} />
+            <Route path='/clientes/:id' element={<DetailCliente />} />
             <Route path="/configuracion" element={<Configuracion />} />
             <Route path="/añadirProducto" element={<AñadirProducto />} />
             <Route path="/misProductos" element={<MisProductos />} />
