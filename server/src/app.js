@@ -7,6 +7,9 @@ const cookieSession = require("cookie-session");
 const passportSetup = require("./passport");
 const server = express();
 const mainRouter = require("./routes/mainRouter");
+require("dotenv").config();
+
+const { CLIENT_URL } = process.env;
 
 server.use(morgan("dev"));
 server.use(express.json());
@@ -23,7 +26,7 @@ server.use(passport.session());
 
 server.use(
   cors({
-    origin: `${process.env.CLIENT_URL}`,
+    origin: `${CLIENT_URL}`,
     methods: "GET, POST, OPTIONS, PUT, DELETE",
     credentials: true,
     allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
