@@ -23,7 +23,7 @@ server.use(passport.session());
 
 server.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: `${process.env.CLIENT_URL}`,
     methods: "GET, POST, OPTIONS, PUT, DELETE",
     credentials: true,
     allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
