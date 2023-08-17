@@ -121,7 +121,7 @@ const MisProductos = () => {
                 <p className={styles.agotado}>Agotado</p>
               ) : (
 
-                <p>disponibles: {prod.stock}</p>
+                <p>Stock Disponible: {prod.stock}</p>
               )}
                 <button
                   className={styles.botonEliminar}
