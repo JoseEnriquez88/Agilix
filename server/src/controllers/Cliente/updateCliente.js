@@ -1,5 +1,5 @@
-const { Cliente, Venta } = require("../../db");
-const updateCliente = async (id, nombre, email, telefono,dni,ventaId) => {
+const { Cliente} = require("../../db");
+const updateCliente = async (id, nombre, email, telefono,dni) => {
   try {
     // Buscar el cliente por ID si se proporciona
     if (id && nombre && email && telefono && dni) {
@@ -11,11 +11,6 @@ const updateCliente = async (id, nombre, email, telefono,dni,ventaId) => {
           },
         }
       );
-        if(ventaId){
-          let unaVenta = await Venta.findByPk(ventaId);
-          let elCliente = await Cliente.findByPk(id);
-          await elCliente.addVenta(unaVenta);//mejor dicho compra
-        }
       return cliente;
     }
     } catch (error) {
