@@ -1,0 +1,241 @@
+.contenedorPrincipal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.contenedorSecundario{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: initial;
+    justify-content: center;
+    height: 80vh;
+}
+.contenedorPerfil{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    width: 350px;
+    height: 500px;
+    border: #4b4b4b solid 3px;
+    border-radius: 10px;
+    background-color: #000000;
+}
+.fotoAvatar{
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.divDescripcionSubirFoto{
+    background-color: #0E0E0E;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: #4b4b4b solid 3px;
+    margin-top: 15px;
+    height: 100px;
+    width: 250px;
+}
+.descripcionSubirFoto{
+    color: #ffff;
+}
+.contenedorConfigPerfil{
+    position: relative;
+    display: flex;
+    left:7rem;
+    flex-direction: column;
+    align-items: center;
+    width: 1100px;
+    height: 750px;
+    border: #4b4b4b solid 3px;
+    border-radius: 10px;
+    background-color: #000000;
+
+}
+.containerInputs{
+    position: relative;
+    display: flex;
+    flex-direction: arrow;
+}
+.divNombreConfigPerfil{
+    position: relative;
+    left: 125px;
+    display: flex;
+    justify-content: initial;
+    align-items: center;
+    width: 100%;
+}
+.configuracionPerfil{
+    font-size: 50px;
+    color: white;
+    
+}
+.nombreApellido{
+    color: white;
+}
+.inputsIzquierda{
+    position: relative;
+    top:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    margin-right: 60px;
+}
+.inputsDerecha{
+    position: relative;
+    top:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: initial;
+    margin-left: 60px;
+}
+/* .inputsDerecha::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -3px; 
+    height: 600px;
+    bottom: 0;
+    width: 3px;
+    background-color: #4b4b4b; 
+} */
+.contenedorContrasena{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.label{
+    color:white;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.input{
+    height: 30px;
+    width: 350px;
+    font-size: 21px;
+    margin-bottom: 30px;
+    padding: 0 10px;
+    padding-left: 15px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border 0.2s;
+    border: 2px solid transparent;
+}
+.input:focus {
+    outline: none;
+    border-radius: 5px;
+    border: 2px solid #45b545;
+}
+.inputTelefono{
+    height: 37px;
+    width: 380px;
+    padding-left: 60px;
+    font-size: 18px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    transition: border 0.2s;
+    border: 2px solid transparent;
+}
+
+.inputTelefono:focus {
+    outline: none;
+    border: 2px solid #45b545;
+}
+.containerClass{
+    border: none;
+    width: 80px; 
+    height: 35px; 
+    font-size: 18px;
+}
+.dropdown{
+    border: none; 
+    box-shadow: none;
+    height: 180px;
+}
+.botonGuardar{
+    position: relative;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    background-color: #45b545;
+    color: #FFFFFFDC;
+    top: 6rem;
+    left: 21.3rem;
+    border-radius: 5px;
+    border: none;
+    cursor:pointer;
+}
+.botonGuardar:hover{
+    background-color: #3e9e3e;
+}
+.inputSeleccionarArchivo{
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+        width: 0;
+        height: 0;
+}
+.labelSubirFoto{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    background-color: #45b545;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor:pointer;
+}
+.labelSubirFoto:hover{
+    background-color: #3e9e3e;
+}
+
+.iconView{
+    position: absolute;
+    margin-top: 45px;
+    right: 10px;
+    color: #4b4b4b;
+    cursor: pointer;
+    transition: all 200ms linear;
+}
+.iconNoView{
+    position: absolute;
+    cursor: pointer;
+    right: 10px;
+    color:red;
+    margin-top: 45px;
+    transition: all 200ms linear;
+}
+.divIconDeleteImage{
+    position: absolute;
+    top:80px;
+    right: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    background-color: #ffff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.divIconDeleteImage:hover{
+    background-color: #dddddd;
+}
+.iconDeleteImage{
+    color: red;
+    cursor: pointer;
+}

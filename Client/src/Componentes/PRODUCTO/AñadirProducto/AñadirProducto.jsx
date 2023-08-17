@@ -11,6 +11,7 @@ const InitialCreate = {
   precio: "",
   img: "",
   stock:"",
+  tipo: "",
 };
 
 const AñadirProducto = () => {
@@ -59,6 +60,7 @@ const AñadirProducto = () => {
       const formData = new FormData();
       formData.append("nombre", input.nombre);
       formData.append("precio", input.precio);
+      formData.append("tipo", input.tipo);
       formData.append("img", fileName);
       formData.append("stock", stockDisponible); //  la cantidad al FormData
 
@@ -86,6 +88,7 @@ const AñadirProducto = () => {
           nombre: "",
           precio: "",
           img: "",
+          tipo: "escoger",
         });
         setPreviewImage("");
         setStock(1); // Restablecer la stocka 1 después de la creación
@@ -96,38 +99,45 @@ const AñadirProducto = () => {
     }
   };
 
+  const seleccionarTipo = (event) => {   //esto es para select del tipo de producto
+    setInput({
+      ...input,
+      tipo: event.target.value,
+    })
+  }
+
   //FORMULARIO
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-    <div>
-      <p className={styles.titituloForm}>Crear Productos</p>
-      <label className={styles.inputGropLabel} htmlFor="name">
-        Nombre :
-      </label>
-      <input
-        className={styles.inputGroup}
-        type="text"
-        id="name"
-        name="nombre"
-        value={input.nombre}
-        onChange={handleChange}
-      />
-    </div>
-    <div>
-      <label className={styles.inputGropLabel} htmlFor="price">
-        Precio :
-      </label>
-      <input
-        className={styles.inputGroup}
-        type="text"
-        id="price"
-        name="precio"
-        value={input.precio}
-        onChange={handleChange}
-      />
-    </div>
-    <div>
+      <div>
+        <p className={styles.titituloForm}>Crear Productos</p>
+        <label className={styles.inputGropLabel} htmlFor="name">
+          Nombre :
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="text"
+          id="name"
+          name="nombre"
+          value={input.nombre}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label className={styles.inputGropLabel} htmlFor="price">
+          Precio :
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="text"
+          id="price"
+          name="precio"
+          value={input.precio}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
     <label className={styles.inputGropLabel} htmlFor="stock">
     stock :
       </label>
@@ -140,9 +150,22 @@ const AñadirProducto = () => {
         onChange={handleStockChange}
       />
     </div>
-    <div>
-      <span className={styles.ImagenTittle}>Imagen :</span>
-      <br />
+      <div>
+        <label className={styles.inputGropLabel}>
+          Tipo :
+        </label>
+        <select className={styles.inputGroup} defaultValue="escoger" onChange={seleccionarTipo} value = {input.tipo}>
+          <option disabled={true} value="escoger">Escoger Tipo</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="abarrotes">Abarrotes</option>
+          <option value="carnes">Carnes</option>
+        </select>
+      </div>
+      <div>
+        <span className={styles.ImagenTittle}>Imagen :</span>
+        <br />
       <label className={styles.inputGropLabel} htmlFor="image">
         <br />
         <span className={styles.uploadButton}>Seleccionar archivo</span>

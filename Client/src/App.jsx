@@ -7,6 +7,7 @@ import {
   Cuentas,
   Clientes,
   Configuracion,
+  DetailCliente
 } from "./Componentes/CUENTAUSUARIO/exportador";
 import {
   AñadirProducto,
@@ -14,7 +15,6 @@ import {
   MisProductos,
 } from "./Componentes/PRODUCTO/exportador";
 import { AdminUsuario, ConfigPerfil } from "./Componentes/USUARIOS/exportador";
-import CrearUsuario from "./Componentes/USUARIOS/AdminUsuario/CrearUsuario/CrearUsuario";
 
 import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
@@ -71,6 +71,7 @@ function App() {
             <Route path="/clientes" element={<Clientes />} />
             <Route path="/logged" element={<Logged />} />
             <Route path="/crearcliente" element={<CrearCliente />} />
+            <Route path='/clientes/:id' element={<DetailCliente />} />
             <Route path="/configuracion" element={<Configuracion />} />
             <Route path="/añadirProducto" element={<AñadirProducto />} />
             <Route path="/misProductos" element={<MisProductos />} />
