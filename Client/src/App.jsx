@@ -15,7 +15,6 @@ import {
   MisProductos,
 } from "./Componentes/PRODUCTO/exportador";
 import { AdminUsuario, ConfigPerfil } from "./Componentes/USUARIOS/exportador";
-import CrearUsuario from "./Componentes/USUARIOS/AdminUsuario/CrearUsuario/CrearUsuario";
 
 import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";

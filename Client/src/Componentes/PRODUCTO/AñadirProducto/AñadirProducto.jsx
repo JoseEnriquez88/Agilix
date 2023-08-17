@@ -10,13 +10,23 @@ const InitialCreate = {
   nombre: "",
   precio: "",
   img: "",
+  tipo: "",
 };
 
 const AñadirProducto = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false); //Estado para mostrar mensaje de confirmacion de creacion
   const [previewImage, setPreviewImage] = useState(""); //Estado para previsualizacion de imagen subida
   const [input, setInput] = useState(InitialCreate); //Estado para almacenamiento de datos en estado local
+  const [stock, setStock] = useState(1); // Estado para almacenar el  stock de productos a crear
+  const [stockDisponible, setStockDisponible] = useState(0);
   const dispatch = useDispatch();
+
+  
+     // Función para manejar el cambio en el campo de stock
+     const handleStockChange = (event) => {
+      const nuevaStock = parseInt(event.target.value); // Convertir el valor a un número entero
+      setStockDisponible(nuevaStock);
+    };
 
   //Funcion que captura la data de los inputs y la almacena en el estado local
   const handleChange = (event) => {
@@ -42,13 +52,16 @@ const AñadirProducto = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+
     try {
       const fileName = input.img.split("\\").pop();
 
       const formData = new FormData();
       formData.append("nombre", input.nombre);
       formData.append("precio", input.precio);
+      formData.append("tipo", input.tipo);
       formData.append("img", fileName);
+      formData.append("stock", stockDisponible); //  la cantidad al FormData
 
       const formDataObject = Object.fromEntries(formData);
 
@@ -63,6 +76,10 @@ const AñadirProducto = () => {
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
 
+       // Actualiza la stock disponible
+      setStockDisponible(stock);
+
+
       setTimeout(() => {
         setShowSuccessMessage(false);
         setInput({
@@ -70,13 +87,23 @@ const AñadirProducto = () => {
           nombre: "",
           precio: "",
           img: "",
+          tipo: "escoger",
         });
         setPreviewImage("");
+        setStock(1); // Restablecer la stocka 1 después de la creación
+        setStockDisponible(1); // Restablecer la stock disponible
       }, 2000);
     } catch (error) {
       alert(error.response.data.error);
     }
   };
+
+  const seleccionarTipo = (event) => {   //esto es para select del tipo de producto
+    setInput({
+      ...input,
+      tipo: event.target.value,
+    })
+  }
 
   //FORMULARIO
 
@@ -85,7 +112,7 @@ const AñadirProducto = () => {
       <div>
         <p className={styles.titituloForm}>Crear Productos</p>
         <label className={styles.inputGropLabel} htmlFor="name">
-          Nombre :{" "}
+          Nombre :
         </label>
         <input
           className={styles.inputGroup}
@@ -98,7 +125,7 @@ const AñadirProducto = () => {
       </div>
       <div>
         <label className={styles.inputGropLabel} htmlFor="price">
-          Precio :{" "}
+          Precio :
         </label>
         <input
           className={styles.inputGroup}
@@ -110,47 +137,70 @@ const AñadirProducto = () => {
         />
       </div>
       <div>
+    <label className={styles.inputGropLabel} htmlFor="stock">
+    stock :
+      </label>
+      <input
+        className={styles.inputGroup}
+        type="number"
+        id="stock"
+        name="stock"
+        value={stockDisponible} // Usa stockDisponible para mostrar
+        onChange={handleStockChange}
+      />
+    </div>
+      <div>
+        <label className={styles.inputGropLabel}>
+          Tipo :
+        </label>
+        <select className={styles.inputGroup} defaultValue="escoger" onChange={seleccionarTipo} value = {input.tipo}>
+          <option disabled={true} value="escoger">Escoger Tipo</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="abarrotes">Abarrotes</option>
+          <option value="carnes">Carnes</option>
+        </select>
+      </div>
+      <div>
         <span className={styles.ImagenTittle}>Imagen :</span>
         <br />
-        <label className={styles.inputGropLabel} htmlFor="image">
-          <br />
-          <span className={styles.uploadButton}>Seleccionar archivo</span>
-        </label>
-        {previewImage && (
-          <img
-            className={styles.image}
-            id="preview"
-            src={previewImage}
-            alt="Preview"
-          />
-        )}
-        <button
-          className={styles.buttonDelete}
-          type="button"
-          onClick={handleRemoveImage}
-        >
-          Eliminar imagen
-        </button>
-        <input
-          className={styles.customFileInput}
-          type="file"
-          id="image"
-          name="img"
-          value={input.img}
-          onChange={handleImageChange}
+      <label className={styles.inputGropLabel} htmlFor="image">
+        <br />
+        <span className={styles.uploadButton}>Seleccionar archivo</span>
+      </label>
+      {previewImage && (
+        <img
+          className={styles.image}
+          id="preview"
+          src={previewImage}
+          alt="Preview"
         />
-      </div>
-      <button
-        className={styles.buttonCreate}
-        type="submit"
-        onClick={handleSubmit}
-      >
-        Crear Producto
-      </button>
-      {showSuccessMessage && (
-        <div className="success-modal">¡Producto creado exitosamente!</div>
       )}
-    </form>
+      <button
+        className={styles.buttonDelete}
+        type="button"
+        onClick={handleRemoveImage}
+      >
+        Eliminar imagen
+      </button>
+      <input
+        className={styles.customFileInput}
+        type="file"
+        id="image"
+        name="img"
+        value={input.img}
+        onChange={handleImageChange}
+      />
+    </div>
+    <button className={styles.buttonCreate} type="submit" onClick={handleSubmit}>
+      Crear Producto
+    </button>
+    {showSuccessMessage && (
+      <div className="success-modal">¡Producto creado exitosamente!</div>
+    )}
+  
+  </form>
   );
 };
 

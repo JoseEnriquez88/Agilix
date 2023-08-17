@@ -63,11 +63,11 @@ const productSlice = createSlice({
      restablecerOrdenamientos: (state) => {
       state.productosFiltrados = state.allProducts;
     },
-    //Filtro por tipo de producto
-    filtrarPorTipo: (state, action) => {
-      state.productosFiltrados = state.productosFiltrados.filter(
-        (producto) => producto.tipo === action.payload
-      );
+    filtroPorTipo : (state, action) =>{
+      let todoProductosCopia = [...state.allProducts];
+      let productos  = [...state.allProducts];
+      productos = productos.filter(producto => producto.tipo === action.payload);
+      state.productosFiltrados = action.payload==="todos"?todoProductosCopia:productos;
     }
   },
 
@@ -109,8 +109,5 @@ const productSlice = createSlice({
 });
 
 export default productSlice.reducer;
-export const {
-  ordenAlfabetico,
-  ordenPorPrecio,
-  restablecerOrdenamientos,
-} = productSlice.actions;
+
+export const { ordenAlfabetico, ordenPorPrecio, filtroPorTipo, restablecerOrdenamientos } = productSlice.actions;

@@ -26,10 +26,14 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
-      stock: {
+      tipo:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      stock: { 
         type: DataTypes.INTEGER,
-        defaultValue: 1,
-      }
+        defaultValue: 0, 
+      },
     },
     { timestamps: false, freezeTableName: true }
   );
