@@ -1,23 +1,35 @@
 const { Producto } = require("../../db");
 
-const updateProducto = async (id,nombre,img,precio)  => {
+const updateProducto = async (id,nombre,img,precio, tipo, stock)  => {
   try {
-    // Buscar el cliente por ID si se proporciona
-    if (id && nombre && img && precio) {
+    if (id && nombre && img && precio && tipo && stock) {
       const cliente = await Producto.update(
-        { nombre: nombre, img: img, precio: precio },
+        { nombre: nombre, img: img, precio: precio, tipo: tipo, stock: stock},
         {
           where: {
-            id: id
+            id: id,
           },
+          returning: true, // para obtener el registro actualizado
         }
       );
+      
+
+      if (numUpdated === 0) {
+        throw new Error('El producto no pudo actualizarse.');
+      }
+
+      const productoActualizado = updateProducto[0];
+      if(stock){
+        productoActualizado.stock = stock;
+        await productoActualizado.save();
+      }
+
       return nombre;
     }
   } catch (error) {
-    // Manejo de errores si ocurre algún problema con la actualización
-    return { error: "No se pudo actualizar el producto." };
+    return { error: 'No se pudo actualizar el producto.' };
   }
 };
 
-module.exports =updateProducto;
+
+module.exports = updateProducto;
