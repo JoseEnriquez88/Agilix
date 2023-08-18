@@ -2,7 +2,7 @@ const { Router } = require("express");
 const {
   getAllClientesHandler,
   getClienteByIdHandler,
-} = require("../handlers/Cliente/getAllClientesHandler");
+} = require("../handlers/cliente/getAllClientesHandler");
 const postClienteHandler = require("../handlers/cliente/postClienteHandler");
 const updateClienteHandler = require("../handlers/cliente/updateClienteHandler");
 
