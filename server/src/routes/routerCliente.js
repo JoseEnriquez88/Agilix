@@ -4,7 +4,7 @@ const {
   getClienteByIdHandler,
 } = require("../handlers/cliente/getAllClientesHandler");
 const postClienteHandler = require("../handlers/cliente/postClienteHandler");
-const updateClienteHandler = require("../handlers/Cliente/updateClienteHandler");
+const updateClienteHandler = require("../handlers/cliente/updateClienteHandler");
 
 const routerCliente = Router();
 
