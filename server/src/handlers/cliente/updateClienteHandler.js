@@ -1,5 +1,5 @@
-const updateCliente = require ('../../controllers/Cliente/updateCliente')
-const deleteCliente = require ('../../controllers/Cliente/deleteCliente')
+const updateCliente = require ('../../controllers/cliente/updateCliente')
+const deleteCliente = require ('../../controllers/cliente/deleteCliente')
 
 const updateClienteHandler = async (req, res, next) => {
   const { id } = req.params;

@@ -1,9 +1,9 @@
 const getAllClientes = require("../../controllers/cliente/getAllClientes");
-const getClienteByName = require('../../controllers/Cliente/getClienteByName');
+const getClienteByName = require('../../controllers/cliente/getClienteByName');
 const getClienteByEmail = require("../../controllers/cliente/getClienteByEmail");
 const getClienteById = require("../../controllers/cliente/getClienteById");
-const getClienteByPhone = require('../../controllers/Cliente/getClienteByPhone');
-const getClienteByDni = require('../../controllers/Cliente/getClienteByDni');
+const getClienteByPhone = require('../../controllers/cliente/getClienteByPhone');
+const getClienteByDni = require('../../controllers/cliente/getClienteByDni');
 
 const getAllClientesHandler = async (req, res) => {
   const { nombre, email, telefono, dni } = req.query;
