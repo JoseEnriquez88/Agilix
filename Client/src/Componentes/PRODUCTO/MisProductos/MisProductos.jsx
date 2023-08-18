@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   ordenAlfabetico,
   ordenPorPrecio,
+  filtroPorTipo,
   restablecerOrdenamientos,
   deleteProduct,
 
@@ -55,14 +56,16 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
-  const handleDelete = (productId) => {
+    const handleDelete = (productId) => {
     dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
   };
-
   const currentItem = product.productosFiltrados.slice(indexFirstItem, indexLastItem);//corta la cantidad de items que necesito mostrar según los indices a partir del estado global
-    const paginado = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
+  const paginado = (pageNumber) => {
+      setCurrentPage(pageNumber);
+  };
+  const filtrarProductoPorTipo = (event) => {
+    dispatch(filtroPorTipo(event.target.value))
+  }
 
   return (
     <div>
@@ -74,7 +77,7 @@ const MisProductos = () => {
           value={resetSeleccion.ordenAlfabetico}
         >
           <option disabled={true}>Orden Alfabético</option>
-          <option value="A_Z_predeterminado">Predeterminado</option>
+          <option value="A_Z_predeterminado">Orden Alfabético</option>
           <option value="asc">A-Z</option>
           <option value="desc">Z-A</option>
         </select>
@@ -84,19 +87,18 @@ const MisProductos = () => {
           value={resetSeleccion.ordenPorPrecio}
         >
           <option disabled={true}>Ordenar por precio</option>
-          <option value="Precio_predeterminado">Predeterminado</option>
+          <option value="Precio_predeterminado">Ordenar por precio</option>
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
-        <button className={styles.buttonReset} onClick={handleReset}>
-          Restablecer Ordenamiento
-        </button>
-
-        <select className={styles.selectores}>
-          <option disabled={true}>Filtrar por tipo</option>
-          {tipos.map((tipo) => (
-            <option value={tipo} key={tipo}></option>
-          ))}
+        <select onChange={filtrarProductoPorTipo} className={styles.selectores}>
+          <option disabled={true}>Filtrar Producto</option>
+          <option value="todos">Tipos</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="abarrotes">Abarrotes</option>
+          <option value="carnes">Carnes</option>
         </select>
         <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
@@ -110,15 +112,16 @@ const MisProductos = () => {
         <div className={styles.contenedor}>
           {currentItem.map((prod) => (
             <div className={styles.cards} key={prod.id}>
-              <img className={styles.imagen} src={`/assets/${prod.img}`} />
+              <img className={styles.imagen} src={prod.img} />
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
+                <h3>{prod.tipo}</h3>
                 {prod.stock === 0 ? (
                 <p className={styles.agotado}>Agotado</p>
               ) : (
 
-                <p>stocks disponibles: {prod.stock}</p>
+                <p>Stock Disponible: {prod.stock}</p>
               )}
                 <button
                   className={styles.botonEliminar}

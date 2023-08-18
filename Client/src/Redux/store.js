@@ -12,7 +12,7 @@ const store = configureStore({
     clientes: clienteReducer,
     usuarios: usuarioReducer,
     ventas: ventasSlice,
-    carrito: carritoDeComprasReducer,
+    carrito: carritoDeComprasReducer
   },
 });
 

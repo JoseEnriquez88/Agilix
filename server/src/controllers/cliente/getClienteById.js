@@ -5,19 +5,20 @@ const getClienteById = async (id) => {
   const data = await Cliente.findByPk(id,{
     include: {
       model: Venta,
-      attributes: ["id","fecha"],
-      include: {
-        model: Detalle_Venta,
-        attributes: ["cantidad"],
-        include: {
-          model: Producto,
-          attributes: ["nombre", "precio"],
-        },
-      }
+      attributes: ["id","fecha", "total_venta"],
+      include:[
+        {
+          model:Producto,
+          attributes: ["id","nombre","precio"],
+          through:{
+            model:Detalle_Venta,
+            attributes: ["VentumId", "ProductoId","cantidad"],
+          }
+        }
+      ]
     }
   }
     );
-  if (!id) throw new Error(`El id ${id} no es válido para mostrar el Cliente.`);
   return data;
 };
 module.exports = getClienteById;

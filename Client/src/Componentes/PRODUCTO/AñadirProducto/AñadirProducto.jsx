@@ -10,6 +10,8 @@ const InitialCreate = {
   nombre: "",
   precio: "",
   img: "",
+  stock:"",
+  tipo: "",
 };
 
 const AñadirProducto = () => {
@@ -17,15 +19,15 @@ const AñadirProducto = () => {
   const [previewImage, setPreviewImage] = useState(""); //Estado para previsualizacion de imagen subida
   const [input, setInput] = useState(InitialCreate); //Estado para almacenamiento de datos en estado local
   const [stock, setStock] = useState(1); // Estado para almacenar el  stock de productos a crear
-  const [stockDisponible, setStockDisponible] = useState(0);
+  const [stockDisponible, setStockDisponible] = useState("");
   const dispatch = useDispatch();
 
-  
-     // Función para manejar el cambio en el campo de stock
-     const handleStockChange = (event) => {
-      const nuevaStock = parseInt(event.target.value); // Convertir el valor a un número entero
-      setStockDisponible(nuevaStock);
-    };
+
+  // Función para manejar el cambio en el campo de stock
+  const handleStockChange = (event) => {
+    const nuevaStock = parseInt(event.target.value); // Convertir el valor a un número entero
+    setStockDisponible(nuevaStock);
+  };
 
   //Funcion que captura la data de los inputs y la almacena en el estado local
   const handleChange = (event) => {
@@ -34,9 +36,10 @@ const AñadirProducto = () => {
 
   //Funcion que maneja subida de imagenes y previsualizacion
   const handleImageChange = (event) => {
-    const imgFile = event.target.files[0];
-    setInput({ ...input, [event.target.name]: event.target.value });
-    setPreviewImage(URL.createObjectURL(imgFile));
+    if(event.target.name === "img"){
+      setInput({ ...input, [event.target.name]: event.target.files[0]});
+      setPreviewImage(URL.createObjectURL(event.target.files[0]));
+    }
   };
 
   //Funcion que limpia los datos de imagenes por subir
@@ -53,20 +56,18 @@ const AñadirProducto = () => {
 
 
     try {
-      const fileName = input.img.split("\\").pop();
 
       const formData = new FormData();
       formData.append("nombre", input.nombre);
       formData.append("precio", input.precio);
-      formData.append("img", fileName);
+      formData.append("tipo", input.tipo);
       formData.append("stock", stockDisponible); //  la cantidad al FormData
+      formData.append("img", input.img);
 
       const formDataObject = Object.fromEntries(formData);
+      console.log("FormDataObject:", formDataObject);
 
-      const response = await axios.post(
-        `http://localhost:3001/productos`,
-        formDataObject
-      );
+      const response = await axios.post(`http://localhost:3001/productos`, formData);
 
       //Actualiza el estado global
       dispatch(fetchProducts());
@@ -74,7 +75,7 @@ const AñadirProducto = () => {
       // Mostrar el mensaje de éxito
       setShowSuccessMessage(true);
 
-       // Actualiza la stock disponible
+      // Actualiza la stock disponible
       setStockDisponible(stock);
 
 
@@ -85,6 +86,7 @@ const AñadirProducto = () => {
           nombre: "",
           precio: "",
           img: "",
+          tipo: "",
         });
         setPreviewImage("");
         setStock(1); // Restablecer la stocka 1 después de la creación
@@ -95,89 +97,109 @@ const AñadirProducto = () => {
     }
   };
 
+  const seleccionarTipo = (event) => {   //esto es para select del tipo de producto
+    setInput({
+      ...input,
+      tipo: event.target.value,
+    })
+  }
+
   //FORMULARIO
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-    <div>
-      <p className={styles.titituloForm}>Crear Productos</p>
-      <label className={styles.inputGropLabel} htmlFor="name">
-        Nombre :
-      </label>
-      <input
-        className={styles.inputGroup}
-        type="text"
-        id="name"
-        name="nombre"
-        value={input.nombre}
-        onChange={handleChange}
-      />
-    </div>
-    <div>
-      <label className={styles.inputGropLabel} htmlFor="price">
-        Precio :
-      </label>
-      <input
-        className={styles.inputGroup}
-        type="text"
-        id="price"
-        name="precio"
-        value={input.precio}
-        onChange={handleChange}
-      />
-    </div>
-    <div>
-    <label className={styles.inputGropLabel} htmlFor="stock">
-    stock :
-      </label>
-      <input
-        className={styles.inputGroup}
-        type="number"
-        id="stock"
-        name="stock"
-        value={stockDisponible} // Usa stockDisponible para mostrar
-        onChange={handleStockChange}
-      />
-    </div>
-    <div>
-      <span className={styles.ImagenTittle}>Imagen :</span>
-      <br />
-      <label className={styles.inputGropLabel} htmlFor="image">
-        <br />
-        <span className={styles.uploadButton}>Seleccionar archivo</span>
-      </label>
-      {previewImage && (
-        <img
-          className={styles.image}
-          id="preview"
-          src={previewImage}
-          alt="Preview"
+      <div>
+        <p className={styles.titituloForm}>Crear Productos</p>
+        <label className={styles.inputGropLabel} htmlFor="name">
+          Nombre :
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="text"
+          id="name"
+          name="nombre"
+          value={input.nombre}
+          onChange={handleChange}
         />
-      )}
-      <button
-        className={styles.buttonDelete}
-        type="button"
-        onClick={handleRemoveImage}
-      >
-        Eliminar imagen
+      </div>
+      <div>
+        <label className={styles.inputGropLabel} htmlFor="price">
+          Precio :
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="text"
+          id="price"
+          name="precio"
+          value={input.precio}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label className={styles.inputGropLabel} htmlFor="stock">
+          Stock :
+        </label>
+        <input
+          className={styles.inputGroup}
+          type="number"
+          id="stock"
+          name="stock"
+          value={stockDisponible} // Usa stockDisponible para mostrar
+          onChange={handleStockChange}
+        />
+      </div>
+      <div>
+        <label className={styles.inputGropLabel}>
+          Tipo :
+        </label>
+        <select className={styles.inputGroup} defaultValue={input.tipo ==="" && "escoger"} onChange={seleccionarTipo}>
+          <option disabled={true} value="escoger">Escoger Tipo</option>
+          <option value="frutas">Frutas</option>
+          <option value="verduras">Verduras</option>
+          <option value="bebidas">Bebidas</option>
+          <option value="abarrotes">Abarrotes</option>
+          <option value="carnes">Carnes</option>
+        </select>
+      </div>
+      <div>
+        <span className={styles.ImagenTittle}>Imagen :</span>
+        <br />
+        <label className={styles.inputGropLabel} htmlFor="image">
+          <br />
+          <span className={styles.uploadButton}>Seleccionar archivo</span>
+        </label>
+        {previewImage && (
+          <img
+            className={styles.image}
+            id="preview"
+            src={previewImage}
+            alt="Preview"
+          />
+        )}
+        <button
+          className={styles.buttonDelete}
+          type="button"
+          onClick={handleRemoveImage}
+        >
+          Eliminar imagen
+        </button>
+        <input
+          className={styles.customFileInput}
+          type="file"
+          id="image"
+          name="img"
+          accept="image/*"
+          onChange={handleImageChange}
+        />
+      </div>
+      <button className={styles.buttonCreate} type="submit" >
+        Crear Producto
       </button>
-      <input
-        className={styles.customFileInput}
-        type="file"
-        id="image"
-        name="img"
-        value={input.img}
-        onChange={handleImageChange}
-      />
-    </div>
-    <button className={styles.buttonCreate} type="submit" onClick={handleSubmit}>
-      Crear Producto
-    </button>
-    {showSuccessMessage && (
-      <div className="success-modal">¡Producto creado exitosamente!</div>
-    )}
-  
-  </form>
+      {showSuccessMessage && (
+        <div className="success-modal">¡Producto creado exitosamente!</div>
+      )}
+
+    </form>
   );
 };
 

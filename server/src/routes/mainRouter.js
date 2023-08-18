@@ -16,5 +16,4 @@ mainRouter.use("/ventas", routerVenta);
 mainRouter.use("/pagos", routerPagos);
 mainRouter.use("/auth", routerAuth);
 
-
 module.exports = mainRouter;

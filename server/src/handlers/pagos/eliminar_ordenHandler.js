@@ -1,4 +1,4 @@
-const eliminar_orden = require("../../controllers/Pagos/eliminar_orden");
+const eliminar_orden = require("../../controllers/pagos/eliminar_orden");
 
 const eliminar_ordenHandler = async (req, res) => {
     try {

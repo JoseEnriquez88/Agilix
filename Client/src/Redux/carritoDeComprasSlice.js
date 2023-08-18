@@ -8,7 +8,13 @@ const carritoDeComprasSlice = createSlice({
   reducers: {
     agregarAlCarrito: (state, action) => {
       const { producto, cantidad } = action.payload;
-      state.push({ producto, cantidad });
+      const existingProduct = state.find(item => item.producto.id === producto.id);
+      
+      if (existingProduct) {
+        existingProduct.cantidad += cantidad;
+      } else {
+        state.push({ producto, cantidad });
+      }
     },
     quitarDelCarrito: (state, action) => {
       const idProducto = action.payload;

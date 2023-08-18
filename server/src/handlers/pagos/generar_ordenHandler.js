@@ -1,4 +1,4 @@
-const generar_orden = require("../../controllers/Pagos/generar_orden");
+const generar_orden = require("../../controllers/pagos/generar_orden");
 
 const generar_ordenHandler = async (req, res) => {
     const { InfoCarrito } = req.body;

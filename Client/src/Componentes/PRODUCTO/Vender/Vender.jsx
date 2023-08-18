@@ -28,8 +28,8 @@ const Vender = () => {
             <div className={styles.ContenedorGeneralCards}>
                 <div className={styles.ContenedorCards}>
                     {productos.allProducts ? (
-                        productos.allProducts.map(({ id, nombre, img, precio }) => (
-                            <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
+                        productos.allProducts.map(({ id, nombre, img, precio,stock }) => (
+                            <Card key={id} id={id} nombre={nombre} img={img} precio={precio} stock={stock} />
                         ))
                     ) : (
                         <span className={styles.NoHayProductos}>No hay productos</span>
