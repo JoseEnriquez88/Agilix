@@ -29,7 +29,7 @@ const Card = ({ id, nombre, img, precio, stock }) => {
         } else if (cantidad > stock) {
           alert('La cantidad seleccionada es mayor al stock disponible');
         } else if (cantidad=== 0){
-            alert('La cantidad del producto no puede ser cero')
+            alert('La cantidad del stock no puede ser cero')
         }
       };
   
