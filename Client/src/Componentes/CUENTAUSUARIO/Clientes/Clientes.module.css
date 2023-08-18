@@ -1,11 +1,9 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  margin: 20px;
+  align-items: center;
+  /* margin: 20px; */
   overflow: hidden;
-  margin-left: 200px;
-  width: 1600px;
 }
 
 .clienteRow {
@@ -18,26 +16,31 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
   background-color: #1a1a1a;
-  border-radius: 0.75rem;
+  border-radius: 0.75rem ;
+  margin-left: 20px;
+  /* border: 1px solid red; */
+  text-align: center;
 }
 
 .tituloPrincipal {
   font-weight: bold;
-  margin-right: 150px;
+  text-align: left;
   color: #ffffff;
+  /* border: 0.3px solid rgb(230, 207, 0); */
 }
 
 .clienteInfo {
   display: flex;
-  display: flex;
   flex-direction: column;
-  margin-right: 150px;
+  margin-right: 80px;
+  /* border: 0.3px solid green; */
 }
 
 .nombreCliente {
   display: flex;
   font-size: 1.2rem;
   color: white;
+  
 }
 
 .telefonoCliente,
@@ -98,10 +101,13 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
+  padding: 5px;
 }
 .botonDetalle:hover a{ 
-  color: #45b545;
-  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  padding: 10px;
+  color: #962faa;
+  box-shadow: rgb(63, 63, 63) 0 5px 10px;
+  border-radius: 10%;
   transform: translateY(-2px);
 }
 .CrearCliente:disabled {

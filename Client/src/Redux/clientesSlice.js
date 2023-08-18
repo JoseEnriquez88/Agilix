@@ -13,8 +13,10 @@ const initialState = {
 export const fetchClientes = createAsyncThunk("clientes/fetchClientes", () => {
   return axios.get(URL).then((response) => response.data);
 });
-export const deleteClientes = createAsyncThunk("clientes/putClientes", (input) => {
-  return axios.put(`${URL}`,input).then((response) => response.data);
+export const deleteClientes = createAsyncThunk("clientes/putClientes", async({id,estado}) => {
+  console.log(estado)
+  const{data}= await axios.put(`${URL}/${id}`,{estado})
+  return data
 });
 
 export const getClientsByName = createAsyncThunk("clientes/getClientsByName",async (nombre) => {
@@ -31,11 +33,10 @@ export const getClientById = createAsyncThunk("clientes/getClientById", async(id
           const { data } = await axios(`${URL}/${id}`)
           return data;
 })
-export const putClient = createAsyncThunk("clientes/putClient", async (id, usuario, {dispatch}) => {
+export const putClient = createAsyncThunk("clientes/putClient", async ({id, cliente}) => {
       try {
-          const { data } = await axios.put(`${URL}/${id}`, usuario);
+          const { data } = await axios.put(`${URL}/${id}`, cliente);
           alert(data);
-          dispatch(getAllClients());
       } catch (error) {
           alert(error.message);
       }
@@ -95,6 +96,20 @@ const clienteSlice = createSlice({
       builder.addCase(getClientById.rejected, (state, action) => {
         state.loading = false;
         state.clientById = {};
+        state.error = action.error.message;
+      })
+      builder.addCase(deleteClientes.pending, (state) => {
+        state.loading = true;
+      })
+      builder.addCase(deleteClientes.fulfilled, (state) => {
+        state.loading = false;
+        state.allClientes = state.allClientes.filter(
+          (cliente) => cliente.estado !== false
+        );
+        state.error = "";
+      })
+      builder.addCase(deleteClientes.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error.message;
       })
   },
