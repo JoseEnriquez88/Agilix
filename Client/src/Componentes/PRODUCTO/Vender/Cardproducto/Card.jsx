@@ -35,7 +35,7 @@ const Card = ({ id, nombre, img, precio, stock }) => {
     return (
         <div  className={styles.ContenedorCard} >
            
-                <div>
+                <div className={styles.Contenedorinpunt}>
                     <div className={styles.ContenedorImg}>
                         <img src={img} alt={nombre} />
                     </div>
