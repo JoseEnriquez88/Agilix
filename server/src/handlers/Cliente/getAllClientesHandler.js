@@ -1,10 +1,12 @@
 const getAllClientes = require("../../controllers/cliente/getAllClientes");
-const getClienteByName = require("../../controllers/cliente/getClienteByName");
+const getClienteByName = require('../../controllers/Cliente/getClienteByName');
 const getClienteByEmail = require("../../controllers/cliente/getClienteByEmail");
 const getClienteById = require("../../controllers/cliente/getClienteById");
+const getClienteByPhone = require('../../controllers/Cliente/getClienteByPhone');
+const getClienteByDni = require('../../controllers/Cliente/getClienteByDni');
 
 const getAllClientesHandler = async (req, res) => {
-  const { nombre, email } = req.query;
+  const { nombre, email, telefono, dni } = req.query;
   if (nombre && !email) {
     try {
       //Handler Buscar por Nombre
@@ -23,9 +25,21 @@ const getAllClientesHandler = async (req, res) => {
     } catch (error) {
       return res.status(404).json({ error: error.message });
     }
+  } else if (!nombre && !email && telefono) {
+    try {
+      const respuesta = await getClienteByPhone(telefono);
+      return res.status(200).json(respuesta);
+    } catch (error) {
+      return res.status(404).json({ error: error.message });
+    }
+  }else if(!nombre && !email && !telefono && dni){
+    try {
+      const respuesta = await getClienteByDni(dni);
+      return res.status(200).json(respuesta);
+    } catch (error) {
+      return res.status(404).json({ error: error.message });
+    }
   } else {
-    //Handler Traer Todos los Clientes
-
     try {
       const clientes = await getAllClientes();
       return res.status(200).json(clientes);
@@ -35,7 +49,7 @@ const getAllClientesHandler = async (req, res) => {
   }
 };
 
-//Handler Buscar Cliente por ID
+//Handler Buscar Cliente por ID 
 
 const getClienteByIdHandler = async (req, res) => {
   const { id } = req.params;

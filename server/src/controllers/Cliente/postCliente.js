@@ -1,7 +1,8 @@
 const { Cliente } = require("../../db");
-//const postClienteValidation = require("../../helpers/Cliente/postClienteValidation"); // Corrige la ruta de importación
-const postCliente = async (nombre, telefono, email,dni) => {
-  // postClienteValidation(nombre, telefono, email); // Aquí validas el cliente y si hay un error, se lanzará una excepción
+const postClienteValidation = require('../../helpers/Cliente/postClienteValidation');
+
+const postCliente = async (nombre, telefono, email, dni) => {
+  postClienteValidation(nombre, telefono, email, dni);
 
   const nuevoCliente = await Cliente.create({
     nombre,
@@ -10,8 +11,8 @@ const postCliente = async (nombre, telefono, email,dni) => {
     dni,
   });
 
-  if (!nuevoCliente) throw new Error(`El Cliente ${nombre} no pudo crearse.`);
-  return `El Cliente ${nombre} se creó exitosamente.`;
+  if (!nuevoCliente) throw new Error(`El cliente ${nombre} no pudo crearse.`);
+  return `El cliente ${nombre} se creó exitosamente.`;
 };
 
 module.exports = postCliente;
