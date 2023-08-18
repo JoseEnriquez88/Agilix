@@ -1,5 +1,5 @@
 const { Cliente } = require("../../db");
-const postClienteValidation = require('../../helpers/Cliente/postClienteValidation');
+const postClienteValidation = require('../../helpers/cliente/postClienteValidation');
 
 const postCliente = async (nombre, telefono, email, dni) => {
   postClienteValidation(nombre, telefono, email, dni);
