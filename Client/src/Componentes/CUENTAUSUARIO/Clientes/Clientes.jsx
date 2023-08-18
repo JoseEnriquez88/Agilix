@@ -1,11 +1,14 @@
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchClientes } from "../../../Redux/clientesSlice";
+import {deleteClientes} from "../../../Redux/clientesSlice"
 import { NavLink } from "react-router-dom";
 // import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import styles from "./Clientes.module.css";
 import RefreshIcon from "@mui/icons-material/Refresh";
+
 
 const handleRefresh = () => {
   window.location.reload();
@@ -18,6 +21,10 @@ const Clientes = () => {
   useEffect(() => {
     dispatch(fetchClientes());
   }, [dispatch]);
+  const handlerEstado = (id,estado) => {
+    dispatch(deleteClientes({id,estado}));
+    handleRefresh();
+  }
 
   if (!clientes.allClientes) {
     return (
@@ -64,6 +71,11 @@ const Clientes = () => {
               <div className={styles.clienteInfo}>
                 <span className={styles.tituloPrincipal}>DNI:</span>
                 <p className={styles.clienteEmail}>{cliente.dni}</p>
+              </div>
+              <div className={styles.divDetalle}>
+                <button className={styles.botonDetalle} onClick={() => handlerEstado(cliente.id,!cliente.estado)}>
+                  {(cliente.estado === true) ? "Habilitado": "Deshabilitado"}
+                </button>
               </div>
               <div className={styles.divDetalle} >
                 <button className={styles.botonDetalle}>
