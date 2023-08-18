@@ -36,16 +36,11 @@ const MisProductos = () => {
       ...resetSeleccion,
       ordenAlfabetico: event.target.value,
     });
-    dispatch(ordenAlfabetico(event.target.value));
-  };
-
-  // Handler del ordenamiento por precio
-  const handleSortPrecio = (event) => {
-    setResetSeleccion({
-      ...resetSeleccion,
-      ordenPorPrecio: event.target.value,
-    });
-    dispatch(ordenPorPrecio(event.target.value));
+    if (event.target.value === "asc" || event.target.value === "desc") {
+      dispatch(ordenAlfabetico(event.target.value));
+    } else {
+      dispatch(ordenPorPrecio(event.target.value));
+    }
   };
 
   // Handler del reseteo de ordenamientos
@@ -56,41 +51,22 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
-    const handleDelete = (productId) => {
+  const handleDelete = (productId) => {
     dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
   };
   const currentItem = product.productosFiltrados.slice(indexFirstItem, indexLastItem);//corta la cantidad de items que necesito mostrar según los indices a partir del estado global
   const paginado = (pageNumber) => {
-      setCurrentPage(pageNumber);
+    setCurrentPage(pageNumber);
   };
   const filtrarProductoPorTipo = (event) => {
-    dispatch(filtroPorTipo(event.target.value))
+    dispatch(restablecerOrdenamientos());
+    dispatch(filtroPorTipo(event.target.value));
   }
 
   return (
     <div>
       <h1 className={styles.tittle}>Listado de Productos</h1>
       <div className={styles.contenedorSelector}>
-        <select
-          className={styles.selectores}
-          onChange={handleChange}
-          value={resetSeleccion.ordenAlfabetico}
-        >
-          <option disabled={true}>Orden Alfabético</option>
-          <option value="A_Z_predeterminado">Orden Alfabético</option>
-          <option value="asc">A-Z</option>
-          <option value="desc">Z-A</option>
-        </select>
-        <select
-          className={styles.selectores}
-          onChange={handleSortPrecio}
-          value={resetSeleccion.ordenPorPrecio}
-        >
-          <option disabled={true}>Ordenar por precio</option>
-          <option value="Precio_predeterminado">Ordenar por precio</option>
-          <option value="precioMax">Mayor Precio</option>
-          <option value="precioMin">Menor Precio</option>
-        </select>
         <select onChange={filtrarProductoPorTipo} className={styles.selectores}>
           <option disabled={true}>Filtrar Producto</option>
           <option value="todos">Tipos</option>
@@ -99,6 +75,14 @@ const MisProductos = () => {
           <option value="bebidas">Bebidas</option>
           <option value="abarrotes">Abarrotes</option>
           <option value="carnes">Carnes</option>
+        </select>
+        <select className={styles.selectores} onChange={handleChange} value={resetSeleccion.ordenAlfabetico}>
+          <option disabled={true}>Orden Alfabético</option>
+          <option value="A_Z_predeterminado">Orden Alfabético</option>
+          <option value="asc">A-Z</option>
+          <option value="desc">Z-A</option>
+          <option value="precioMax">Mayor Precio</option>
+          <option value="precioMin">Menor Precio</option>
         </select>
         <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
       </div>
@@ -118,11 +102,11 @@ const MisProductos = () => {
                 <h3> ${prod.precio}</h3>
                 <h3>{prod.tipo}</h3>
                 {prod.stock === 0 ? (
-                <p className={styles.agotado}>Agotado</p>
-              ) : (
+                  <p className={styles.agotado}>Agotado</p>
+                ) : (
 
-                <p>Stock Disponible: {prod.stock}</p>
-              )}
+                  <p>Stock Disponible: {prod.stock}</p>
+                )}
                 <button
                   className={styles.botonEliminar}
                   onClick={() => handleDelete(prod.id)}
@@ -135,11 +119,11 @@ const MisProductos = () => {
         </div>
       ) : null}
       <div className={styles.PaginadoContainer}>
-                <Paginado className={styles.Paginado}
-                    productosPorPagina={productosPorPagina}
-                    products={product.productosFiltrados}
-                    paginado={paginado}
-                    currentPage={currentPage} />
+        <Paginado className={styles.Paginado}
+          productosPorPagina={productosPorPagina}
+          products={product.productosFiltrados}
+          paginado={paginado}
+          currentPage={currentPage} />
       </div>
     </div>
   );
