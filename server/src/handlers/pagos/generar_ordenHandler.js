@@ -2,7 +2,6 @@ const generar_orden = require("../../controllers/pagos/generar_orden");
 
 const generar_ordenHandler = async (req, res) => {
     const { InfoCarrito } = req.body;
-    console.log("Esto llegó al handler: " + InfoCarrito);
     try {
        const orden = await generar_orden(InfoCarrito);
         res.status(201).json({ orden }); 
