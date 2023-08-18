@@ -39,7 +39,7 @@ const Card = ({ id, nombre, img, precio, stock }) => {
            
                 <div className={styles.Contenedorinpunt}>
                     <div className={styles.ContenedorImg}>
-                        <img src={img} alt={nombre} />
+                        <img className={styles.img}src={img} alt={nombre} />
                     </div>
                     <div className={styles.ContenedorInfo}>
                         <h3>{nombre}</h3>
@@ -48,6 +48,7 @@ const Card = ({ id, nombre, img, precio, stock }) => {
                     </div>
                     <div className={styles.ContenedorBotonStock}>
                         <input
+                           className={styles.input}
                             type="number"
                             value={cantidad}
                             onChange={handleCantidadChange}
