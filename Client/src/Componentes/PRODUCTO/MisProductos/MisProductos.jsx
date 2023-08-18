@@ -112,7 +112,7 @@ const MisProductos = () => {
         <div className={styles.contenedor}>
           {currentItem.map((prod) => (
             <div className={styles.cards} key={prod.id}>
-              <img className={styles.imagen} src={`/assets/${prod.img}`} />
+              <img className={styles.imagen} src={prod.img} />
               <div className={styles.contenedorLetras}>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
