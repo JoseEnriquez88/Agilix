@@ -1,12 +1,12 @@
 const updateUser = require('../../controllers/usuarios/updateUser');
-const deleteUser = require('../../controllers/usuarios/deleteUser');
+  const deleteUser = require('../../controllers/usuarios/deleteUser');
 
 const updateUserHandler = async (req, res, next) => {
   const { id } = req.params;
-  const { nombre, email, telefono, dni, estado,ventaId} = req.body;
+    const { nombre, email, telefono, dni, estado} = req.body;
 
   try {
-   const respuesta =(typeof estado!=="boolean")? await updateUser(id, nombre, email, telefono, dni,ventaId):await deleteUser(id, estado); // Llamada a la función updateUser con el parámetro estado
+   const respuesta =(typeof estado!=="boolean")? await updateUser(id, nombre, email, telefono, dni):await deleteUser(id, estado); // Llamada a la función updateUser con el parámetro estado
     res.status(200).json({ message: `Actualización exitosa del cliente ${respuesta}` });
   } catch (err) {
     console.error('Error:', err);
