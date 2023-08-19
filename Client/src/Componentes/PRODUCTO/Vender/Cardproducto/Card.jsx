@@ -28,6 +28,8 @@ const Card = ({ id, nombre, img, precio, stock }) => {
           setCantidad(0);
         } else if (cantidad > stock) {
           alert('La cantidad seleccionada es mayor al stock disponible');
+        } else if (cantidad=== 0){
+            alert('La cantidad del stock no puede ser cero')
         }
       };
   
@@ -35,9 +37,9 @@ const Card = ({ id, nombre, img, precio, stock }) => {
     return (
         <div  className={styles.ContenedorCard} >
            
-                <div>
+                <div className={styles.Contenedorinpunt}>
                     <div className={styles.ContenedorImg}>
-                        <img src={img} alt={nombre} />
+                        <img className={styles.img}src={img} alt={nombre} />
                     </div>
                     <div className={styles.ContenedorInfo}>
                         <h3>{nombre}</h3>
@@ -46,6 +48,7 @@ const Card = ({ id, nombre, img, precio, stock }) => {
                     </div>
                     <div className={styles.ContenedorBotonStock}>
                         <input
+                           className={styles.input}
                             type="number"
                             value={cantidad}
                             onChange={handleCantidadChange}

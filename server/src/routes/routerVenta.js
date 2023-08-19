@@ -1,10 +1,10 @@
-const { Router } = require("express")
+const { Router } = require("express");
 const {
-    getVentaByIdHandler,
-    getAllVentaHandler,
-}= require("../handlers/Ventas/getAllVentaHandler");
-const postVentaHandler = require("../handlers/Ventas/postVentaHandler");
-const updateVentaHandler = require("../handlers/Ventas/updateVentaHandler");
+  getVentaByIdHandler,
+  getAllVentaHandler,
+} = require("../handlers/ventas/getAllVentaHandler");
+const postVentaHandler = require("../handlers/ventas/postVentaHandler");
+const updateVentaHandler = require("../handlers/ventas/updateVentaHandler");
 
 const routerVenta = Router();
 

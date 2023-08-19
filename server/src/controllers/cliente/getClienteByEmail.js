@@ -5,7 +5,7 @@ const getClienteByEmail = async (email) => {
         where: { email },
         attributes: ['id', 'nombre', 'telefono', 'email', 'dni', 'estado'],
     });
-    if(!clientePorEmail) throw new Error(`No existe Cliente con el email: ${email}`);
+    if(!clientePorEmail) throw new Error(`No existe cliente con el email: ${email}`);
     return clientePorEmail;
 }
 

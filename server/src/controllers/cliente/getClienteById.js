@@ -19,7 +19,6 @@ const getClienteById = async (id) => {
     }
   }
     );
-  if (!id) throw new Error(`El id ${id} no es válido para mostrar el Cliente.`);
   return data;
 };
 module.exports = getClienteById;

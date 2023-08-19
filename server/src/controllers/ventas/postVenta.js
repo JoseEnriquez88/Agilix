@@ -1,12 +1,19 @@
-const { Venta, Cliente, Usuario, Producto, Detalle_Venta } = require("../../db")
-const AllVentaValidation = require("../../helpers/Venta/AllVentaValidation")
+const {
+  Venta,
+  Cliente,
+  Usuario,
+  Producto,
+  Detalle_Venta,
+} = require("../../db");
+const allVentaValidation = require("../../helpers/venta/allVentaValidationt");
 
 const postVenta = async (id_cliente, id_usuario, total_venta, productos) => {
-  // AllVentaValidation(id_cliente,id_usuario,total_venta);
+  // allVentaValidation(id_cliente,id_usuario,total_venta);
 
-  const cliente = await Cliente.findByPk(id_cliente)
+  const cliente = await Cliente.findByPk(id_cliente);
   const usuario = await Usuario.findByPk(id_usuario);
-  if (!cliente || !usuario) throw new Error(`No se encontró cliente o usuario.`);
+  if (!cliente || !usuario)
+    throw new Error(`No se encontró cliente o usuario.`);
 
   const ventas = await Venta.create({
     total_venta,
@@ -21,15 +28,16 @@ const postVenta = async (id_cliente, id_usuario, total_venta, productos) => {
   await cliente.addVenta(ventas);
 
   for (const producto of productos) {
-    
     await producto.addVenta(ventas);
     stockUpdated = await Producto.findByPk(producto.id);
-    if(stockUpdated.stock >=producto.cantidad){
-      stockUpdated.stock-=producto.cantidad
+    if (stockUpdated.stock >= producto.cantidad) {
+      stockUpdated.stock -= producto.cantidad;
       await stockUpdated.save();
-    }else{
-      throw new Error(`No hay suficiente stock del producto ${producto.nombre} Para realizar la Venta.`)
-    };
+    } else {
+      throw new Error(
+        `No hay suficiente stock del producto ${producto.nombre} Para realizar la Venta.`
+      );
+    }
     const detalleVenta = await Detalle_Venta.create({
       idVenta: ventas.id,
       idProducto: producto.id,
@@ -37,5 +45,5 @@ const postVenta = async (id_cliente, id_usuario, total_venta, productos) => {
     });
   }
   return `La Venta se creó exitosamente.`;
-}
+};
 module.exports = postVenta;
