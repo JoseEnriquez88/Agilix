@@ -35,9 +35,7 @@ server.use(
   })
 );
 
-const upload = multer({
-  dest: "./uploads",
-});
+const upload = multer();
 
 cloudinary.config({
   cloud_name: CLOUDINARY_CLOUD_NAME,
@@ -45,7 +43,7 @@ cloudinary.config({
   api_secret: CLOUDINARY_API_SECRET
 })
 
-server.use(upload.single("img"));
+server.use(upload.any());
 
 // server.use((req, res, next) => {
 //   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
