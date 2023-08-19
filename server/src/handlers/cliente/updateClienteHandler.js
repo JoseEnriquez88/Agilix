@@ -3,7 +3,7 @@ const deleteCliente = require ('../../controllers/cliente/deleteCliente')
 
 const updateClienteHandler = async (req, res, next) => {
   const { id } = req.params;
-  const { nombre, email, telefono, dni, estado} = req.body;
+  const { nombre, email, telefono, dni, estado, } = req.body;
   try {
     const respuesta = (typeof estado!=="boolean")?await updateCliente(id,nombre, email, telefono, dni):await deleteCliente(id,estado);
     res.status(200).json({respuesta});
