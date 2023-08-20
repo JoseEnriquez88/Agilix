@@ -35,6 +35,10 @@ module.exports = (sequelize) => {
       estado: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
+      },
+      rol: {
+        type: DataTypes.ENUM('administrador', 'cajero'),
+        allowNull: false,
       }
     },
     { timestamps: false, freezeTableName: true }
