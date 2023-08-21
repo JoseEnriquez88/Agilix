@@ -7,7 +7,7 @@ const {
 } = require("../../db");
 const allVentaValidation = require("../../helpers/venta/allVentaValidationt");
 
-const postVenta = async (id_cliente, id_usuario, total_venta, productos) => {
+const postVenta = async (id_cliente, id_usuario, total_venta, productos, id_mercado_pago, fecha) => {
   // allVentaValidation(id_cliente,id_usuario,total_venta);
 
   const cliente = await Cliente.findByPk(id_cliente);
@@ -17,19 +17,18 @@ const postVenta = async (id_cliente, id_usuario, total_venta, productos) => {
 
   const ventas = await Venta.create({
     total_venta,
-    fecha: new Date(),
+    id_mercado_pago,
+    fecha
   });
 
   await ventas.setCliente(cliente);
   await ventas.setUsuario(usuario);
 
   if (!ventas) throw new Error(`La venta no pudo concretarse.`);
-  await usuario.addVenta(ventas);
-  await cliente.addVenta(ventas);
 
   for (const producto of productos) {
-    await producto.addVenta(ventas);
-    stockUpdated = await Producto.findByPk(producto.id);
+    // await producto.addVenta(ventas); genera error
+    const stockUpdated = await Producto.findByPk(producto.id);
     if (stockUpdated.stock >= producto.cantidad) {
       stockUpdated.stock -= producto.cantidad;
       await stockUpdated.save();
@@ -39,9 +38,9 @@ const postVenta = async (id_cliente, id_usuario, total_venta, productos) => {
       );
     }
     const detalleVenta = await Detalle_Venta.create({
-      idVenta: ventas.id,
-      idProducto: producto.id,
-      cantidad: producto.stock,
+      VentumId: ventas.id,
+      ProductoId: producto.id,
+      cantidad: producto.cantidad,
     });
   }
   return `La Venta se creó exitosamente.`;

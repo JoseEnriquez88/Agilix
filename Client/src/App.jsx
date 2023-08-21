@@ -14,7 +14,7 @@ import {
   Vender,
   MisProductos,
 } from "./Componentes/PRODUCTO/exportador";
-import { AdminUsuario, ConfigPerfil } from "./Componentes/USUARIOS/exportador";
+import { AdminUsuario, ConfigPerfil, CrearUsuario } from "./Componentes/USUARIOS/exportador";
 
 import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
@@ -77,6 +77,7 @@ function App() {
             <Route path="/misProductos" element={<MisProductos />} />
             <Route path="/admin" element={<AdminUsuario />} />
             <Route path="/configPerfil" element={<ConfigPerfil />} />
+            <Route path="/crearusuario" element={<CrearUsuario />} />
             <Route path="/cuenta" element={<Cuenta />} />
             <Route path="/pagos" element={<Pagos />} />
             <Route path="/reporte" element={<Reporte />} />

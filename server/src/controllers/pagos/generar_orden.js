@@ -12,7 +12,7 @@ const generar_Orden = async (InfoCarrito) => {
                     title: "Venta de productos Agilix",
                     description: "Agilix - Venta de productos",
                     //cambiar la url al que genere ngrok o el deploy
-                    notification_url:"https://be7a-2800-810-517-9a4-e1de-b8e4-773b-3f47.ngrok.io/pagos/notificar_pagos",
+                    notification_url:"https://fdae-38-25-30-44.ngrok.io/pagos/notificar_pagos",
                     total_amount: InfoCarrito.map(item => item.precio * item.cantidad).reduce((a, b) => a + b, 0),
                     items: InfoCarrito.map(item => ({
                         sku_number: "A123K9191938",
@@ -32,9 +32,8 @@ const generar_Orden = async (InfoCarrito) => {
                     },
                 }
             );
-
             // Manejar la respuesta de la solicitud aquí
-            console.log("Orden generada con éxito", postOrden.data);
+            console.log("Orden generada con éxito", postOrden);
         } catch (error) {
             // Manejar el error de la solicitud aquí
             console.error("Error al enviar los datos a Mercado Pago (Controlador) ", error.response.data.message);
