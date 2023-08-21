@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   allClientes: [],
   clientById: {},
+  clientByDni: {}, //necesario para la creacion de una venta
   error: "",
 };
 
@@ -29,6 +30,10 @@ export const getClientByEmail = createAsyncThunk("clientes/getClientByEmail", as
     return data;
   }
 );
+export const getClientByDni = createAsyncThunk("clientes/getClientByDni", async (dni) => {
+  const { data } = await axios(`${URL}?dni=${dni}`);
+  return data;
+});
 export const getClientById = createAsyncThunk("clientes/getClientById", async(id) => {
           const { data } = await axios(`${URL}/${id}`)
           return data;
@@ -85,6 +90,19 @@ const clienteSlice = createSlice({
         state.allClientes = [];
         state.error = action.error.message;
       })
+      builder.addCase(getClientByDni.pending, (state) => {
+        state.loading = true;
+    })
+    builder.addCase(getClientByDni.fulfilled, (state, action) => {
+        state.loading = false;
+        state.clientByDni = action.payload;
+        state.error = "";
+    })
+    builder.addCase(getClientByDni.rejected, (state, action) => {
+        state.loading = false;
+        state.clientByDni = {};
+        state.error = action.error.message;
+    })
       builder.addCase(getClientById.pending, (state) => {
         state.loading = true;
       })

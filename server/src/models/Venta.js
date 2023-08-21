@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
         type: DataTypes.FLOAT,
         allowNull: false,
       },
+      id_mercado_pago: {
+        type: DataTypes.STRING,
+        allowNull: false
+      }
     },
     { timestamps: false, freezeTableName: true }
   );

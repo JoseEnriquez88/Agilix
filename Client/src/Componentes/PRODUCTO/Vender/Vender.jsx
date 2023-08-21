@@ -5,11 +5,21 @@ import Card from "./Cardproducto/Card";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import styles from "./Vender.module.css";
+import { useDispatch } from 'react-redux';
+import { fetchProducts } from '../../../Redux/productSlice';
+import RefreshIcon from "@mui/icons-material/Refresh";
 
 const Vender = () => {
+    const dispatch = useDispatch();
     const productos = useSelector((state) => state.product);
+    const handleRecargarProductos = () => {
+        dispatch(fetchProducts());
+      };
     return (
         <div className={styles.ContenedorVender}>
+            <button onClick={handleRecargarProductos} className={styles.BotonBack}>
+            <RefreshIcon />
+            </button>
             <div className={styles.ContenedorBotonBackYCarrito}>
                 <NavLink to='/' className={styles.BotonBack}>
                     <ArrowBackIosNewIcon className={styles.IconoBack}/>
