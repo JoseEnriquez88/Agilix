@@ -14,7 +14,7 @@ const DetalleDeCompra = () => {
 
 
     let clientEncontrado = useSelector(state => state.clientes.clientByDni);
-    const usuarioID = "934e1527-948d-4933-a53d-0b4c6dee8fe4";
+    const usuarioID = "581e75c6-69ba-490d-ad2a-a1119d65ac50";
 
     const handleBuscarPorDNI = async () => {
         if (dniBusqueda) {

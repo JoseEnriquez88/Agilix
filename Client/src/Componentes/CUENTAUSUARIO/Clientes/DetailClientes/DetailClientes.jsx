@@ -15,14 +15,14 @@ const DetailCliente = () => {
 
   const handleVolverAtras = () => {
     window.history.back();
-};
+  };
 
   return (
     <div className={styles.contenedorPrincipal}>
       <button className={styles.BotonBack} onClick={handleVolverAtras}>
-      <ArrowBackIosNewIcon className={styles.IconoBack}/>
+        <ArrowBackIosNewIcon className={styles.IconoBack} />
       </button>
-      <h1>Detalle del Cliente {cliente.nombre}</h1>
+      <h1>Historial del Cliente {cliente.nombre}</h1>
       <table className={styles.tabla} >
         <caption>
           Últimas compras
