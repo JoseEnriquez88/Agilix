@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: start;
     width: 350px;
-    height: 500px;
+    height: 520px;
     border: #4b4b4b solid 3px;
     border-radius: 10px;
     background-color: #000000;
@@ -78,6 +78,7 @@
 }
 .nombreApellido{
     color: white;
+    font-size: 35px;
 }
 .inputsIzquierda{
     position: relative;

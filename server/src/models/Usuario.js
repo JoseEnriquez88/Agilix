@@ -14,6 +14,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      apellido: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       telefono: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -28,6 +32,10 @@ module.exports = (sequelize) => {
           },
         },
       },
+      contraseña:{
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       dni:{
         type: DataTypes.STRING, 
         allowNull: false,
@@ -35,6 +43,10 @@ module.exports = (sequelize) => {
       estado: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
+      },
+      rol: {
+        type: DataTypes.ENUM('administrador', 'cajero'),
+        allowNull: false,
       }
     },
     { timestamps: false, freezeTableName: true }
