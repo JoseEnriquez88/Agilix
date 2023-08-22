@@ -1,4 +1,4 @@
-const notificar_pagos = require("../../controllers/Pagos/notificar_pagos");
+const notificar_pagos = require("../../controllers/pagos/notificar_pagos");
 
 const notificar_pagosHandler = async (req, res) => {
     const pago = req.query;
