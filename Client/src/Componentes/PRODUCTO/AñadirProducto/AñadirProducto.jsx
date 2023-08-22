@@ -10,7 +10,7 @@ const InitialCreate = {
   nombre: "",
   precio: "",
   img: "",
-  stock:"",
+  stock: "",
   tipo: "",
 };
 
@@ -21,7 +21,6 @@ const AñadirProducto = () => {
   const [stock, setStock] = useState(1); // Estado para almacenar el  stock de productos a crear
   const [stockDisponible, setStockDisponible] = useState("");
   const dispatch = useDispatch();
-
 
   // Función para manejar el cambio en el campo de stock
   const handleStockChange = (event) => {
@@ -36,8 +35,8 @@ const AñadirProducto = () => {
 
   //Funcion que maneja subida de imagenes y previsualizacion
   const handleImageChange = (event) => {
-    if(event.target.name === "img"){
-      setInput({ ...input, [event.target.name]: event.target.files[0]});
+    if (event.target.name === "img") {
+      setInput({ ...input, [event.target.name]: event.target.files[0] });
       setPreviewImage(URL.createObjectURL(event.target.files[0]));
     }
   };
@@ -54,9 +53,7 @@ const AñadirProducto = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-
     try {
-
       const formData = new FormData();
       formData.append("nombre", input.nombre);
       formData.append("precio", input.precio);
@@ -65,9 +62,8 @@ const AñadirProducto = () => {
       formData.append("img", input.img);
 
       const formDataObject = Object.fromEntries(formData);
-      console.log("FormDataObject:", formDataObject);
 
-      const response = await axios.post(`http://localhost:3001/productos`, formData);
+      const response = await axios.post(`/productos`, formData);
 
       //Actualiza el estado global
       dispatch(fetchProducts());
@@ -77,7 +73,6 @@ const AñadirProducto = () => {
 
       // Actualiza la stock disponible
       setStockDisponible(stock);
-
 
       setTimeout(() => {
         setShowSuccessMessage(false);
@@ -97,12 +92,13 @@ const AñadirProducto = () => {
     }
   };
 
-  const seleccionarTipo = (event) => {   //esto es para select del tipo de producto
+  const seleccionarTipo = (event) => {
+    //esto es para select del tipo de producto
     setInput({
       ...input,
       tipo: event.target.value,
-    })
-  }
+    });
+  };
 
   //FORMULARIO
 
@@ -149,11 +145,15 @@ const AñadirProducto = () => {
         />
       </div>
       <div>
-        <label className={styles.inputGropLabel}>
-          Tipo :
-        </label>
-        <select className={styles.inputGroup} defaultValue={input.tipo ==="" && "escoger"} onChange={seleccionarTipo}>
-          <option disabled={true} value="escoger">Escoger Tipo</option>
+        <label className={styles.inputGropLabel}>Tipo :</label>
+        <select
+          className={styles.inputGroup}
+          defaultValue={input.tipo === "" && "escoger"}
+          onChange={seleccionarTipo}
+        >
+          <option disabled={true} value="escoger">
+            Escoger Tipo
+          </option>
           <option value="frutas">Frutas</option>
           <option value="verduras">Verduras</option>
           <option value="bebidas">Bebidas</option>
@@ -192,13 +192,12 @@ const AñadirProducto = () => {
           onChange={handleImageChange}
         />
       </div>
-      <button className={styles.buttonCreate} type="submit" >
+      <button className={styles.buttonCreate} type="submit">
         Crear Producto
       </button>
       {showSuccessMessage && (
         <div className="success-modal">¡Producto creado exitosamente!</div>
       )}
-
     </form>
   );
 };
