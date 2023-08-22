@@ -61,7 +61,9 @@ const DetalleDeCompra = () => {
                 <div className={styles.ContenedorProductos}>
                     <h2>Productos en el Carrito:</h2>
                     {carrito.map((item, index) => (
+                        
                         <div key={index} className={styles.ContenedorCard}>
+                               <img className={styles.img}src={item.producto.img}  />
                             <h3>Producto: {item.producto.nombre}</h3>
                             <h3>Precio por unidad: ${item.producto.precio}</h3>
                             <h3>Cantidad: {item.cantidad}</h3>

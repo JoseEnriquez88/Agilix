@@ -25,6 +25,7 @@
   height: 240px;
   border-radius: 10px;
 }
+
 .contenedorLetras {
   display: flex;
   flex-direction: column;
