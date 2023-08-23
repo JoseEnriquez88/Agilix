@@ -2,7 +2,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchVentas } from '../../../../Redux/ventasSlice';
-import styles from "./pagos_recibidos.module.css";
+import styles from "./Pagos_recibidos.module.css";
 
 const VentasComponent = () => {
     const dispatch = useDispatch();
