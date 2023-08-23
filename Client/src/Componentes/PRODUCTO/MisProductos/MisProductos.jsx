@@ -55,18 +55,22 @@ const MisProductos = () => {
   };
   const handleDelete = (productId, estado) => {
     setShowConfirmDialog(true);
-    setProductIdToDelete(productId, estado);
+    setProductIdToDelete(productId, false); 
   };
-
+  
   const confirmDelete = (productId, estado) => {
     setShowConfirmDialog(false);
-
-    
-    dispatch(deleteProduct({ productId, estado: true }));
+  
+    dispatch(deleteProduct({ productId, estado: false })); 
   };
- 
+  const filteredProducts = product.productosFiltrados.filter(
+    (prod) => prod.estado === true
+  );
 
-  const currentItem = product.productosFiltrados.slice(indexFirstItem, indexLastItem);//corta la cantidad de items que necesito mostrar según los indices a partir del estado global
+  const paginatedProducts = filteredProducts.slice(
+    indexFirstItem,
+    indexLastItem
+  );//corta la cantidad de items que necesito mostrar según los indices a partir del estado global
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -106,7 +110,7 @@ const MisProductos = () => {
 
       {!product.loading && product.productosFiltrados ? (
         <div className={styles.contenedor}>
-          {currentItem.map((prod) => (
+          {paginatedProducts.map((prod) => (
             <div className={styles.cards} key={prod.id}>
               <img className={styles.imagen} src={prod.img} />
               <div className={styles.contenedorLetras}>

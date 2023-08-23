@@ -2,15 +2,19 @@ const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
 require("dotenv").config();
 
-const { CLIENT_ID, CLIENT_SECRET } = process.env;
+const { CLIENT_ID, CLIENT_SECRET, ENV, BACK_HOST } = process.env;
 
 passport.use(
   new GoogleStrategy(
     {
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL:
+        ENV === "dev"
+          ? "/auth/google/callback"
+          : `${BACK_HOST}/auth/google/callback`,
       scope: ["profile", "email"],
+      proxy: true,
     },
     function (accessToken, refreshToken, profile, callback) {
       callback(null, profile);

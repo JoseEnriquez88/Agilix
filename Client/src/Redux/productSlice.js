@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const URL = "http://localhost:3001/productos/" ;
+const URL = "/productos/";
 
 const initialState = {
   loading: false,
@@ -24,10 +24,10 @@ export const fetchProducts = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
   "product/deleteProduct",
-  async ({productId,estado} ,{ rejectWithValue }) => {
+  async ({ productId, estado }, { rejectWithValue }) => {
     try {
-      await axios.put(`${URL}/${productId}`,{estado});
-      return productId; //Devolver el ID del producto eliminado
+      await axios.put(`${URL}/${productId}`, { estado: false }); // Asegúrate de pasar estado: false aquí
+      return productId; // Devolver el ID del producto eliminado
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -38,8 +38,8 @@ const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
-     //Ordenamiento alfabético
-     ordenAlfabetico: (state, action) => {
+    //Ordenamiento alfabético
+    ordenAlfabetico: (state, action) => {
       let productos = [...state.productosFiltrados];
       if (action.payload === "asc") {
         productos.sort((a, b) => a.nombre.localeCompare(b.nombre));
@@ -49,26 +49,29 @@ const productSlice = createSlice({
       state.productosFiltrados = productos;
     },
 
-      //Ordenamiento por precio
-      ordenPorPrecio: (state, action) => {
-        let productos = [...state.productosFiltrados];
-        if (action.payload === "precioMin") {
-          productos.sort((a, b) => a.precio - b.precio);
-        } else if (action.payload === "precioMax") {
-          productos.sort((a, b) => b.precio - a.precio);
-        }
-        state.productosFiltrados = productos;
-      },
-     //Restablecer ordenamientos
-     restablecerOrdenamientos: (state) => {
+    //Ordenamiento por precio
+    ordenPorPrecio: (state, action) => {
+      let productos = [...state.productosFiltrados];
+      if (action.payload === "precioMin") {
+        productos.sort((a, b) => a.precio - b.precio);
+      } else if (action.payload === "precioMax") {
+        productos.sort((a, b) => b.precio - a.precio);
+      }
+      state.productosFiltrados = productos;
+    },
+    //Restablecer ordenamientos
+    restablecerOrdenamientos: (state) => {
       state.productosFiltrados = state.allProducts;
     },
-    filtroPorTipo : (state, action) =>{
+    filtroPorTipo: (state, action) => {
       let todoProductosCopia = [...state.allProducts];
-      let productos  = [...state.allProducts];
-      productos = productos.filter(producto => producto.tipo === action.payload);
-      state.productosFiltrados = action.payload==="todos"?todoProductosCopia:productos;
-    }
+      let productos = [...state.allProducts];
+      productos = productos.filter(
+        (producto) => producto.tipo === action.payload
+      );
+      state.productosFiltrados =
+        action.payload === "todos" ? todoProductosCopia : productos;
+    },
   },
 
   extraReducers: (builder) => {
@@ -110,4 +113,9 @@ const productSlice = createSlice({
 
 export default productSlice.reducer;
 
-export const { ordenAlfabetico, ordenPorPrecio, filtroPorTipo, restablecerOrdenamientos } = productSlice.actions;
+export const {
+  ordenAlfabetico,
+  ordenPorPrecio,
+  filtroPorTipo,
+  restablecerOrdenamientos,
+} = productSlice.actions;
