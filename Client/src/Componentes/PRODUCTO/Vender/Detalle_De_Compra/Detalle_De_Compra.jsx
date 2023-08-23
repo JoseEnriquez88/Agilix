@@ -1,9 +1,12 @@
-import React, { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import styles from "./Detalle_De_Compra.module.css";
-import { quitarDelCarrito } from "../../../../Redux/carritoDeComprasSlice";
-import axios from "axios";
-import { getClientByDni } from "../../../../Redux/clientesSlice";
+
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import styles from './Detalle_De_Compra.module.css';
+import { quitarDelCarrito } from '../../../../Redux/carritoDeComprasSlice'
+import axios from 'axios';
+import { getClientByDni } from '../../../../Redux/clientesSlice';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 const DetalleDeCompra = () => {
   const carrito = useSelector((state) => state.carrito);
@@ -15,12 +18,29 @@ const DetalleDeCompra = () => {
   let clientEncontrado = useSelector((state) => state.clientes.clientByDni);
   const usuarioID = "840aa1b2-907f-4cd7-a9c1-bd1e39ce8ce2"; //poner usuario
 
+
+    let clientEncontrado = useSelector(state => state.clientes.clientByDni);
+    const usuarioID = "68c548e8-1e39-4c9f-993d-fc4e9ee5a3cf";
+
+    const handleBuscarPorDNI = async () => {
+        if (dniBusqueda) {
+            try {
+                dispatch(getClientByDni(dniBusqueda));
+                if (clientEncontrado) {
+                    setHabilitarGenerarQR(false);
+                }
+                console.log("Buscando cliente por DNI:", dniBusqueda);
+            } catch (error) {
+                console.log("Error al buscar cliente por DNI:", error.message);
+            }
+
   const handleBuscarPorDNI = async () => {
     if (dniBusqueda) {
       try {
         dispatch(getClientByDni(dniBusqueda));
         if (clientEncontrado) {
           setHabilitarGenerarQR(false);
+
         }
         console.log("Buscando cliente por DNI:", dniBusqueda);
       } catch (error) {
@@ -93,17 +113,16 @@ const DetalleDeCompra = () => {
             <div className={styles.ContenedorProductosYTotal}>
                 <div className={styles.ContenedorProductos}>
                     <h2>Productos en el Carrito:</h2>
-                    <div>
-                        Cliente:
+                    <div className={styles.search}>
                         {!habilitarGenerarQR && <h3>{clientEncontrado.nombre}</h3>}
-                        <label>DNI:</label>
-                        <input
+                        <label>DNI del Cliente: </label>
+                        <input className={styles.SearchCliente}
                             type="text"
                             placeholder="Ingrese DNI"
                             value={dniBusqueda}
                             onChange={(event) => setDniBusqueda(event.target.value)} //setear dniBusqueda
                         />
-                        <button onClick={handleBuscarPorDNI}>Buscar</button>
+                        <button className= {styles.ButtonSearch} onClick={handleBuscarPorDNI}><SearchIcon/></button>
                     </div>
                     {carrito.map((item, index) => (
                         <div key={index} className={styles.ContenedorCard}>
@@ -124,8 +143,8 @@ const DetalleDeCompra = () => {
                     </div>
                 </div>
             </div>
-            <div styles={styles.ContenedorBotones}>
-                <button disabled={habilitarGenerarQR || precioTotalCarrito <= 0} onClick={handleGenerarQR}>Generar orden</button>
+            <div className={styles.ContenedorBotones}>
+                <button className={styles.ButtonGene}disabled={habilitarGenerarQR || precioTotalCarrito <= 0} onClick={handleGenerarQR}>Generar orden</button>
                 <button disabled={!qrGenerado} onClick={handlerEliminarQR}>Eliminar orden</button>
                 <button className={styles.botonAtras} onClick={handleVolverAtras}>Volver</button>
             </div>
