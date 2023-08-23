@@ -19,6 +19,8 @@ const MisProductos = () => {
     ordenAlfabetico: "",
     ordenPorPrecio: "",
   });
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+  const [productIdToDelete, setProductIdToDelete] = useState(null);
 
   // Lista de tipos de productos
   const tipos = ["Químicos", "Consumibles", "Hogar", "Otros"];
@@ -51,9 +53,19 @@ const MisProductos = () => {
     });
     dispatch(restablecerOrdenamientos());
   };
-  const handleDelete = (productId) => {
-    dispatch(deleteProduct(productId)); // Disparar la acción de eliminación
+  const handleDelete = (productId, estado) => {
+    setShowConfirmDialog(true);
+    setProductIdToDelete(productId, estado);
   };
+
+  const confirmDelete = (productId, estado) => {
+    setShowConfirmDialog(false);
+
+    
+    dispatch(deleteProduct({ productId, estado: true }));
+  };
+ 
+
   const currentItem = product.productosFiltrados.slice(indexFirstItem, indexLastItem);//corta la cantidad de items que necesito mostrar según los indices a partir del estado global
   const paginado = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -98,6 +110,9 @@ const MisProductos = () => {
             <div className={styles.cards} key={prod.id}>
               <img className={styles.imagen} src={prod.img} />
               <div className={styles.contenedorLetras}>
+              <button
+                  className={styles.botonEliminar}
+                  onClick={() => handleDelete(prod.id)}>x</button>
                 <h1>{prod.nombre} </h1>
                 <h3> ${prod.precio}</h3>
                 <h3>{prod.tipo}</h3>
@@ -107,12 +122,7 @@ const MisProductos = () => {
 
                   <p>Stock Disponible: {prod.stock}</p>
                 )}
-                <button
-                  className={styles.botonEliminar}
-                  onClick={() => handleDelete(prod.id)}
-                >
-                  Eliminar
-                </button>
+                
               </div>
             </div>
           ))}
@@ -123,9 +133,17 @@ const MisProductos = () => {
           productosPorPagina={productosPorPagina}
           products={product.productosFiltrados}
           paginado={paginado}
-          currentPage={currentPage} />
-      </div>
-    </div>
-  );
-};
+          currentPage={currentPage}    />
+          </div>
+    
+          {showConfirmDialog && (
+            <div className={styles.confirmDialog}>
+              <p className={styles.confirmDialogP}>¿Estás seguro de que deseas eliminar este producto?</p>
+              <button className={styles.confirmDialogButton} onClick={() => confirmDelete(productIdToDelete)}>Sí, eliminar</button>
+              <button className={styles.confirmDialogButton} onClick={() => setShowConfirmDialog(false)}>Cancelar</button>
+            </div>
+          )}
+        </div>
+      );
+    };
 export default MisProductos;
