@@ -9,10 +9,7 @@ passport.use(
     {
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
-      callbackURL:
-        ENV === "dev"
-          ? "/auth/google/callback"
-          : `${BACK_HOST}/auth/google/callback`,
+      callbackURL: "/auth/google/callback",
       scope: ["profile", "email"],
       // proxy: true,
     },
