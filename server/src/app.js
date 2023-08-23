@@ -20,7 +20,7 @@ const {
 server.use(morgan("dev"));
 server.use(express.json());
 
-server.use(bodyParser.json({ limit: "50mb" }));
+server.use(bodyParser.json({ limit: "50mb" }).urlencoded({ extended: false }));
 server.use(
   cookieSession({
     name: "session",
