@@ -1,8 +1,8 @@
 const { Usuario } = require('../../db');
-const postRegisterUserHandler = require('../../helpers/usuario/postRegisterUserValidation');
+//const postRegisterUserHandler = require('../../helpers/usuario/postRegisterUserValidation');
 
 const postRegisterUser = async (nombre, apellido, telefono, email, contraseña, dni, rol) => {
-    postRegisterUserHandler(nombre, apellido, telefono, email, contraseña, dni, rol);
+   // postRegisterUserHandler(nombre, apellido, telefono, email, contraseña, dni, rol);
 
     const usuarioRegistrado = await Usuario.create({
         nombre,

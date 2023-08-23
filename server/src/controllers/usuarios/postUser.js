@@ -3,7 +3,7 @@ const postUserValidation = require("../../helpers/usuario/postUserValidation");
 
 const postUser = async (nombre, apellido, contraseña, telefono, email, dni, rol) => {
   // postUserValidation(nombre, telefono, email,dni,rol);
-
+console.log(nombre,apellido,contraseña);
   const usuarioNuevo = await Usuario.create({
     nombre,
     telefono,
