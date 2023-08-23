@@ -65,14 +65,7 @@ const AñadirProducto = () => {
 
       const formDataObject = Object.fromEntries(formData);
 
-
-      const response = await axios.post(
-        `http://localhost:3001/productos`,
-        formData
-      );
-
       const response = await axios.post(`/productos`, formData);
-
 
       //Actualiza el estado global
       dispatch(fetchProducts());
@@ -112,23 +105,6 @@ const AñadirProducto = () => {
   //FORMULARIO
 
   return (
-
-    <div>
-      <h1 className={styles.tittle}>Crea tus productos</h1>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div>
-          <p className={styles.titituloForm}>Datos de tu producto</p>
-          <label className={styles.inputGropLabel} htmlFor="name">
-            Nombre :
-          </label>
-          <input
-            className={styles.inputGroup}
-            type="text"
-            id="name"
-            name="nombre"
-            value={input.nombre}
-            onChange={handleChange}
-
     <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <p className={styles.titituloForm}>Crear Productos</p>
@@ -200,96 +176,15 @@ const AñadirProducto = () => {
             id="preview"
             src={previewImage}
             alt="Preview"
-
           />
-        </div>
-        <div>
-          <label className={styles.inputGropLabel} htmlFor="price">
-            Precio :
-          </label>
-          <input
-            className={styles.inputGroup}
-            type="text"
-            id="price"
-            name="precio"
-            value={input.precio}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label className={styles.inputGropLabel} htmlFor="stock">
-            Stock :
-          </label>
-          <input
-            className={styles.inputGroup}
-            type="number"
-            id="stock"
-            name="stock"
-            value={stockDisponible} // Usa stockDisponible para mostrar
-            onChange={handleStockChange}
-          />
-        </div>
-        <div>
-          <label className={styles.inputGropLabel}>Tipo :</label>
-          <select
-            className={styles.inputGroup}
-            defaultValue={input.tipo === "" && "escoger"}
-            onChange={seleccionarTipo}
-          >
-            <option disabled={true} value="escoger">
-              Escoger Tipo
-            </option>
-            <option value="frutas">Frutas</option>
-            <option value="verduras">Verduras</option>
-            <option value="bebidas">Bebidas</option>
-            <option value="abarrotes">Abarrotes</option>
-            <option value="carnes">Carnes</option>
-          </select>
-        </div>
-        <div>
-          <div>
-            <label className={styles.inputGropLabel} htmlFor="image">
-              Imagen :
-            </label>
-          </div>
-
-          <label className={styles.inputGropLabel} htmlFor="image">
-            <span className={styles.uploadButton}>Seleccionar archivo</span>
-          </label>
-          {previewImage && (
-            <img
-              className={styles.image}
-              id="preview"
-              src={previewImage}
-              alt="Preview"
-            />
-          )}
-          <button
-            className={styles.buttonDelete}
-            type="button"
-            onClick={handleRemoveImage}
-          >
-            Eliminar imagen
-          </button>
-          <input
-            className={styles.customFileInput}
-            type="file"
-            id="image"
-            name="img"
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-        </div>
-        <button className={styles.buttonCreate} type="submit">
-          Crear Producto
-        </button>
-
-        {showSuccessMessage && (
-          <div className="success-modal">¡Producto creado exitosamente!</div>
         )}
-      </form>
-    </div>
-
+        <button
+          className={styles.buttonDelete}
+          type="button"
+          onClick={handleRemoveImage}
+        >
+          Eliminar imagen
+        </button>
         <input
           className={styles.customFileInput}
           type="file"
@@ -306,7 +201,6 @@ const AñadirProducto = () => {
         <div className="success-modal">¡Producto creado exitosamente!</div>
       )}
     </form>
-
   );
 };
 

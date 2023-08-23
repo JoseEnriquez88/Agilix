@@ -44,10 +44,9 @@
   padding: 5px;
   margin: 5px 0;
   outline: none;
-  border: 1px solid #3a3a3a;
-  border-radius: 5px;
+  border: 1px solid #2c444e;
+  border-radius: 2px;
   font-size: 13px;
-  background-color: #181818;
 }
 
 .btn {
@@ -62,12 +61,6 @@
   outline: none;
   border: none;
   cursor: pointer;
-}
-
-.btn:hover {
-  transform: scale(1.01);
-  color: #181818;
-  background-color: #505050;
 }
 
 .text {
@@ -101,12 +94,6 @@
   align-items: center;
   justify-content: center;
   position: relative;
-}
-
-.google_btn:hover {
-  transform: scale(1.01);
-  color: #43b643;
-  background-color: #505050;
 }
 
 .AgilixTittle {

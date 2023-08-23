@@ -13,9 +13,12 @@
 }
 
 .ContenedorImagen {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  display: contents;
+  margin: 1rem;
+  background-color: #111111;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .ContenedorInfo {
@@ -28,8 +31,8 @@
 }
 
 .Imagen {
-  max-width: 240px;
-  max-height: 240px;
+  object-fit: contain;
+  max-width: 160px;
 }
 
 .p {
