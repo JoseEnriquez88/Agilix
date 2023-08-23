@@ -11,7 +11,7 @@ import 'react-phone-input-2/lib/bootstrap.css'
 const ConfigPerfil = () => {
 
     const dispatch = useDispatch();
-    
+
     const [dataUser, setDataUser] = useState({
         nombre: "",
         apellido: "",
@@ -22,6 +22,7 @@ const ConfigPerfil = () => {
     const [passwordViewLeft, setPasswordViewLeft] = useState(true);
     const [passwordViewRight, setPasswordViewRight] = useState(true);
     const [selectedImage, setSelectedImage] = useState("");
+    const [isEditing, setIsEditing] = useState(false);
     const handleInputs = (event) => {
         setDataUser({
             ...dataUser,
@@ -35,7 +36,7 @@ const ConfigPerfil = () => {
     };
     const handlePhoneChange = (value) => {  //exepcionalidad del react-phone-input-2 el valor que captura el input necesita tener su propio handler
         setDataUser({ ...dataUser, telefono: value });
-    };
+    };  
     const eliminarAvatar = () => {
         setSelectedImage("");
     }
@@ -62,7 +63,7 @@ const ConfigPerfil = () => {
                     <h1 className={styles.divIconDeleteImage} onClick={eliminarAvatar}>
                         <DeleteIcon className={styles.iconDeleteImage} />
                     </h1>
-                    <img src={selectedImage || avatar} alt="avatar" className={styles.fotoAvatar} onClick={() => document.getElementById('subirFoto').click()}/>
+                    <img src={selectedImage || avatar} alt="avatar" className={styles.fotoAvatar} onClick={() => document.getElementById('subirFoto').click()} />
                     <label className={styles.labelSubirFoto} htmlFor="subirFoto">Subir Foto</label>
                     <input type="file" className={styles.inputSeleccionarArchivo} id="subirFoto" onChange={handleImageChange} />
                     <div className={styles.divDescripcionSubirFoto}>
@@ -96,7 +97,7 @@ const ConfigPerfil = () => {
                             <label htmlFor="" className={styles.label} >Apellidos:</label>
                             <input type="text" className={styles.input} name='apellido' value={dataUser.apellido} onChange={handleInputs} />
                             <label htmlFor="" className={styles.label}>Confirmar Email:</label>
-                            <input type="text" className={styles.input} name='email'  />
+                            <input type="text" className={styles.input} name='email' />
                             {/* los campos de confirmacion password-email no necesitan estar conectados al estado, solo serán validaciones */}
                             <div className={styles.contenedorContrasena}>
                                 <label htmlFor="" className={styles.label}>Confirmar Contraseña:</label>
