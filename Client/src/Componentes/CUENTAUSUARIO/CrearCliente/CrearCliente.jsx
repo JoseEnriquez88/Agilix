@@ -3,10 +3,11 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import styles from "../CrearCliente/CrearCliente.module.css";
+import { useLocalStorage } from "../../useLocalStorage/useLocalStorage";
 
 const Clientes = () => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [input, setInput] = useState({
+  const [input, setInput] = useLocalStorage("clienteData", {
     nombre: "",
     telefono: "",
     email: "",

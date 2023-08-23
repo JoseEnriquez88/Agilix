@@ -6,11 +6,11 @@ const Saldos = () => {
         <div className={styles.ContenedorSaldos}>
             <div className={styles.ContenedorSaldoD}>
                 <h3>Saldo disponible</h3>
-                <p>Valor disponible</p>
+                <p>150.000 $</p>
             </div>
             <div className={styles.ContenedorSaldoP}>
                 <h3>Saldo pendiente</h3>
-                <p>Valor pendiente</p>
+                <p>0 $</p>
             </div>
         </div>
     );
