@@ -17,6 +17,7 @@ routerAuth.get("/login/success", (req, res) => {
     res
       .status(401)
       .json({ error: true, message: "Fallo en la Autentificacion" });
+    console.log(req.user);
   }
 });
 
@@ -29,10 +30,7 @@ routerAuth.get(
   passport.authenticate("google", {
     successRedirect: CLIENT_URL,
     failureRedirect: "/login/failed",
-  }),
-  (req, res) => {
-    console.log("wooo we authenticated, here is our user object:", req.user);
-  }
+  })
 );
 
 routerAuth.get(
