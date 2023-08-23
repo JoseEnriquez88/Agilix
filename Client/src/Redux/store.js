@@ -6,7 +6,6 @@ import ventasSlice from "./ventasSlice";
 import carritoDeComprasReducer from './carritoDeComprasSlice';
 
 
-
 const store = configureStore({
   reducer: {
     product: productReducer,

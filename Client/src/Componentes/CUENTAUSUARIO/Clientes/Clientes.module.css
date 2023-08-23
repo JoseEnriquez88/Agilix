@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* margin: 20px; */
   overflow: hidden;
 }
 
@@ -17,6 +18,7 @@
   background-color: #1a1a1a;
   border-radius: 0.75rem ;
   margin-left: 20px;
+  /* border: 1px solid red; */
   text-align: center;
 }
 
@@ -24,13 +26,14 @@
   font-weight: bold;
   text-align: left;
   color: #ffffff;
-
+  /* border: 0.3px solid rgb(230, 207, 0); */
 }
 
 .clienteInfo {
   display: flex;
   flex-direction: column;
   margin-right: 80px;
+  /* border: 0.3px solid green; */
 }
 
 .nombreCliente {
@@ -113,6 +116,7 @@
 
 .CrearCliente:hover a {
   color: #882c9b;
+  /* background-color: #1a1a1a; */
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }
@@ -170,7 +174,7 @@ a {
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  margin-left: 1500px;
+  margin-left: 1460px;
   position: absolute;
 }
 
@@ -180,6 +184,7 @@ a {
 
 .refresh:hover a {
   color: #882c9b;
+  /* background-color: #1a1a1a; */
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
   transform: translateY(-2px);
 }

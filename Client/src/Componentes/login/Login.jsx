@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
-import GoogleIcon from '@mui/icons-material/Google';
 
 function Login() {
   const googleAuth = () => {
@@ -26,9 +25,9 @@ function Login() {
             placeholder="Contraseña"
           />
           <button className={styles.btn}>Iniciar sesión</button>
-          <p className={styles.text}>O inicia sesión con Google</p>
+          <p className={styles.text}>O</p>
           <button className={styles.google_btn} onClick={googleAuth}>
-          <GoogleIcon/>
+            <span>Registrarse con Google</span>
           </button>
           <p className={styles.text}>
             ¿Primera vez? <Link to="/signup">Registrate</Link>

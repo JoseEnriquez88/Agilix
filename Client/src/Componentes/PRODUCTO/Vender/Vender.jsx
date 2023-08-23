@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Card from "./Cardproducto/Card";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -16,12 +17,9 @@ const Vender = () => {
       };
     return (
         <div className={styles.ContenedorVender}>
-            <div>
-                <h1 className={styles.tittle}>Venta de productos</h1>
-            </div>
-            {/* <button onClick={handleRecargarProductos} className={styles.BotonBack}>
+            <button onClick={handleRecargarProductos} className={styles.BotonBack}>
             <RefreshIcon />
-            </button> */}
+            </button>
             <div className={styles.ContenedorBotonBackYCarrito}>
                 <NavLink to='/' className={styles.BotonBack}>
                     <ArrowBackIosNewIcon className={styles.IconoBack}/>
@@ -30,6 +28,9 @@ const Vender = () => {
                 <NavLink to='/detalle_de_compra' className={styles.BotonCarrito}>
                     <ShoppingCartIcon/> Carrito
                 </NavLink>
+            </div>
+            <div>
+                <h1>Venta de productos</h1>
             </div>
             <div>
                 <h2>Lista de productos</h2>
