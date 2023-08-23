@@ -10,7 +10,7 @@ h1{
     font-weight: 800;
 }
 
-.tabla {
+table {
     border-collapse: collapse;
     background-color: #323232;
     color: rgba(255, 255, 255, 0.87);
