@@ -29,7 +29,7 @@ server.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
-server.enable("trust proxy");
+server.set("trust proxy", 1);
 server.use(passport.initialize());
 server.use(passport.session());
 
