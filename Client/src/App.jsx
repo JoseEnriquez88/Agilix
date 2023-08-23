@@ -51,7 +51,7 @@ function App() {
       setIsLoading(false);
     }
   };
-  console.log("Esto es user:", user)
+  // console.log("Esto es user:", user)
 
   useEffect(() => {
     getUser();
