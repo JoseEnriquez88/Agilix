@@ -7,20 +7,24 @@ import {
   Cuentas,
   Clientes,
   Configuracion,
-  DetailCliente
+  DetailCliente,
 } from "./Componentes/CUENTAUSUARIO/exportador";
 import {
   AñadirProducto,
   Vender,
   MisProductos,
 } from "./Componentes/PRODUCTO/exportador";
-import { AdminUsuario, ConfigPerfil, CrearUsuario } from "./Componentes/USUARIOS/exportador";
+import {
+  AdminUsuario,
+  ConfigPerfil,
+  CrearUsuario,
+} from "./Componentes/USUARIOS/exportador";
 
 import General from "./Componentes/Views/General/Componente_General/General";
 import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
 import Pagos from "./Componentes/Views/Pagos/Pagos";
 import Reporte from "./Componentes/Views/General/Comparacion_de_ventas/Reporte/Reporte";
-import DetalleDeCompra from "./Componentes/PRODUCTO/Vender/Detalle_De_Compra/Detalle_De_Compra"
+import DetalleDeCompra from "./Componentes/PRODUCTO/Vender/Detalle_De_Compra/Detalle_De_Compra";
 import Login from "./Componentes/login/Login";
 import Logged from "./Componentes/Views/Logged/Logged";
 
@@ -28,6 +32,7 @@ import { fetchProducts } from "./Redux/productSlice";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +51,7 @@ function App() {
       setIsLoading(false);
     }
   };
+  // console.log("Esto es user:", user)
 
   useEffect(() => {
     getUser();
@@ -71,7 +77,7 @@ function App() {
             <Route path="/clientes" element={<Clientes />} />
             <Route path="/logged" element={<Logged />} />
             <Route path="/crearcliente" element={<CrearCliente />} />
-            <Route path='/clientes/:id' element={<DetailCliente />} />
+            <Route path="/clientes/:id" element={<DetailCliente />} />
             <Route path="/configuracion" element={<Configuracion />} />
             <Route path="/añadirProducto" element={<AñadirProducto />} />
             <Route path="/misProductos" element={<MisProductos />} />

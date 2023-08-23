@@ -10,7 +10,12 @@ const mainRouter = require("./routes/mainRouter");
 require("dotenv").config();
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
-const { CLIENT_URL, CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_API_SECRET } = process.env;
+const {
+  CLIENT_URL,
+  CLOUDINARY_CLOUD_NAME,
+  CLOUDINARY_API_KEY,
+  CLOUDINARY_API_SECRET,
+} = process.env;
 
 server.use(morgan("dev"));
 server.use(express.json());
@@ -23,6 +28,7 @@ server.use(
     maxAge: 24 * 60 * 60 * 100,
   })
 );
+server.enable("trust proxy");
 server.use(passport.initialize());
 server.use(passport.session());
 
@@ -40,8 +46,8 @@ const upload = multer();
 cloudinary.config({
   cloud_name: CLOUDINARY_CLOUD_NAME,
   api_key: CLOUDINARY_API_KEY,
-  api_secret: CLOUDINARY_API_SECRET
-})
+  api_secret: CLOUDINARY_API_SECRET,
+});
 
 server.use(upload.any());
 

@@ -1,14 +1,14 @@
 const { Usuario } = require("../../db");
 const postUserValidation = require("../../helpers/usuario/postUserValidation");1
 
-const updateUser = async (id, nombre, email, telefono, dni,rol)  => {
+const updateUser = async (id, nombre, apellido, email, telefono, dni,rol)  => {
   // postUserValidation(nombre,email,telefono)
   console.log("updateUser","ROL:",rol)
   try {
     // Buscar el cliente por ID si se proporciona
     if (id && nombre && email && telefono) {
       const usuario = await Usuario.update(
-        { nombre: nombre, email: email, telefono: telefono, dni: dni },
+        { nombre: nombre, apellido: apellido, email: email, telefono: telefono, dni: dni },
         {
           where: {
             id: id

@@ -13,7 +13,7 @@ const postUserValidation = (nombre, telefono, email,rol) => {
     );
   if (nombre.length > 50)
     throw new Error(
-      `El nombre del producto solo puede contener 50 caracteres máximo.`
+      `El nombre del usuario solo puede contener 50 caracteres máximo.`
     );
 
   //valido el telefono

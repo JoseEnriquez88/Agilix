@@ -3,7 +3,7 @@ const { Usuario,Venta, Detalle_Venta, Producto } = require("../../db");
 const getUserById = async (id) => {
   if (isNaN(id)) {
     const usuarioPorId = await Usuario.findByPk(id, {
-      attributes: ["id", "nombre", "telefono", "email", "dni", "estado", "rol"],
+      attributes: ['id', 'nombre', 'apellido', 'telefono', 'email','dni', 'estado', 'rol'],
       include: {
         model: Venta,
         attributes: ["id","fecha"],}
