@@ -14,7 +14,7 @@ passport.use(
           ? "/auth/google/callback"
           : `${BACK_HOST}/auth/google/callback`,
       scope: ["profile", "email"],
-      proxy: true,
+      // proxy: true,
     },
     function (accessToken, refreshToken, profile, callback) {
       callback(null, profile);
