@@ -82,7 +82,7 @@ function App() {
             <Route path="/añadirProducto" element={<AñadirProducto />} />
             <Route path="/misProductos" element={<MisProductos />} />
             <Route path="/admin" element={<AdminUsuario />} />
-            <Route path="/configPerfil" element={<ConfigPerfil user={user}/>} />
+            <Route path="/configPerfil" element={<ConfigPerfil />} />
             <Route path="/crearusuario" element={<CrearUsuario />} />
             <Route path="/cuenta" element={<Cuenta />} />
             <Route path="/pagos" element={<Pagos />} />
