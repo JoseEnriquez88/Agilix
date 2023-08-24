@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUsuarios } from "../../../Redux/usuariosSlice";
 import { NavLink } from "react-router-dom";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import styles from "./AdminUsuario.module.css";
 
 const AdminUsuarios = () => {
@@ -16,6 +17,11 @@ const AdminUsuarios = () => {
   if (!usuarios.allUsuarios.length) {
     return (
       <div className={styles.buttonContainer}>
+        <div className={styles.ContenedorBotonBack}>
+          <NavLink to='/' className={styles.BotonBack}>
+            <ArrowBackIosNewIcon className={styles.IconoBack} />
+          </NavLink>
+        </div>
         <button className={styles.CrearCliente}>
           <NavLink to="/crearusuario" style={{ textDecoration: "none" }}>
             Crear Usuario
@@ -27,6 +33,11 @@ const AdminUsuarios = () => {
 
   return (
     <div>
+      <div className={styles.ContenedorBotonBack}>
+          <NavLink to='/' className={styles.BotonBack}>
+              <ArrowBackIosNewIcon className={styles.IconoBack} />
+          </NavLink>
+      </div>
       <h1 className={styles.tittle}>Lista de usuarios</h1>
       <div className={styles.container}>
         <button className={styles.CrearCliente}>

@@ -29,6 +29,7 @@ import Login from "./Componentes/login/Login";
 import Logged from "./Componentes/Views/Logged/Logged";
 
 import { fetchProducts } from "./Redux/productSlice";
+import { fetchClientes } from "./Redux/clientesSlice";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
@@ -59,6 +60,7 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchClientes());
   }, [dispatch]);
 
   if (isLoading) {

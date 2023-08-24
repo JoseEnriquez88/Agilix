@@ -2,6 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchProducts } from "../../../Redux/productSlice";
+import { NavLink } from "react-router-dom";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import styles from "../AñadirProducto/AñadirProducto.module.css";
 import axios from "axios";
 
@@ -105,6 +107,12 @@ const AñadirProducto = () => {
   //FORMULARIO
 
   return (
+    <div>
+      <div className={styles.ContenedorBotonBack}>
+        <NavLink to='/' className={styles.BotonBack}>
+          <ArrowBackIosNewIcon className={styles.IconoBack} />
+        </NavLink>
+      </div>
     <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <p className={styles.titituloForm}>Crear Productos</p>
@@ -201,6 +209,7 @@ const AñadirProducto = () => {
         <div className="success-modal">¡Producto creado exitosamente!</div>
       )}
     </form>
+    </div>
   );
 };
 

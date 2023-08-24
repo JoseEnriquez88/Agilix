@@ -9,7 +9,10 @@ import {
 
 } from "../../../Redux/productSlice";
 import Paginado from "./Paginado/Paginado";
+import SearchBar from "./SearchBar/SearchBar";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import styles from "./MisProductos.module.css";
 
 const MisProductos = () => {
@@ -81,7 +84,13 @@ const MisProductos = () => {
 
   return (
     <div>
+      <div className={styles.ContenedorBotonBack}>
+        <NavLink to='/' className={styles.BotonBack}>
+          <ArrowBackIosNewIcon className={styles.IconoBack} />
+        </NavLink>
+      </div>
       <h1 className={styles.tittle}>Listado de Productos</h1>
+      <div className={styles.contenedorSearchBar}><SearchBar /></div>
       <div className={styles.contenedorSelector}>
         <select onChange={filtrarProductoPorTipo} className={styles.selectores}>
           <option disabled={true}>Filtrar Producto</option>
@@ -100,7 +109,7 @@ const MisProductos = () => {
           <option value="precioMax">Mayor Precio</option>
           <option value="precioMin">Menor Precio</option>
         </select>
-        <button className={styles.buttonReset} onClick={handleReset}>Restablecer Ordenamiento</button>
+        <button className={styles.buttonReset} onClick={handleReset}>Restablecer Productos</button>
       </div>
 
       {product.loading && <div>Cargando...</div>}

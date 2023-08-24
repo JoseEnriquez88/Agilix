@@ -1,6 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { restablecerOrdenamientos } from "../../Redux/productSlice";
+import { fetchClientes } from "../../Redux/clientesSlice";
 import ClearIcon from "@mui/icons-material/Clear";
 import DensityMediumIcon from "@mui/icons-material/DensityMedium";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -9,19 +12,24 @@ import PersonIcon from "@mui/icons-material/Person";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import LiquorIcon from "@mui/icons-material/Liquor";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-import SettingsIcon from "@mui/icons-material/Settings";
 import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import HomeIcon from "@mui/icons-material/Home";
 import styles from "./sideBar.module.css";
 
 export const Sidebar = () => {
+  const dispatch = useDispatch();
   const [direccionFlecha, setDireccionFlecha] = useState("atras");
   const [anchoReducido, setAnchoReducido] = useState(true);
   const cambiarDireccionFlecha = () => {
     setDireccionFlecha(direccionFlecha === "atras" ? "adelante" : "atras");
     setAnchoReducido(!anchoReducido);
   };
+  const restablecerProductosHandler = () => {
+    dispatch(restablecerOrdenamientos());
+  }
+  const fetchClientesHandler = () => {
+    dispatch(fetchClientes());
+  }
   return (
     <nav className={anchoReducido ? styles.sidebarReducido : styles.sidebar}>
       {direccionFlecha === "atras" ? (
@@ -59,34 +67,21 @@ export const Sidebar = () => {
             </NavLink>
             <NavLink
               className={styles.NavLink}
-              to="/cuentas"
-              onClick={cambiarDireccionFlecha}
-            >
-              <AttachMoneyIcon className={styles.iconSideBar} />
-              Cuentas
-            </NavLink>
-            <NavLink
-              className={styles.NavLink}
               to="/clientes"
-              onClick={cambiarDireccionFlecha}
+              onClick={() => {
+                cambiarDireccionFlecha();
+                fetchClientesHandler();
+              }
+              }
             >
               <SupervisorAccountIcon className={styles.iconSideBar} />
               Clientes
             </NavLink>
-            <NavLink
-              className={styles.NavLink}
-              to="/configuracion"
-              onClick={cambiarDireccionFlecha}
-            >
-              <SettingsIcon className={styles.iconSideBar} />
-              Configuración
-            </NavLink>
           </>
         ) : (
           <>
-            <HomeIcon className={styles.iconSideBarReducido} />
-            <AttachMoneyIcon className={styles.iconSideBarReducido} />
-            <SettingsIcon className={styles.iconSideBarReducido} />
+            <NavLink to="/"><HomeIcon className={styles.iconSideBarReducido} /></NavLink>
+            <NavLink to="/clientes" onClick={fetchClientesHandler}><SupervisorAccountIcon className={styles.iconSideBarReducido} /></NavLink>
           </>
         )}
       </div>
@@ -109,7 +104,10 @@ export const Sidebar = () => {
             <NavLink
               className={styles.NavLink}
               to="/misProductos"
-              onClick={cambiarDireccionFlecha}
+              onClick={() => {
+                cambiarDireccionFlecha();
+                restablecerProductosHandler();
+              }}
             >
               <LiquorIcon className={styles.iconSideBar} />
               Mis Productos
@@ -121,9 +119,9 @@ export const Sidebar = () => {
           </>
         ) : (
           <>
-            <AddCircleIcon className={styles.iconSideBarReducido} />
-            <LiquorIcon className={styles.iconSideBarReducido} />
-            <InventoryIcon className={styles.iconSideBarReducido} />
+            <NavLink to="/añadirProducto"><AddCircleIcon className={styles.iconSideBarReducido} /></NavLink>
+            <NavLink to="/misProductos" onClick={restablecerProductosHandler}><LiquorIcon className={styles.iconSideBarReducido} /></NavLink>
+            <NavLink to="/vender"><InventoryIcon className={styles.iconSideBarReducido} /></NavLink>
           </>
         )}
       </div>
@@ -157,9 +155,9 @@ export const Sidebar = () => {
           </>
         ) : (
           <>
-            <PersonIcon className={styles.iconSideBarReducido} />
-            <ManageAccountsIcon className={styles.iconSideBarReducido} />
-            <LogoutIcon className={styles.iconSideBarReducido} />
+            <NavLink to="/configPerfil"><PersonIcon className={styles.iconSideBarReducido} /></NavLink>
+            <NavLink to="/admin"><ManageAccountsIcon className={styles.iconSideBarReducido} /></NavLink>
+            <NavLink><LogoutIcon className={styles.iconSideBarReducido} /></NavLink>
           </>
         )}
       </div>
