@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -11,8 +11,12 @@ function Login() {
   //     "_self"
   //   );
   // };
+  useEffect(() => {
+    loginWithRedirect({ prompt: "login" });
+  }, []);
+
   return (
-    <button onClick={() => loginWithRedirect()}>Log In</button>
+    <></>
     // <button onClick={() => loginWithRedirect()}>Log In</button>
     // <div className={styles.container}>
     //   <h1 className={styles.heading}>
