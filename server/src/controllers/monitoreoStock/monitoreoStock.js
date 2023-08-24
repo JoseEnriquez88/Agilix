@@ -1,6 +1,4 @@
 const nodemailer = require('nodemailer');
-const { conn, Usuario  } = require('../../db'); // Importa la conexión a la base de datos desde db.js
-
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
     port: 465,
@@ -11,19 +9,27 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Función para verificar el stock y enviar correos
+// Importa la función getAllUsers desde su ubicación correcta
+const getAllUsers = require('../../controllers/usuarios/getAllUsers');
+
 const checkStockAndNotify = async (producto) => {
   if (producto.stock < 10) {
-    const mailOptions = {
-      from: 'agilix.co@gmail.com', 
-      to: Usuario.email,
-      subject: '¡Atención! Bajo Stock de Producto',
-      text: `El producto ${producto.nombre} tiene un stock bajo. ¡Actúa pronto!`,
-    };
+    try {
+      const usuarios = await getAllUsers();
+      usuarios.forEach(async (usuario) => {
+        const mailOptions = {
+          from: 'agilix.co@gmail.com',
+          to: usuario.email,
+          subject: '¡Atención! Bajo Stock de Producto',
+          text: `El producto ${producto.nombre} tiene un stock bajo. ¡Actúa pronto!`,
+        };
 
-    // Envía el correo electrónico
-    const info = await transporter.sendMail(mailOptions);
-    console.log('Correo enviado:', info.response);
+        const info = await transporter.sendMail(mailOptions);
+        console.log('Correo enviado:', info.response);
+      });
+    } catch (error) {
+      console.error('Error al obtener usuarios:', error);
+    }
   }
 };
 
