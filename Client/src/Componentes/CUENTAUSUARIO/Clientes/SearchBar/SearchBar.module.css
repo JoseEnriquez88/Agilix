@@ -3,6 +3,8 @@
     flex-direction: row;
     width: 100%;
     color: white;
+    justify-content: flex-end;
+    padding-bottom: 1rem;
 }
 
 .SearchBarInput {
@@ -10,7 +12,7 @@
     height: 3rem;
     border-top-left-radius:10px;
     border-bottom-left-radius:10px;
-    background-color: #111111;
+    background-color: rgb(41, 40, 40);
     border: none;
     color: white;
 }
@@ -20,21 +22,11 @@
     align-items: center;
     height: 3rem;
     width: 2.3rem;
-    background-color: #111111;
+    background-color: rgb(41, 40, 40);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
     border: none;
     color: white;
     cursor: pointer;
-}
-
-.selectorSearchBar {
-    border: none;
-    background-color: #111111;
-    color: white;
-    height: 3rem;
-    width: 5rem;
-    border-radius: 10px;
-    margin-right: 1rem;
-    appearance: auto;
+    margin-right: 3rem;
 }

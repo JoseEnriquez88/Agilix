@@ -27,6 +27,12 @@ const Clientes = () => {
       setTimeout(() => {
         setShowSuccessMessage(false);
       }, 2000);
+      setInput({
+        nombre: "",
+        telefono: "",
+        email: "",
+        dni: "",
+      })
     } catch (error) {
       console.log(error);
     }

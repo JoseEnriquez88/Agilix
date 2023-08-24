@@ -5,8 +5,8 @@
   grid-template-rows: repeat(3, fit-content(100%));
   grid-column-gap: 8px;
   grid-row-gap: 8px;
-  
 }
+
 .cards {
   background-color:#2c2c2c;
   display: flex;
@@ -174,4 +174,29 @@
 
 .confirmDialogButton:last-child:hover {
   background-color: #bb1414;
+}
+
+.ContenedorBotonBack {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 5%;
+  align-items: center;
+  margin-left: 5rem;
+  margin-top: 1.5rem;
+}
+
+.BotonBack {
+  padding-top: 0.5rem;
+  color: white;
+  font-size: 1.3rem;
+  width: 4rem;
+  background-color: #181818;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.BotonBack:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }

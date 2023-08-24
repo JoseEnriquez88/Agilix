@@ -49,7 +49,7 @@
           if(loginStorage.login=="local"){
             setUser(loginStorage.usuario);
           }
-          if (loginStorage.usuario) { // Verifica si existe loginStorage.usuario
+          if (loginStorage.usuario) { 
             setUser(loginStorage.usuario);
           } 
           else{
@@ -67,7 +67,6 @@
       }
   };
     useEffect(() => {
-      console.log("ESTOY EN EL APPPPP", loginStorage)
       getUser();
       dispatch(fetchProducts());
     }, [dispatch, loginStorage]);
@@ -110,6 +109,7 @@
         </Routes>
       </div>
     );
+
   }
   export default App;
 

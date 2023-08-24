@@ -1,14 +1,11 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchClientes } from "../../../Redux/clientesSlice";
 import {deleteClientes} from "../../../Redux/clientesSlice"
 import { NavLink } from "react-router-dom";
-// import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import styles from "./Clientes.module.css";
 import RefreshIcon from "@mui/icons-material/Refresh";
-
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import SearchBar from "./SearchBar/SearchBar";
 
 const handleRefresh = () => {
   window.location.reload();
@@ -18,17 +15,19 @@ const Clientes = () => {
   const dispatch = useDispatch();
   const clientes = useSelector((state) => state.clientes);
 
-  useEffect(() => {
-    dispatch(fetchClientes());
-  }, [dispatch]);
   const handlerEstado = (id,estado) => {
     dispatch(deleteClientes({id,estado}));
     handleRefresh();
   }
 
-  if (!clientes.allClientes) {
+  if (!clientes.clientesFiltrados) {
     return (
       <div className={styles.buttonContainer}>
+        <div className={styles.ContenedorBotonBack}>
+          <NavLink to='/' className={styles.BotonBack}>
+              <ArrowBackIosNewIcon className={styles.IconoBack} />
+          </NavLink>
+      </div>
         <button className={styles.CrearCliente}>
           <NavLink to="/crearcliente" style={{ textDecoration: "none" }}>
             Crear Cliente
@@ -39,7 +38,13 @@ const Clientes = () => {
   }
   return (
     <div>
+      <div className={styles.ContenedorBotonBack}>
+        <NavLink to='/' className={styles.BotonBack}>
+          <ArrowBackIosNewIcon className={styles.IconoBack} />
+        </NavLink>
+      </div>
       <h1 className={styles.tittle}>Lista de Clientes</h1>
+      <div><SearchBar/></div>
       <div className={styles.container}>
         <button id="refresh" className={styles.refresh} onClick={handleRefresh}>
           <RefreshIcon />
@@ -52,7 +57,7 @@ const Clientes = () => {
         </button>
 
         <ol className={styles.clienteList}>
-          {clientes.allClientes.map((cliente) => (
+          {clientes.clientesFiltrados.map((cliente) => (
             <li className={styles.clienteRow} key={cliente.id}>
               <div className={styles.clienteInfo}>
                 <span className={styles.tituloPrincipal}>Nombre:</span>

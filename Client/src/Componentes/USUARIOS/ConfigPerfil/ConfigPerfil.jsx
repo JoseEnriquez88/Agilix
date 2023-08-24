@@ -8,6 +8,8 @@ import PhoneInput from 'react-phone-input-2'
 import DeleteIcon from '@mui/icons-material/Delete';
 import 'react-phone-input-2/lib/bootstrap.css'
 import { fetchUsuarios } from '../../../Redux/usuariosSlice';
+import { NavLink } from "react-router-dom";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import axios from 'axios';
 
 const ConfigPerfil = () => {
@@ -96,6 +98,12 @@ const ConfigPerfil = () => {
     let primerApellido = dataUser.apellido.split(" ")[0] || "";
     let nombreCompleto = primerNombre + " " + primerApellido;  //para solo renderizar un nombre y un apellido
     return (
+        <div>
+            <div className={styles.ContenedorBotonBack}>
+                <NavLink to='/' className={styles.BotonBack}>
+                    <ArrowBackIosNewIcon className={styles.IconoBack} />
+                </NavLink>
+            </div>
         <div className={styles.contenedorPrincipal}>
             <div className={styles.contenedorSecundario}>
                 <div className={styles.contenedorPerfil}>
@@ -161,6 +169,7 @@ const ConfigPerfil = () => {
                     <button type="submit" className={!isEditing?styles.botonGuardarDisabled:styles.botonGuardar} >Guardar Cambios</button>
                 </form >
             </div>
+        </div>
         </div>
     )
 }

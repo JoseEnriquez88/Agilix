@@ -21,20 +21,6 @@ const General = (userDetails) => {
         <div className={styles.SearchBar}>
           {/* <SearchBar /> */}
         </div>
-        <div className={styles.ContenedorBotones}>
-          <NavLink className={styles.Boton} to="/">
-            Vista General
-          </NavLink>
-          <NavLink className={styles.Boton} to="/clientes">
-            Clientes
-          </NavLink>
-          <NavLink className={styles.Boton} to="/cuenta">
-            Cuenta
-          </NavLink>
-          <NavLink className={styles.Boton} to="/pagos">
-            Pagos
-          </NavLink>
-        </div>
       </nav>
 
       {/* Contiene los componentes de gráficos, pagos, saldos y productos fuera de stock */}
