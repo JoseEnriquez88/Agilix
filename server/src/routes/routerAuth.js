@@ -29,7 +29,7 @@ routerAuth.get(
   passport.authenticate("google", {
     successRedirect: "/",
     failureRedirect: "/login/failed",
-  })
+  })(req, res, next)
 );
 
 routerAuth.get(
