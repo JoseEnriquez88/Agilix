@@ -10,7 +10,7 @@ passport.use(
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
-      //scope: ["profile", "email"],
+      scope: ["profile", "email"],
       passReqToCallback: true,
       proxy: true,
     },
