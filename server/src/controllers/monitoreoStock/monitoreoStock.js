@@ -33,4 +33,4 @@ const checkStockAndNotify = async (producto) => {
   }
 };
 
-module.exports = checkStockAndNotify;
+// module.exports = checkStockAndNotify;

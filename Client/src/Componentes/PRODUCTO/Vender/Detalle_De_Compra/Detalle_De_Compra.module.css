@@ -99,9 +99,9 @@
     gap: 7px;
    margin-left: 120px;
   
-   
+
 }
-.nombreCliente{
+.nombreClientes{
  color: #00e900;
 }
   
@@ -212,6 +212,7 @@
   width:200px;
  
 }
+
 .botonEliminaror:disabled {
     pointer-events: none;
   }
@@ -257,3 +258,4 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
+
