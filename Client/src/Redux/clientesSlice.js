@@ -6,6 +6,7 @@ const URL = "/clientes";
 const initialState = {
   loading: false,
   allClientes: [],
+  clientesFiltrados: [],
   clientById: {},
   clientByDni: {}, //necesario para la creacion de una venta
   error: "",
@@ -66,6 +67,20 @@ export const putClient = createAsyncThunk(
 const clienteSlice = createSlice({
   name: "clientes",
   initialState,
+  reducers: {
+    buscarCliente: (state, action) => {
+      const clientes = [...state.clientesFiltrados];
+      let clientesFiltrados = clientes.filter((cliente) => cliente.nombre.toLowerCase().includes(action.payload.toLowerCase()) || cliente.email.includes(action.payload) || cliente.dni.includes(action.payload) || cliente.telefono.includes(action.payload));
+      if(clientesFiltrados.length > 0){
+        state.clientesFiltrados = clientesFiltrados;
+      } else{
+        console.log("cliente no encontrado");
+      }
+    },
+    restablecerClientes: (state) => {
+      state.clientesFiltrados = state.allClientes;
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchClientes.pending, (state) => {
       state.loading = true;
@@ -73,6 +88,8 @@ const clienteSlice = createSlice({
     builder.addCase(fetchClientes.fulfilled, (state, action) => {
       state.loading = false;
       state.allClientes = action.payload;
+      state.clientesFiltrados = action.payload;
+      console.log("estado inicial", state.clientesFiltrados)
       state.error = "";
     });
     builder.addCase(fetchClientes.rejected, (state, action) => {
@@ -150,3 +167,8 @@ const clienteSlice = createSlice({
 });
 
 export default clienteSlice.reducer;
+
+export const {
+  buscarCliente,
+  restablecerClientes
+} = clienteSlice.actions;

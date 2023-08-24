@@ -205,6 +205,31 @@
   height: 350px;
 }
 
+.ContenedorBotonBack {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 5%;
+  align-items: center;
+  margin-left: 5rem;
+  margin-top: 1.5rem;
+}
+
+.BotonBack {
+  padding-top: 0.5rem;
+  color: white;
+  font-size: 1.3rem;
+  width: 4rem;
+  background-color: #181818;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.BotonBack:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
 .tittle {
   color: aliceblue;
   background-color: rgb(41, 40, 40);
