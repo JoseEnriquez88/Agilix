@@ -1,10 +1,11 @@
-.contenedorPrincipal{
+.contenedorPrincipal {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
-.contenedorSecundario{
+
+.contenedorSecundario {
     position: relative;
     display: flex;
     flex-direction: row;
@@ -12,7 +13,8 @@
     justify-content: center;
     height: 80vh;
 }
-.contenedorPerfil{
+
+.contenedorPerfil {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -24,13 +26,15 @@
     border-radius: 10px;
     background-color: #000000;
 }
-.fotoAvatar{
+
+.fotoAvatar {
     height: 200px;
     width: 200px;
     border-radius: 50%;
     cursor: pointer;
 }
-.divDescripcionSubirFoto{
+
+.divDescripcionSubirFoto {
     background-color: #0E0E0E;
     position: relative;
     display: flex;
@@ -42,13 +46,15 @@
     height: 100px;
     width: 250px;
 }
-.descripcionSubirFoto{
+
+.descripcionSubirFoto {
     color: #ffff;
 }
-.contenedorConfigPerfil{
+
+.contenedorConfigPerfil {
     position: relative;
     display: flex;
-    left:7rem;
+    left: 7rem;
     flex-direction: column;
     align-items: center;
     width: 1100px;
@@ -58,12 +64,14 @@
     background-color: #000000;
 
 }
-.containerInputs{
+
+.containerInputs {
     position: relative;
     display: flex;
     flex-direction: arrow;
 }
-.divNombreConfigPerfil{
+
+.divNombreConfigPerfil {
     position: relative;
     left: 125px;
     display: flex;
@@ -71,33 +79,38 @@
     align-items: center;
     width: 100%;
 }
-.configuracionPerfil{
+
+.configuracionPerfil {
     font-size: 50px;
     color: white;
-    
+
 }
-.nombreApellido{
+
+.nombreApellido {
     color: white;
     font-size: 35px;
 }
-.inputsIzquierda{
+
+.inputsIzquierda {
     position: relative;
-    top:20px;
+    top: 20px;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: center;
     margin-right: 60px;
 }
-.inputsDerecha{
+
+.inputsDerecha {
     position: relative;
-    top:20px;
+    top: 20px;
     display: flex;
     flex-direction: column;
     align-items: start;
     justify-content: initial;
     margin-left: 60px;
 }
+
 /* .inputsDerecha::after {
     content: "";
     position: absolute;
@@ -108,17 +121,19 @@
     width: 3px;
     background-color: #4b4b4b; 
 } */
-.contenedorContrasena{
+.contenedorContrasena {
     display: flex;
     flex-direction: column;
     align-items: start;
 }
-.label{
-    color:white;
+
+.label {
+    color: white;
     font-size: 20px;
     margin-bottom: 10px;
 }
-.input{
+
+.input {
     height: 30px;
     width: 350px;
     font-size: 21px;
@@ -130,12 +145,14 @@
     transition: border 0.2s;
     border: 2px solid transparent;
 }
+
 .input:focus {
     outline: none;
     border-radius: 5px;
     border: 2px solid #45b545;
 }
-.inputTelefono{
+
+.inputTelefono {
     height: 37px;
     width: 380px;
     padding-left: 60px;
@@ -151,18 +168,21 @@
     outline: none;
     border: 2px solid #45b545;
 }
-.containerClass{
+
+.containerClass {
     border: none;
-    width: 80px; 
-    height: 35px; 
+    width: 80px;
+    height: 35px;
     font-size: 18px;
 }
-.dropdown{
-    border: none; 
+
+.dropdown {
+    border: none;
     box-shadow: none;
     height: 180px;
 }
-.botonGuardar{
+
+.botonGuardar {
     position: relative;
     height: 40px;
     width: 200px;
@@ -173,12 +193,9 @@
     left: 21.3rem;
     border-radius: 5px;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
 }
-.botonGuardar:hover{
-    background-color: #3e9e3e;
-}
-.botonGuardarDisabled{
+.botonGuardar:disabled{
     position: relative;
     height: 40px;
     width: 200px;
@@ -189,10 +206,39 @@
     left: 21.3rem;
     border-radius: 5px;
     border: none;
-    cursor:pointer;
-    cursor: not-allowed; 
+    cursor: pointer;
+    cursor: not-allowed;
 }
-.botonEditar{
+
+.botonGuardar:hover {
+    background-color: #3e9e3e;
+}
+.botonGuardar:disabled:hover{
+    background-color: #5b5b5b;
+}
+.botonDesaparecer{
+    display: none;
+}
+
+.botonGuardarDisabled {
+    position: relative;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    background-color: #4b4b4b;
+    color: #FFFFFFDC;
+    top: 3.5rem;
+    left: 21.3rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    cursor: not-allowed;
+}
+.botonGuardarDisabled:hover{
+    background-color: #5b5b5b;
+}
+
+.botonEditar {
     position: relative;
     height: 40px;
     width: 200px;
@@ -203,12 +249,14 @@
     left: 7rem;
     border-radius: 5px;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
 }
-.botonEditar:hover{
+
+.botonEditar:hover {
     background-color: #3e9e3e;
 }
-.botonCancelar{
+
+.botonCancelar {
     position: relative;
     height: 40px;
     width: 200px;
@@ -219,19 +267,22 @@
     left: 7rem;
     border-radius: 5px;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
 }
-.botonCancelar:hover{
-    background-color: #4b4b4b;
+
+.botonCancelar:hover {
+    background-color: #5b5b5b;
 }
-.inputSeleccionarArchivo{
-        position: absolute;
-        opacity: 0;
-        pointer-events: none;
-        width: 0;
-        height: 0;
+
+.inputSeleccionarArchivo {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
 }
-.labelSubirFoto{
+
+.labelSubirFoto {
     position: relative;
     display: flex;
     align-items: center;
@@ -244,13 +295,14 @@
     color: #FFFFFFDC;
     border-radius: 5px;
     border: none;
-    cursor:pointer;
+    cursor: pointer;
 }
-.labelSubirFoto:hover{
+
+.labelSubirFoto:hover {
     background-color: #3e9e3e;
 }
 
-.iconView{
+.iconView {
     position: absolute;
     margin-top: 45px;
     right: 10px;
@@ -258,17 +310,19 @@
     cursor: pointer;
     transition: all 200ms linear;
 }
-.iconNoView{
+
+.iconNoView {
     position: absolute;
     cursor: pointer;
     right: 10px;
-    color:red;
+    color: red;
     margin-top: 45px;
     transition: all 200ms linear;
 }
-.divIconDeleteImage{
+
+.divIconDeleteImage {
     position: absolute;
-    top:80px;
+    top: 80px;
     right: 80px;
     display: flex;
     align-items: center;
@@ -279,15 +333,100 @@
     border-radius: 50%;
     cursor: pointer;
 }
-.divIconDeleteImage:hover{
+
+.divIconDeleteImage:hover {
     background-color: #dddddd;
 }
-.iconDeleteImage{
+
+.iconDeleteImage {
     color: red;
     cursor: pointer;
 }
+
 input[disabled] {
     background-color: #f2f2f2;
-    color: #555; 
-    cursor: not-allowed; 
-  }
+    color: #555;
+    cursor: not-allowed;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(8px);
+    /* background-color: rgba(0, 0, 0, 0.5);  usen esto si les parece*/  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal {
+    font-size: 25px;
+    height: 300px;
+    width: 650px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #0E0E0E;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #4b4b4b;
+}
+.confirmDialogButton{
+    position: relative;
+    height: 60px;
+    width: 260px;
+    font-size: 20px;
+    background-color: #45b545;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 30px 16px 2px 10px;
+    font-weight: 500;
+    font-size: 25px;
+}
+.confirmDialogButton:hover{
+    background-color: #3e9e3e;
+}
+.confirmDialogButtonGray{
+    position: relative;
+    height: 62px;
+    width: 260px;
+    font-size: 20px;
+    background-color: #4b4b4b;
+    color: #FFFFFFDC;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin: 30px 18px 2px 15px;
+    font-weight: 500;
+    font-size: 25px;
+}
+.confirmDialogButtonGray:hover{
+    background-color: #5b5b5b;
+}
+
+.confirmDialogP{
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+.confirmDialogSpan{
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+.contraseñasConciden{
+    position: absolute;
+    color: #45b545;
+    margin-top: 4.9rem;
+}
+.contraseñasNoConciden{
+    position: absolute;
+    color: red;
+    margin-top: 5rem;
+}

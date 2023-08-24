@@ -16,7 +16,6 @@ const updateUserHandler = async (req, res, next) => {
     imagenURL = imagen.secure_url;
   }
 
-
   try {
     console.log("updateUserHandler", "ROL:", rol)
     const respuesta = (typeof estado !== "boolean") ? await updateUser(id, nombre, apellido, email, telefono, dni, contraseña, rol, imagenURL!=="" && imagenURL) : await deleteUser(id, estado); // Llamada a la función updateUser con el parámetro estado

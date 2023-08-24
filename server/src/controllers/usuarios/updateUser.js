@@ -18,6 +18,7 @@ const updateUser = async (id, nombre, apellido, email, telefono, dni,rol, contra
       if(imgURL){
         updateData.img = imgURL // En caso de que manden una imagen se agrega al cuerpo asi no se sobrescribe la url de la imagen
       }
+      console.log("updateUser contraseña",updateData.contraseña)
       const usuario = await Usuario.update( updateData,
         {
           where: {
