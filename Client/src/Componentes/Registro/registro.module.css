@@ -30,13 +30,15 @@
   align-items: center;
   justify-content: center;
   top: 20px;
+  padding-top: 20px;
 }
 
 .from_heading {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: 400;
   color: #ffffff;
-  margin-bottom: 30px;
+  margin-bottom:30px;
+  position: absolute;
 }
 
 .input {
@@ -50,18 +52,83 @@
   font-size: 13px;
 }
 
+/* .password_container{ */
+  /* display: ; */
+
+
+.boton_icono{
+  height: 50px;
+}
+
+.icon{
+  padding-top: 2px;
+  cursor: pointer;
+  width: 20px;
+  height: 35px;
+  border: 1px solid #2c444e;
+  background-color: transparent;
+}
+
+.contraseña_input{
+  width: 300px;
+  height: 35px;
+  padding: 5px;
+  margin: 5px 0;
+  outline: none;
+  border: 1px solid #2c444e;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+
+.select {
+  width: 330px;
+  height: 45px;
+  padding: 5px;
+  margin: 5px 0;
+  outline: none;
+  border: 1px solid #2c444e;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+.buttonContainer {
+  display: flex;
+  padding: 1em;
+}
 
 .btn {
-  width: 230px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  width: 150px;
+  height: 40px;
   font-size: 15px;
   font-weight: 500;
-  padding: 12px 25px;
+  padding: 8px 0px;
   color: white;
   background-color: #89289c;
   border-radius: 5px;
   margin: 10px 0 0 0;
+  margin-right: 30px;
   outline: none;
   border: none;
+  cursor: pointer;
+}
+
+.goBackButton {
+  width: 100px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: white;
+  box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px,
+    rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 10px 0 0 0;
+  color: #2c444e;
   cursor: pointer;
 }
 
@@ -72,30 +139,10 @@
   padding: 0;
 }
 
-.text > a {
+.text>a {
   font-size: 16px;
   font-weight: 500;
   color: #43b643;
-}
-
-.google_btn {
-  width: 230px;
-  height: 40px;
-  border-radius: 5px;
-  border: none;
-  outline: none;
-  background-color: white;
-  box-shadow: rgb(0 0 0 / 20%) 0px 3px 1px -2px,
-    rgb(0 0 0 / 14%) 0px 2px 2px 0px, rgb(0 0 0 / 12%) 0px 1px 5px 0px;
-  font-size: 16px;
-  font-weight: 500;
-  margin: 0 0 20px 0;
-  color: #2c444e;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
 }
 
 .AgilixTittle {
@@ -107,4 +154,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.errors{
+  color: red;
+  font-size: 13px;
+  margin: 0 auto;
+  padding: 10px;
 }
