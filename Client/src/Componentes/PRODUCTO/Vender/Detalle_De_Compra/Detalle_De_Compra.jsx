@@ -13,78 +13,79 @@ const DetalleDeCompra = () => {
   const [dniBusqueda, setDniBusqueda] = useState("");
   const [habilitarGenerarQR, setHabilitarGenerarQR] = useState(true);
 
-  let clientEncontrado = useSelector((state) => state.clientes.clientByDni);
-  const usuarioID = "31d2b151-0eb5-4d9c-a893-e6946200d4f2"; //poner usuario
+  
+    let clientEncontrado = useSelector(state => state.clientes.clientByDni);
+    const usuarioID = "68c548e8-1e39-4c9f-993d-fc4e9ee5a3cf";
 
-  const handleBuscarPorDNI = async () => {
-    if (dniBusqueda) {
-      try {
-        dispatch(getClientByDni(dniBusqueda));
-        if (clientEncontrado) {
-          setHabilitarGenerarQR(false);
+    const handleBuscarPorDNI = async () => {
+        if (dniBusqueda) {
+            try {
+                dispatch(getClientByDni(dniBusqueda));
+                if (clientEncontrado) {
+                    setHabilitarGenerarQR(false);
+                }
+                console.log("Buscando cliente por DNI:", dniBusqueda);
+            } catch (error) {
+                console.log("Error al buscar cliente por DNI:", error.message);
+            }
+
         }
-        console.log("Buscando cliente por DNI:", dniBusqueda);
-      } catch (error) {
-        console.log("Error al buscar cliente por DNI:", error.message);
-      }
-    }
-  };
-
-  // Calcular el precio total del carrito
-  const precioTotalCarrito = carrito.reduce(
-    (total, item) => total + item.producto.precio * item.cantidad,
-    0
-  );
-
-  const handleEliminarProducto = (idProducto) => {
-    dispatch(quitarDelCarrito(idProducto));
-  };
-  const handleVolverAtras = () => {
-    window.history.back();
-  };
-
-  const handleGenerarQR = async () => {
-    let InfoCarrito = carrito.map((item) => {
-      if (item) {
-        return {
-          id: item.producto.id,
-          nombre: item.producto.nombre,
-          cantidad: item.cantidad,
-          precio: item.producto.precio,
-        };
-      } else {
-        return "Carrito vacío";
-      }
-    });
-    setDniBusqueda("");
-    setHabilitarGenerarQR(true);
-
-    if (InfoCarrito.length > 0 && clientEncontrado) {
-      try {
-        await axios.post("/pagos/nueva_orden", {
-          id_cliente: clientEncontrado.id,
-          id_usuario: usuarioID,
-          total_venta: precioTotalCarrito,
-          InfoCarrito: InfoCarrito,
-        });
-        console.log("Items Enviados: ", InfoCarrito);
-      } catch (error) {
-        console.log(
-          "Error al enviar los datos a Mercado Pago (componente Detalle) " +
-          error.message
-        );
-      }
-    } else {
-      console.log("No hay productos en InfoCarrito");
     }
 
-    InfoCarrito.length > 0 ? setQrGenerado(true) : setQrGenerado(false);
-  };
 
-  const handlerEliminarQR = async () => {
-    setQrGenerado(false);
-    await axios.delete("/pagos/eliminar_orden");
-  };
+    // Calcular el precio total del carrito
+    const precioTotalCarrito = carrito.reduce((total, item) => total + item.producto.precio * item.cantidad, 0);
+
+    const handleEliminarProducto = (idProducto) => {
+        dispatch(quitarDelCarrito(idProducto));
+    };
+    const handleVolverAtras = () => {
+        window.history.back();
+    };
+
+    const handleGenerarQR = async () => {
+        let InfoCarrito = carrito.map(item => {
+            if (item) {
+                return {
+                    id: item.producto.id,
+                    nombre: item.producto.nombre,
+                    cantidad: item.cantidad,
+                    precio: item.producto.precio
+                }
+            } else {
+                return "Carrito vacío";
+            }
+        })
+        setDniBusqueda("");
+        setHabilitarGenerarQR(true);
+
+        if (InfoCarrito.length > 0 && clientEncontrado) {
+            try {
+                await axios.post("http://localhost:3001/pagos/nueva_orden",
+                    {
+                        id_cliente: clientEncontrado.id,
+                        id_usuario: usuarioID,
+                        total_venta: precioTotalCarrito,
+                        InfoCarrito: InfoCarrito
+                    });
+                console.log("Items Enviados: ", InfoCarrito);
+            } catch (error) {
+                console.log("Error al enviar los datos a Mercado Pago (componente Detalle) " + error.message);
+            }
+        } else {
+            console.log("No hay productos en InfoCarrito");
+        }
+
+        InfoCarrito.length > 0 ? setQrGenerado(true) : setQrGenerado(false);
+
+    }
+
+    const handlerEliminarQR = async () => {
+        setQrGenerado(false);
+        await axios.delete("http://localhost:3001/pagos/eliminar_orden");
+    }
+
+
 
   return (
     <div className={styles.ContenedorGeneral}>
@@ -119,7 +120,8 @@ const DetalleDeCompra = () => {
               <h3>Cantidad: {item.cantidad}</h3>
               {/* <img className={styles.imagen} src={item.producto.img} alt={item.producto.nombre} /> */}
               <h3>Precio total del producto: ${item.producto.precio * item.cantidad}</h3>
-              <button className={styles.botonEliminar} onClick={() => handleEliminarProducto(item.producto.id)}>Eliminar</button>
+
+   
             </div>
           ))}
         </div>

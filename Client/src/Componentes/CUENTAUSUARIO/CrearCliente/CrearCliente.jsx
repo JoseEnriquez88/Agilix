@@ -36,7 +36,7 @@ const Clientes = () => {
     <form className={styles.form} onSubmit={handleSubmit}>
       <div>
         <p className={styles.tittle}>Crear Cliente</p>
-        <label className={styles.nombre} htmlFor="nombre">
+        <label className={styles.inputLabel} htmlFor="nombre">
           Nombre :{" "}
         </label>
         <input
@@ -49,7 +49,7 @@ const Clientes = () => {
         />
       </div>
       <div>
-        <label className={styles.telefono} htmlFor="telefono">
+        <label className={styles.inputLabel} htmlFor="telefono">
           Teléfono :{" "}
         </label>
         <input
@@ -62,7 +62,7 @@ const Clientes = () => {
         />
       </div>
       <div>
-        <label className={styles.email} htmlFor="email">
+        <label className={styles.inputLabel} htmlFor="email">
           Email :{" "}
         </label>
         <input
@@ -75,7 +75,7 @@ const Clientes = () => {
         />
       </div>
       <div>
-        <label className={styles.nombre} htmlFor="dni">
+        <label className={styles.inputLabel} htmlFor="dni">
           DNI :{" "}
         </label>
         <input
