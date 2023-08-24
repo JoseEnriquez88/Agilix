@@ -13,8 +13,56 @@ const DetalleDeCompra = () => {
   const [dniBusqueda, setDniBusqueda] = useState("");
   const [habilitarGenerarQR, setHabilitarGenerarQR] = useState(true);
 
+
   let clientEncontrado = useSelector((state) => state.clientes.clientByDni);
   const usuarioID = "68c548e8-1e39-4c9f-993d-fc4e9ee5a3cf"; //poner usuario
+
+
+  
+    
+
+    const handleBuscarPorDNI = async () => {
+        if (dniBusqueda) {
+            try {
+                dispatch(getClientByDni(dniBusqueda));
+                if (clientEncontrado) {
+                    setHabilitarGenerarQR(false);
+                }
+                console.log("Buscando cliente por DNI:", dniBusqueda);
+            } catch (error) {
+                console.log("Error al buscar cliente por DNI:", error.message);
+            }
+
+        }
+    }
+
+
+    // Calcular el precio total del carrito
+    const precioTotalCarrito = carrito.reduce((total, item) => total + item.producto.precio * item.cantidad, 0);
+
+    const handleEliminarProducto = (idProducto) => {
+        dispatch(quitarDelCarrito(idProducto));
+    };
+    const handleVolverAtras = () => {
+        window.history.back();
+    };
+
+    const handleGenerarQR = async () => {
+        let InfoCarrito = carrito.map(item => {
+            if (item) {
+                return {
+                    id: item.producto.id,
+                    nombre: item.producto.nombre,
+                    cantidad: item.cantidad,
+                    precio: item.producto.precio
+                }
+            } else {
+                return "Carrito vacío";
+            }
+        })
+        setDniBusqueda("");
+        setHabilitarGenerarQR(true);
+
 
   const handleBuscarPorDNI = async () => {
     if (dniBusqueda) {
@@ -23,10 +71,12 @@ const DetalleDeCompra = () => {
         if (clientEncontrado) {
           setHabilitarGenerarQR(false);
         }
+
         console.log("Buscando cliente por DNI:", dniBusqueda);
       } catch (error) {
         console.log("Error al buscar cliente por DNI:", error.message);
       }
+        InfoCarrito.length > 0 ? setQrGenerado(true) : setQrGenerado(false);
     }
   };
 
@@ -77,6 +127,7 @@ const DetalleDeCompra = () => {
     } else {
       console.log("No hay productos en InfoCarrito");
     }
+
 
     InfoCarrito.length > 0 ? setQrGenerado(true) : setQrGenerado(false);
   };
@@ -132,9 +183,6 @@ const DetalleDeCompra = () => {
           </div>
         </div>
       </div>
-
-
-
     </div>
   );
 }
