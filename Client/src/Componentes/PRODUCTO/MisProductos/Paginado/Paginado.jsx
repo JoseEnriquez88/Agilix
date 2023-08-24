@@ -39,10 +39,10 @@ const Paginado = ({ productosPorPagina, products, paginado, currentPage }) => {
         <div className={styles.PaginationContainer}>
             <ul className={styles.ul}>
                 <li className={styles.li}>
-                    <button disabled={currentPage === 1} onClick={handleFirstPage} className={styles.PaginationButton}>inicio</button>
+                    <button disabled={currentPage === 1} onClick={handleFirstPage} className={styles.PaginationButton}>Inicio</button>
                 </li>
                 <li className={styles.li}>
-                    <button disabled={currentPage === 1} onClick={previusPage} className={styles.PaginationButton}>Prev</button>
+                    <button disabled={currentPage === 1} onClick={previusPage} className={styles.PaginationButton}>Previo</button>
                 </li>
                 {pageNumbers?.map(number => (
                     <li key={number} className={styles.li}>
@@ -50,10 +50,10 @@ const Paginado = ({ productosPorPagina, products, paginado, currentPage }) => {
                     </li >
                 ))}
                 <li className={styles.li}>
-                    <button disabled={currentPage === totalPages} onClick={nextPage} className={styles.PaginationButton}>siguiente</button>
+                    <button disabled={currentPage === totalPages} onClick={nextPage} className={styles.PaginationButton}>Siguiente</button>
                 </li>
                 <li className={styles.li}>
-                    <button disabled={currentPage === totalPages} onClick={handleLastPage} className={styles.PaginationButton}>final</button>
+                    <button disabled={currentPage === totalPages} onClick={handleLastPage} className={styles.PaginationButton}>Final</button>
                 </li>
             </ul>
         </div>

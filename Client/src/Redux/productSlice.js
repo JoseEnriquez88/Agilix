@@ -38,6 +38,15 @@ const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
+    buscarProducto: (state, action) => {
+      let productos = [...state.productosFiltrados];
+      let productosFiltrados = productos.filter((producto) => producto.nombre.toLowerCase().includes(action.payload.toLowerCase()));
+      if(productosFiltrados.length > 0){
+        state.productosFiltrados = productosFiltrados;
+      } else{
+        console.log("producto no encontrado");
+      }
+    },
     //Ordenamiento alfabético
     ordenAlfabetico: (state, action) => {
       let productos = [...state.productosFiltrados];
@@ -118,4 +127,5 @@ export const {
   ordenPorPrecio,
   filtroPorTipo,
   restablecerOrdenamientos,
+  buscarProducto,
 } = productSlice.actions;

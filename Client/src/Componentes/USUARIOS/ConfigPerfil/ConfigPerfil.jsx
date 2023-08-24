@@ -8,6 +8,8 @@ import PhoneInput from 'react-phone-input-2'
 import DeleteIcon from '@mui/icons-material/Delete';
 import 'react-phone-input-2/lib/bootstrap.css'
 import { fetchUsuarios } from '../../../Redux/usuariosSlice';
+import { NavLink } from "react-router-dom";
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import axios from 'axios';
 import ReactModal from 'react-modal';
 
@@ -128,6 +130,12 @@ const ConfigPerfil = () => {
     };
 
     return (
+        <div>
+            <div className={styles.ContenedorBotonBack}>
+                <NavLink to='/' className={styles.BotonBack}>
+                    <ArrowBackIosNewIcon className={styles.IconoBack} />
+                </NavLink>
+            </div>
         <div className={styles.contenedorPrincipal}>
             <div className={styles.contenedorSecundario}>
                 <div className={styles.contenedorPerfil}>
@@ -280,6 +288,7 @@ const ConfigPerfil = () => {
                 </div>
             </ReactModal>
 
+        </div>
         </div>
     )
 }

@@ -195,3 +195,7 @@ padding-right: 15px;
   text-decoration: none;
   transition: all 200ms linear;
   }
+
+  .iconSideBarReducido:hover {
+    color: #45b545;
+    }

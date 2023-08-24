@@ -174,7 +174,7 @@ a {
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  margin-left: 1460px;
+  margin-left: 1500px;
   position: absolute;
 }
 
@@ -192,4 +192,29 @@ a {
 .refresh:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.ContenedorBotonBack {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  height: 5%;
+  align-items: center;
+  margin-left: 5rem;
+  margin-top: 1.5rem;
+}
+
+.BotonBack {
+  padding-top: 0.5rem;
+  color: white;
+  font-size: 1.3rem;
+  width: 4rem;
+  background-color: #181818;
+  transition: 0.5s;
+  border-radius: 10px;
+}
+
+.BotonBack:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
