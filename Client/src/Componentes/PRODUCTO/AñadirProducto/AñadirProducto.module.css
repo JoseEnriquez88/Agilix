@@ -10,16 +10,18 @@
   border-radius: 0.75rem;
   background-color: #181818;
   color: #f3f4f6;
-  max-width: 550px;
+  width: 550px;
   height: auto;
   padding: 25px;
 }
+
 
 .titituloForm {
   text-align: center;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 900;
+  color: #45b545;
 }
 
 .inputGroup {
@@ -32,18 +34,11 @@
   line-height: 1.25rem;
   width: 250px;
   margin: 0 auto;
+  background-color: #696969;
+  border: 1px solid rgb(49, 49, 49);
+  color: white;
 }
 
-.inputGropLabel {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  display: block;
-  color: rgba(156, 163, 175, 1);
-  margin-bottom: 4px;
-  margin: 0 auto;
-}
 
 .image {
   display: flex;
@@ -84,6 +79,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
+  border: 1px solid rgb(49, 49, 49);
 }
 
 .buttonDelete:disabled {
@@ -125,6 +121,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
+  border: 1px solid rgb(49, 49, 49);
 }
 
 .buttonCreate:disabled {
@@ -173,6 +170,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
+  border: 1px solid rgb(49, 49, 49);
 }
 .uploadButton:disabled {
   pointer-events: none;
@@ -205,4 +203,17 @@
 .previewImage {
   width: 350px;
   height: 350px;
+}
+
+.tittle {
+  color: aliceblue;
+  background-color: rgb(41, 40, 40);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  border: 1px solid rgb(49, 49, 49);
+  border-radius: 10px;
+  margin-left: 30%;
+  margin-right: 30%;
 }

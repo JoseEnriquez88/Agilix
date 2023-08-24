@@ -28,13 +28,12 @@ const AdminUsuarios = () => {
   return (
     <div>
       <h1 className={styles.tittle}>Lista de usuarios</h1>
+      <button className={styles.CrearCliente}>
+        <NavLink to="/crearusuario" style={{ textDecoration: "none" }}>
+          Crear Usuario
+        </NavLink>
+      </button>
       <div className={styles.container}>
-        <button className={styles.CrearCliente}>
-          <NavLink to="/crearusuario" style={{ textDecoration: "none" }}>
-            Crear Usuario
-          </NavLink>
-        </button>
-
         <ol className={styles.clienteList}>
           {usuarios.allUsuarios.map((usuario) => (
             <li className={styles.clienteRow} key={usuario.id}>
@@ -43,6 +42,10 @@ const AdminUsuarios = () => {
                 <p className={styles.nombreCliente}>
                   {usuario.nombre} {usuario.apellido}
                 </p>
+              </div>
+              <div className={styles.clienteInfo}>
+                <span className={styles.tituloPrincipal}>Apellido:</span>
+                <p className={styles.telefonoCliente}>{usuario.apellido}</p>
               </div>
               <div className={styles.clienteInfo}>
                 <span className={styles.tituloPrincipal}>Teléfono:</span>

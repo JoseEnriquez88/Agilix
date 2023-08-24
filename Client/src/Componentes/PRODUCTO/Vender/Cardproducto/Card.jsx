@@ -3,7 +3,7 @@ import styles from './Card.module.css';
 import { useDispatch  } from 'react-redux';
 import { agregarAlCarrito } from '../../../../Redux/carritoDeComprasSlice';
 
-const Card = ({ id, nombre, img, precio, stock }) => {
+const Card = ({ id, nombre, img, precio, stock, }) => {
     const [cantidad, setCantidad] = useState(1);
     const dispatch = useDispatch();
   
@@ -15,6 +15,17 @@ const Card = ({ id, nombre, img, precio, stock }) => {
             setCantidad("");
         }
     };
+    const handleIncrementar = () => {
+        if (cantidad < stock) {
+          setCantidad(cantidad + 1);
+        }
+      };
+    
+      const handleDecrementar = () => {
+        if (cantidad > 1) {
+          setCantidad(cantidad - 1);
+        }
+      };
 
    
     const handleAgregarAlCarrito = () => {
@@ -25,7 +36,7 @@ const Card = ({ id, nombre, img, precio, stock }) => {
               cantidad,
             })
           );
-          setCantidad(0);
+          setCantidad(1);
         } else if (cantidad > stock) {
           alert('La cantidad seleccionada es mayor al stock disponible');
         } else if (cantidad=== 0){
@@ -47,13 +58,15 @@ const Card = ({ id, nombre, img, precio, stock }) => {
                         <p>Disponible: {stock}</p>
                     </div>
                     <div className={styles.ContenedorBotonStock}>
-                        <input
-                           className={styles.input}
-                            type="number"
-                            value={cantidad}
-                            onChange={handleCantidadChange}
-                            min="0"
-                        />
+                    <button className={styles.Decrementar} onClick={handleDecrementar}>-</button>
+            <input
+              className={styles.Input}
+              value={cantidad}
+              onChange={handleCantidadChange}
+              min="0"
+
+            />
+            <button className={styles.Incrementar} onClick={handleIncrementar}>+</button>
                     </div>
                     <div className={styles.ContenedorBotones}>
                         <button className={styles.btnAgregar} onClick={handleAgregarAlCarrito}>Agregar al carrito</button>
