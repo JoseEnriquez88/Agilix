@@ -19,19 +19,7 @@ const {
 
 server.use(morgan("dev"));
 server.use(express.json());
-
 server.use(bodyParser.json({ limit: "50mb" }));
-server.use(bodyParser.urlencoded({ extended: false }));
-server.use(
-  cookieSession({
-    name: "session",
-    keys: ["agilix"],
-    maxAge: 24 * 60 * 60 * 100,
-  })
-);
-server.set("trust proxy", 1);
-server.use(passport.initialize());
-server.use(passport.session());
 
 server.use(
   cors({
@@ -41,6 +29,18 @@ server.use(
     allowedHeaders: "Origin, X-Requested-With, Content-Type, Accept",
   })
 );
+server.set("trust proxy", 1);
+
+server.use(
+  cookieSession({
+    name: "session",
+    keys: ["agilix"],
+    maxAge: 24 * 60 * 60 * 100,
+    secure: true,
+  })
+);
+server.use(passport.initialize());
+server.use(passport.session());
 
 const upload = multer();
 
@@ -51,17 +51,6 @@ cloudinary.config({
 });
 
 server.use(upload.any());
-
-// server.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:5173");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
-//   next();
-// });
 
 server.use("/", mainRouter);
 module.exports = server;
