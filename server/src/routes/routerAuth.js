@@ -34,7 +34,7 @@ routerAuth.get(
 
 routerAuth.get(
   "/google",
-  passport.authenticate("google", ["profile", "email"])
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 routerAuth.get("/logout", (req, res) => {
