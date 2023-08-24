@@ -28,7 +28,7 @@ routerAuth.get("/login/failed", (req, res) => {
 routerAuth.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: CLIENT_URL,
+    successRedirect: "/",
     failureRedirect: "/login/failed",
   })
 );
