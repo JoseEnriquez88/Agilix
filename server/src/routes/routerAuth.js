@@ -33,6 +33,7 @@ routerAuth.get(
   }),
   (req, res) => {
     console.log(req.user);
+    res.redirect("general");
   }
 );
 
