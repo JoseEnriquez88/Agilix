@@ -51,9 +51,16 @@
   padding-left: 20px;
   background-color: #181818;
   border: none;
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: rgb(171, 30, 30);
 }
 
 .NavLink {
   background-color: #181818;
   border: none;
+  color: white;
+  padding-bottom: 20px;
 }
