@@ -15,6 +15,9 @@ passport.use(
       proxy: true,
     },
     (req, accessToken, refreshToken, profile, done) => {
+      console.log(
+        `req: ${req} accessToken: ${accessToken} refreshToken: ${refreshToken} profile: ${profile} done: ${done}`
+      );
       return done(null, profile);
     }
   )
