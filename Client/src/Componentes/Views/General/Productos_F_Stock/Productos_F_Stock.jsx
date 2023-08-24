@@ -45,7 +45,7 @@ const Productos_F_Stock = () => {
         {prod.allProducts ? (
           productosSliced.map(({ id, nombre, img, precio }) => (
 
-      {productosActivos.length > 0 ? (
+      {productosActivos ? (
           productosActivos.map(({ id, nombre, img, precio }) => (
 
             <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
