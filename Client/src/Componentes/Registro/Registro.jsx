@@ -31,7 +31,7 @@ const Registro = ({ setUser }) => {
                 const usuarioRol = { ...input, rol: `${input.rol}` };
                 setUser(usuarioRol);
             }
-            window.location.href = 'http://localhost:5173/general';
+            
         } catch (error) {
             console.log(error);
             alert(`Hubo un error al crear el usuario: ${input.nombre}. Por favor, intentelo nuevamente.`);

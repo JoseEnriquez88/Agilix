@@ -7,7 +7,12 @@ const initialState = {
   loading: false,
   allUsuarios: [],
   userById: {},
-  loginStorage: {},
+  loginStorage: {
+    loginStorage: {
+      login: "", 
+      usuario: {}, 
+    }
+  },
   error: "",
 };
 
@@ -25,7 +30,7 @@ export const fetchUsuariosByName = createAsyncThunk(
 
 export const getUserByEmail = createAsyncThunk(
   "usuarios/getUserByEmail",
-  async (email) => {
+  async ({email}) => {
     const response = await axios(`${URL}?email=${email}`);
     return response.data;
   }
@@ -71,7 +76,10 @@ const usuariosSlice = createSlice({
   initialState,
   reducers: {
     tipoLogin: (state, action) => {
-      state.loginStorage = action.payload;
+      const { login, usuario } = action.payload;
+      state.loginStorage = { login, usuario};
+      console.log("DESPUES DE EL STATE")
+      console.log(state.loginStorage)
     },
   },
   extraReducers: (builder) => {

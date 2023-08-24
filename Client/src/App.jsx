@@ -19,7 +19,6 @@
     ConfigPerfil,
     CrearUsuario,
   } from "./Componentes/USUARIOS/exportador";
-  import { getUserByEmail } from "./Redux/usuariosSlice"
 
   import General from "./Componentes/Views/General/Componente_General/General";
   import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
@@ -47,11 +46,15 @@
 
 
     const getUser = async () => {
-
+      console.log("ESTOY EN EL APPPPP", loginStorage)
       try {
           if(loginStorage.login=="local"){
             setUser(loginStorage.usuario);
-          }else{
+          }
+          if (loginStorage.usuario) { // Verifica si existe loginStorage.usuario
+            setUser(loginStorage.usuario);
+          } 
+          else{
           const url = `${import.meta.env.VITE_API_URL}/auth/login/success`;
           const { data } = await axios.get(url, { withCredentials: true });
           if (data.user._json) {

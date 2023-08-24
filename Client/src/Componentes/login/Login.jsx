@@ -2,15 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserByEmail, tipoLogin } from "../../Redux/usuariosSlice";
+import axios from "axios";
 
 function Login() {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     email: "",
-    password: "",
+    contraseña: "",
   });
-  const { allUsuarios, loginStorage }=useSelector ((state)=>state.usuarios);
+  const loginStorage = useSelector((state) => state.usuarios.loginStorage);
+  // const { allUsuarios, loginStorage }=useSelector ((state)=>state.usuarios);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const googleAuth = () => {
@@ -22,21 +26,28 @@ function Login() {
   const handleChange = (event) => {
     setUser({ ...user, [event.target.name]: event.target.value });
   };
-  const handleLogin = () => {
-    dispatch(getUserByEmail(user.email));
-    console.log("ANTES DEL IF",allUsuarios);
-    
-    if (user.email === allUsuarios[0].email && user.contraseña === allUsuarios[0].contraseña) {
-      console.log("DESPUES DEL IF",allUsuarios);
-        dispatch(tipoLogin({
-          login:"local",
-          usuario:allUsuarios[0]
-        }));
-        console.log("EL LOGIN STORAGE ",loginStorage);
-
+  const handleLogin = async() => {
+    const URL="http://localhost:3001/usuarios"
+    try {
+      const response = await axios(`${URL}?email=${user.email}`);
+  
+      const usuariosito = response.data;
+  
+      if (user.email === usuariosito.email && user.contraseña === usuariosito.contraseña) {
+        dispatch(
+          tipoLogin({
+            login: "local",
+            usuario: usuariosito,
+          })
+          
+        );
+        console.log("EL LOGIN",loginStorage)
         window.location.href = 'http://localhost:5173/general';
-    } else {
-      setError("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
+      } else {
+        setError("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
+      }
+    } catch (error) {
+      setError("Hubo un error al iniciar sesión. Por favor, inténtalo de nuevo.");
     }
   }
   return (
@@ -61,8 +72,8 @@ function Login() {
             type="text"
             className={styles.input}
             placeholder="Contraseña"
-            name="password"
-            value={user.password}
+            name="contraseña"
+            value={user.contraseña}
             onChange={handleChange}
           />
           <button className={styles.btn}onClick={handleLogin}>Iniciar sesión</button>
