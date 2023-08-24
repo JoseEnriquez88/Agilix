@@ -15,7 +15,7 @@ passport.use(
       proxy: true,
     },
     (req, accessToken, refreshToken, profile, done) => {
-      return done(null, user);
+      return done(null, profile);
     }
   )
 );
