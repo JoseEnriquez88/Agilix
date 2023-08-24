@@ -17,7 +17,6 @@ routerAuth.get("/login/success", (req, res) => {
     res
       .status(401)
       .json({ error: true, message: "Fallo en la Autentificacion" });
-    console.log(req.user);
   }
 });
 
@@ -25,12 +24,13 @@ routerAuth.get("/login/failed", (req, res) => {
   res.status(401).json({ error: true, message: "Fallo en la Autentificacion" });
 });
 
-routerAuth.get("/google/callback", (req, res) => {
+routerAuth.get(
+  "/google/callback",
   passport.authenticate("google", {
     successRedirect: "/",
     failureRedirect: "/login/failed",
-  });
-});
+  })
+);
 
 routerAuth.get(
   "/google",
