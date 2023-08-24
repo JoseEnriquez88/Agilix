@@ -15,7 +15,7 @@ passport.use(
       // proxy: true,
     },
     function (accessToken, refreshToken, profile, callback) {
-      callback(null, profile);
+      return callback(null, profile);
     }
   )
 );
