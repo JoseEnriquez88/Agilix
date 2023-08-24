@@ -13,3 +13,4 @@ const deleteProducto = async (id,estado) => {
 };
 
 module.exports = deleteProducto;
+
