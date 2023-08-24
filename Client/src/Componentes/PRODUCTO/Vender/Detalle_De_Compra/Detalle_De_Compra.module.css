@@ -11,6 +11,9 @@
   align-items: center; 
   gap: 10px; 
 }
+.nombreClientes{
+  color:#00e900;;
+}
   
   .detalles{
     color: aliceblue;
@@ -87,7 +90,7 @@
     border: none;
     height: 40px;
     border-radius: 10px;
-    width: 100px;
+    width: 150px;
 }
 
 .search {
@@ -96,13 +99,10 @@
     align-items: center;
     height: 80px;
     width: 700px;
-    gap: 7px;
-   margin-left: 120px;
+    gap: 10px;
+   margin-left: 60px;
   
-
-}
-.nombreClientes{
- color: #00e900;
+   
 }
   
   .Total {
@@ -166,7 +166,7 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  width:200px;
+  width: 140px;
   }
   .botonGenerar:disabled {
     pointer-events: none;
@@ -209,10 +209,8 @@
   -webkit-user-select: none;
   touch-action: manipulation;
   will-change: transform;
-  width:200px;
- 
+  width: 140px;
 }
-
 .botonEliminaror:disabled {
     pointer-events: none;
   }
@@ -246,7 +244,7 @@
       -webkit-user-select: none;
       touch-action: manipulation;
       will-change: transform;
-      width:150px;
+      
   }
   .botonVolver:disabled {
     pointer-events: none;
@@ -258,4 +256,3 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
-
