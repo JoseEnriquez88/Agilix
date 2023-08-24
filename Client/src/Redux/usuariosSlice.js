@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   allUsuarios: [],
   userById: {},
+  loginStorage: {},
   error: "",
 };
 
@@ -68,6 +69,11 @@ export const putUser = createAsyncThunk(
 const usuariosSlice = createSlice({
   name: "usuarios",
   initialState,
+  reducers: {
+    tipoLogin: (state, action) => {
+      state.loginStorage = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchUsuarios.pending, (state) => {
       state.loading = true;
@@ -125,3 +131,6 @@ const usuariosSlice = createSlice({
 });
 
 export default usuariosSlice.reducer;
+export const {
+  tipoLogin,
+} = usuariosSlice.actions;

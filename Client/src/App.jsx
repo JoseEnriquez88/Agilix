@@ -19,6 +19,7 @@
     ConfigPerfil,
     CrearUsuario,
   } from "./Componentes/USUARIOS/exportador";
+  import { getUserByEmail } from "./Redux/usuariosSlice"
 
   import General from "./Componentes/Views/General/Componente_General/General";
   import Cuenta from "./Componentes/Views/Cuenta/Cuenta";
@@ -32,7 +33,9 @@
   import { fetchProducts } from "./Redux/productSlice";
   import { useEffect, useState } from "react";
   import { useDispatch } from "react-redux";
+  import { useSelector } from "react-redux";  
   import axios from "axios";
+
   axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
   function App() {
@@ -40,14 +43,22 @@
 
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const {loginStorage}=useSelector((state)=>state.usuarios); 
+
 
     const getUser = async () => {
+
       try {
+          if(loginStorage.login=="local"){
+            setUser(loginStorage.usuario);
+          }else{
           const url = `${import.meta.env.VITE_API_URL}/auth/login/success`;
           const { data } = await axios.get(url, { withCredentials: true });
           if (data.user._json) {
               setUser(data.user._json);
           }
+        }
+        
       } catch (err) {
           console.log(err);
       } finally {
