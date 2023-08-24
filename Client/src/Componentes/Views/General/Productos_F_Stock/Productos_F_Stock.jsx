@@ -42,10 +42,7 @@ const Productos_F_Stock = () => {
       </div> : <span className={styles.NoHayProductos}>No hay productos fuera de stock</span>}
       <div className={styles.ContenedorCards}>
 
-        {prod.allProducts ? (
-          productosSliced.map(({ id, nombre, img, precio }) => (
-
-      {productosActivos ? (
+      {productosActivos.length > 0  ? (
           productosActivos.map(({ id, nombre, img, precio }) => (
 
             <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
