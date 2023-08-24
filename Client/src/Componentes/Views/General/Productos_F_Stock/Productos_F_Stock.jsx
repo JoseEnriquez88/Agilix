@@ -12,9 +12,9 @@ const Productos_F_Stock = () => {
   const [productosPorPagina, setProductosPorPagina] = useState(4);
   const indexUltimoItem = pagina * productosPorPagina;
   const indexPrimerItem = indexUltimoItem - productosPorPagina;
-  const totalPages = Math.ceil(productos.allProducts.length / productosPorPagina)
+  const totalPages = Math.ceil(prod.allProducts.length / productosPorPagina)
 
-  const productosSliced = productos.allProducts.slice(indexPrimerItem, indexUltimoItem);
+  const productosSliced = prod.allProducts.slice(indexPrimerItem, indexUltimoItem);
 
   const handlePaginaPrevia = () => {
     if(pagina > 1) {
@@ -23,7 +23,7 @@ const Productos_F_Stock = () => {
   };
 
   const handlePaginaSiguiente = () => {
-    const totalPages = Math.ceil(productos.allProducts.length / productosPorPagina);
+    const totalPages = Math.ceil(prod.allProducts.length / productosPorPagina);
     if (pagina < totalPages) {
         setPagina(pagina + 1);
     }
@@ -43,12 +43,12 @@ const Productos_F_Stock = () => {
       <div className={styles.ContenedorCards}>
 
       {productosActivos.length > 0  ? (
-          productosActivos.map(({ id, nombre, img, precio }) => (
+          productosSliced.map(({ id, nombre, img, precio }) => (
 
             <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
           ))
         ) : (
-          <span className={styles.NoHayProductos}>No hay productos fuera de stock</span>
+          <span className={styles.NoHayProductos}></span>
         )}
       </div>
       {prod.allProducts.length > 0 ? <div className={styles.contenedorBotonSiguiente}>
