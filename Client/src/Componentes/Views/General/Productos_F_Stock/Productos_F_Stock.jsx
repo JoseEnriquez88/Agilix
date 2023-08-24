@@ -15,7 +15,8 @@ const Productos_F_Stock = () => {
         <h2>Productos fuera de stock</h2>
       </div>
       <div className={styles.ContenedorCards}>
-      {productosActivos.length > 0 ? (
+      {/* {productosActivos.length > 0 ? ( */}
+      {productosActivos ? (
           productosActivos.map(({ id, nombre, img, precio }) => (
             <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
           ))
