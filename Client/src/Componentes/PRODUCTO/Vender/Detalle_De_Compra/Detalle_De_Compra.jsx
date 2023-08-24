@@ -7,13 +7,12 @@ import { getClientByDni } from '../../../../Redux/clientesSlice';
 import SearchIcon from '@mui/icons-material/Search';
 
 const DetalleDeCompra = () => {
-    const carrito = useSelector(state => state.carrito);
-    const dispatch = useDispatch();
-    const [qrGenerado, setQrGenerado] = useState(false);
-    const [dniBusqueda, setDniBusqueda] = useState('');
-    const [habilitarGenerarQR, setHabilitarGenerarQR] = useState(true);
-
-
+  const carrito = useSelector((state) => state.carrito);
+  const dispatch = useDispatch();
+  const [qrGenerado, setQrGenerado] = useState(false);
+  const [dniBusqueda, setDniBusqueda] = useState("");
+  const [habilitarGenerarQR, setHabilitarGenerarQR] = useState(true);
+  
     let clientEncontrado = useSelector(state => state.clientes.clientByDni);
     const usuarioID = "68c548e8-1e39-4c9f-993d-fc4e9ee5a3cf";
 
