@@ -46,7 +46,11 @@ module.exports = (sequelize) => {
       },
       rol: {
         type: DataTypes.ENUM('administrador', 'cajero'),
-        allowNull: true,
+        allowNull: false,
+      },
+      img: {
+        type: DataTypes.STRING,
+        allowNull: true
       }
     },
     { timestamps: false, freezeTableName: true }
