@@ -32,30 +32,32 @@ import { fetchProducts } from "./Redux/productSlice";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { useAuth0 } from "@auth0/auth0-react";
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 function App() {
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const dispatch = useDispatch();
 
-  const [user, setUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [user, setUser] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
 
-  const getUser = async () => {
-    try {
-      const url = `${import.meta.env.VITE_API_URL}/auth/login/success`;
-      const { data } = await axios.get(url, { withCredentials: true });
-      setUser(data.user._json);
-    } catch (err) {
-      console.log(err);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const getUser = async () => {
+  //   try {
+  //     const url = `${import.meta.env.VITE_API_URL}/auth/login/success`;
+  //     const { data } = await axios.get(url, { withCredentials: true });
+  //     setUser(data.user._json);
+  //   } catch (err) {
+  //     console.log(err);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
   // console.log("Esto es user:", user)
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -67,9 +69,9 @@ function App() {
 
   return (
     <div>
-      {user ? <Sidebar /> : null}
+      {isAuthenticated ? <Sidebar /> : null}
       <Routes>
-        {user ? (
+        {isAuthenticated ? (
           <>
             <Route path="/" element={<Navigate to="/general" />} />
             <Route path="/general" element={<General user={user} />} />
