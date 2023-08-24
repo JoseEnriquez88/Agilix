@@ -9,7 +9,7 @@ passport.use(
     {
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL: "https://agilix-pr-112.onrender.com/auth/google/callback",
       scope: ["profile", "email"],
       passReqToCallback: true,
       proxy: true,
