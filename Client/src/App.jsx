@@ -46,7 +46,6 @@
 
 
     const getUser = async () => {
-      window.reload
       try {
           if(loginStorage.login=="local"){
             setUser(loginStorage.usuario);
