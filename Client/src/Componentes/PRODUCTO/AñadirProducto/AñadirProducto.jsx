@@ -24,8 +24,10 @@ const AñadirProducto = () => {
 
   // Función para manejar el cambio en el campo de stock
   const handleStockChange = (event) => {
-    const nuevaStock = parseInt(event.target.value); // Convertir el valor a un número entero
-    setStockDisponible(nuevaStock);
+    const nuevaStock = parseInt(event.target.value, 10); // Convertir el valor a un número entero en base 10
+    if (!isNaN(nuevaStock) && nuevaStock >= 0) {
+      setStockDisponible(nuevaStock);
+    }
   };
 
   //Funcion que captura la data de los inputs y la almacena en el estado local

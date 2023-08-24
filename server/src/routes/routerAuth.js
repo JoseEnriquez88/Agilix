@@ -30,6 +30,9 @@ routerAuth.get(
     successRedirect: CLIENT_URL,
     failureRedirect: "/login/failed",
   })
+  // (req, res) => {
+  //   console.log("wooo we authenticated, here is our user object:", req.user);
+  // }
 );
 
 routerAuth.get(

@@ -85,75 +85,54 @@ const DetalleDeCompra = () => {
     await axios.delete("/pagos/eliminar_orden");
   };
 
-  return (
-    <div className={styles.ContenedorGeneral}>
-      <div className={styles.ContenedorTitulo}>
-        <h2>Detalle de Compra</h2>
-      </div>
-      <div className={styles.ContenedorProductosYTotal}>
-        <div className={styles.ContenedorProductos}>
-          <h2>Productos en el Carrito:</h2>
-          <div>
-            Cliente:
-            {!habilitarGenerarQR && <h3>{clientEncontrado.nombre}</h3>}
-            <label>DNI:</label>
-            <input
-              type="text"
-              placeholder="Ingrese DNI"
-              value={dniBusqueda}
-              onChange={(event) => setDniBusqueda(event.target.value)} //setear dniBusqueda
-            />
-            <button onClick={handleBuscarPorDNI}>Buscar</button>
-          </div>
-          {carrito.map((item, index) => (
-            <div key={index} className={styles.ContenedorCard}>
-              <h3>Producto: {item.producto.nombre}</h3>
-              <h3>Precio por unidad: ${item.producto.precio}</h3>
-              <h3>Cantidad: {item.cantidad}</h3>
-              {/* <img className={styles.imagen} src={item.producto.img} alt={item.producto.nombre} /> */}
-              <h3>
-                Precio total del producto: $
-                {item.producto.precio * item.cantidad}
-              </h3>
-              <button
-                className={styles.botonEliminar}
-                onClick={() => handleEliminarProducto(item.producto.id)}
-              >
-                Eliminar
-              </button>
+    return (
+        <div className={styles.ContenedorGeneral}>
+            <div className={styles.ContenedorTitulo}>
+                <h2>Detalle de Compra</h2>
             </div>
-          ))}
+            <div className={styles.ContenedorProductosYTotal}>
+                <div className={styles.ContenedorProductos}>
+                    <h2>Productos en el Carrito:</h2>
+                    <div>
+                        Cliente:
+                        {!habilitarGenerarQR && <h3>{clientEncontrado.nombre}</h3>}
+                        <label>DNI:</label>
+                        <input
+                            type="text"
+                            placeholder="Ingrese DNI"
+                            value={dniBusqueda}
+                            onChange={(event) => setDniBusqueda(event.target.value)} //setear dniBusqueda
+                        />
+                        <button onClick={handleBuscarPorDNI}>Buscar</button>
+                    </div>
+                    {carrito.map((item, index) => (
+                        <div key={index} className={styles.ContenedorCard}>
+                           <img className={styles.img}src={item.producto.img}  />
+                            <h3>Producto: {item.producto.nombre}</h3>
+                            <h3>Precio por unidad: ${item.producto.precio}</h3>
+                            <h3>Cantidad: {item.cantidad}</h3>
+                            {/* <img className={styles.imagen} src={item.producto.img} alt={item.producto.nombre} /> */}
+                            <h3>Precio total del producto: ${item.producto.precio * item.cantidad}</h3>
+                            <button className={styles.botonEliminar} onClick={() => handleEliminarProducto(item.producto.id)}>Eliminar</button>
+                        </div>
+                    ))}
+                </div>
+                <div className={styles.ContenedorTotal}>
+                    <h2 className={styles.Total}>Total de la compra: ${precioTotalCarrito}</h2>
+                    <div className={styles.ContenedorQR}>
+                        {qrGenerado && <img className={styles.imagenQR} src='https://www.mercadopago.com/instore/merchant/qr/84881780/0e64ee574a0a442f9619410ab3e11bbd33e88a1f14e94cd5941993d725caf3d1.png' />}
+                    </div>
+                </div>
+            </div>
+            <div styles={styles.ContenedorBotones}>
+                <button disabled={habilitarGenerarQR || precioTotalCarrito <= 0} onClick={handleGenerarQR}>Generar orden</button>
+                <button disabled={!qrGenerado} onClick={handlerEliminarQR}>Eliminar orden</button>
+                <button className={styles.botonAtras} onClick={handleVolverAtras}>Volver</button>
+            </div>
+
+
         </div>
-        <div className={styles.ContenedorTotal}>
-          <h2 className={styles.Total}>
-            Total de la compra: ${precioTotalCarrito}
-          </h2>
-          <div className={styles.ContenedorQR}>
-            {qrGenerado && (
-              <img
-                className={styles.imagenQR}
-                src="https://www.mercadopago.com/instore/merchant/qr/84881780/0e64ee574a0a442f9619410ab3e11bbd33e88a1f14e94cd5941993d725caf3d1.png"
-              />
-            )}
-          </div>
-        </div>
-      </div>
-      <div styles={styles.ContenedorBotones}>
-        <button
-          disabled={habilitarGenerarQR || precioTotalCarrito <= 0}
-          onClick={handleGenerarQR}
-        >
-          Generar orden
-        </button>
-        <button disabled={!qrGenerado} onClick={handlerEliminarQR}>
-          Eliminar orden
-        </button>
-        <button className={styles.botonAtras} onClick={handleVolverAtras}>
-          Volver
-        </button>
-      </div>
-    </div>
-  );
-};
+    );
+}
 
 export default DetalleDeCompra;
