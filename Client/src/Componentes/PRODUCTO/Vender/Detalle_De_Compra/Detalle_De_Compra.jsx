@@ -14,7 +14,7 @@ const DetalleDeCompra = () => {
   const [habilitarGenerarQR, setHabilitarGenerarQR] = useState(true);
 
   let clientEncontrado = useSelector((state) => state.clientes.clientByDni);
-  const usuarioID = "31d2b151-0eb5-4d9c-a893-e6946200d4f2"; //poner usuario
+  const usuarioID = "68c548e8-1e39-4c9f-993d-fc4e9ee5a3cf"; //poner usuario
 
   const handleBuscarPorDNI = async () => {
     if (dniBusqueda) {
