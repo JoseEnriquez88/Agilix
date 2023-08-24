@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { getUserByEmail, tipoLogin } from "../../Redux/usuariosSlice";
 import axios from "axios";
+import GoogleIcon from '@mui/icons-material/Google';
 
 function Login() {
   const navigate = useNavigate();
@@ -78,9 +79,13 @@ function Login() {
           />
           <button className={styles.btn}onClick={handleLogin}>Iniciar sesión</button>
           <p className={styles.text}>O</p>
+
           <button className={styles.google_btn} onClick={googleAuth}>
-            <span>Registrarse con Google</span>
+            <span className={styles.svg}>
+          <GoogleIcon/>
+          </span>
           </button>
+          
           <p className={styles.text}>
             ¿Primera vez? <Link to="/signup">Registrate</Link>
           </p>
@@ -91,3 +96,4 @@ function Login() {
 }
 
 export default Login;
+

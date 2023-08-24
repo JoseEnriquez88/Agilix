@@ -44,6 +44,16 @@ export const getUserById = createAsyncThunk(
   }
 );
 
+// export const putUser = createAsyncThunk('usuarios/putUser', async (id, usuario, { dispatch }) => {
+//   try {
+//     const { data } = await axios.put(`${URL}/${id}`, usuario);
+//     alert(data);
+//     dispatch(fetchUsuarios());
+//   } catch (error) {
+//     alert(error.message);
+//   }
+// });
+
 export const deleteUser = createAsyncThunk(
   "usuarios/deleteUser",
   async (nombre, { dispatch }) => {
@@ -70,6 +80,7 @@ export const putUser = createAsyncThunk(
     }
   }
 );
+
 
 const usuariosSlice = createSlice({
   name: "usuarios",

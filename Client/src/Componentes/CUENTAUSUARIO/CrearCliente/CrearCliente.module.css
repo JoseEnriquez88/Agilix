@@ -70,6 +70,10 @@
     line-height: 1.25rem;
     width: 250px; 
     margin: 0 auto;
+    background-color: #696969;
+    border: 1px solid rgb(49, 49, 49);
+    border: none;
+    color: white;
 }
 
 .buttonCreate {
@@ -95,6 +99,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     will-change: transform;
+    border: 1px solid rgb(49, 49, 49);
 }
 
 .buttonCreate:disabled {
@@ -135,6 +140,7 @@
     -webkit-user-select: none;
     touch-action: manipulation;
     will-change: transform;
+    border: 1px solid rgb(49, 49, 49);
 }
 
 .volverClientes:disabled {
@@ -152,3 +158,9 @@
     box-shadow: none;
     transform: translateY(0);
 }
+
+.inputGropLabel {
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }

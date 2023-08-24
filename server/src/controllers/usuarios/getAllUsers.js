@@ -7,7 +7,9 @@ const getAllUsers = async () => {
     });
 
     if (totalUsuarios.length === 0) throw new Error('No se encontraron usuarios para mostrar')
+
     return totalUsuarios;
+
 }
 
 module.exports = getAllUsers;

@@ -67,8 +67,6 @@
           setIsLoading(false);
       }
   };
-  
-
     useEffect(() => {
       console.log("ESTOY EN EL APPPPP", loginStorage)
       getUser();

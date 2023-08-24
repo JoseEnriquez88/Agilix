@@ -24,10 +24,10 @@ export const fetchProducts = createAsyncThunk(
 
 export const deleteProduct = createAsyncThunk(
   "product/deleteProduct",
-  async (productId, { rejectWithValue }) => {
+  async ({ productId, estado }, { rejectWithValue }) => {
     try {
-      await axios.put(`${URL}/${productId}`);
-      return productId; //Devolver el ID del producto eliminado
+      await axios.put(`${URL}/${productId}`, { estado: false }); // Asegúrate de pasar estado: false aquí
+      return productId; // Devolver el ID del producto eliminado
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
