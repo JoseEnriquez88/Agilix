@@ -10,14 +10,11 @@ passport.use(
       clientID: CLIENT_ID,
       clientSecret: CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
-      scope: ["profile", "email"],
+      //scope: ["profile", "email"],
       passReqToCallback: true,
       proxy: true,
     },
     (req, accessToken, refreshToken, profile, done) => {
-      console.log(
-        `req: ${req} accessToken: ${accessToken} refreshToken: ${refreshToken} profile: ${profile} done: ${done}`
-      );
       return done(null, profile);
     }
   )
