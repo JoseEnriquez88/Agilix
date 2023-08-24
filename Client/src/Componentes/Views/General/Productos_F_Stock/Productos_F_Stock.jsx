@@ -6,7 +6,7 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import SellIcon from '@mui/icons-material/Sell';
 import styles from "./Productos_F_Stock.module.css";
 
-const Productos_F_Stock = ({ productos }) => {
+const Productos_F_Stock = () => {
   const prod = useSelector((state) => state.product);
   const [pagina, setPagina] = useState(1);
   const [productosPorPagina, setProductosPorPagina] = useState(4);
@@ -29,6 +29,9 @@ const Productos_F_Stock = ({ productos }) => {
     }
   };
 
+  // Filtrar los productos que tienen estado en true
+  const productosActivos = prod.allProducts.filter((producto) => producto.estado === true);
+
   return (
     <div className={styles.ContenedorProductos}>
       <div className={styles.ContenedorTitulo}>
@@ -38,8 +41,13 @@ const Productos_F_Stock = ({ productos }) => {
         <button disabled={pagina === 1} onClick={handlePaginaPrevia} className={styles.botonPrevio}><ArrowDropUpIcon/></button>
       </div> : <span className={styles.NoHayProductos}>No hay productos fuera de stock</span>}
       <div className={styles.ContenedorCards}>
+
         {prod.allProducts ? (
           productosSliced.map(({ id, nombre, img, precio }) => (
+
+      {productosActivos.length > 0 ? (
+          productosActivos.map(({ id, nombre, img, precio }) => (
+
             <Card key={id} id={id} nombre={nombre} img={img} precio={precio} />
           ))
         ) : (

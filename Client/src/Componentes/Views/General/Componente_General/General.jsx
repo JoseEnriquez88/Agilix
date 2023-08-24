@@ -5,7 +5,7 @@ import Saldos from "../Saldos/Saldos";
 import Comparacion_de_ventas from "../Comparacion_de_ventas/Comparacion_de_ventas";
 import Pagos_recibidos from "../Pagos_recibidos/Pagos_recibidos";
 import Productos_F_Stock from "../Productos_F_Stock/Productos_F_Stock";
-import SearchBar from "../SearchBar/SearchBar";
+// import SearchBar from "../SearchBar/SearchBar";
 import Logged from "../../Logged/Logged"
 import styles from "./General.module.css";
 
@@ -19,7 +19,7 @@ const General = (userDetails) => {
       <Logged user={user} />
       <nav className={styles.ContenedorSearchBar}>
         <div className={styles.SearchBar}>
-          <SearchBar />
+          {/* <SearchBar /> */}
         </div>
       </nav>
 

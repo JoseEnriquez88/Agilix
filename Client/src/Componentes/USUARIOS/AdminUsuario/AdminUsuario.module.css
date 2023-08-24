@@ -71,6 +71,7 @@
     touch-action: manipulation;
     will-change: transform;
     margin-left: 1390px;
+    width: 150px;
 }
 
 .CrearCliente:disabled {
