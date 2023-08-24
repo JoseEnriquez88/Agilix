@@ -26,17 +26,10 @@ routerAuth.get("/login/failed", (req, res) => {
 
 routerAuth.get(
   "/google/callback",
-  passport.authenticate(
-    "google",
-    {
-      successRedirect: CLIENT_URL,
-      failureRedirect: "/login/failed",
-    },
-    (req, res, next) => {
-      res.redirect("/");
-    }
-  ),
-  (req, res, next)
+  passport.authenticate("google", {
+    successRedirect: CLIENT_URL,
+    failureRedirect: "/login/failed",
+  })
 );
 
 routerAuth.get(
