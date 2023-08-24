@@ -42,11 +42,11 @@
 
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const {loginStorage}=useSelector((state)=>state.usuarios); 
+    const loginStorage=useSelector((state)=>state.usuarios.loginStorage); 
 
 
     const getUser = async () => {
-      console.log("ESTOY EN EL APPPPP", loginStorage)
+      window.reload
       try {
           if(loginStorage.login=="local"){
             setUser(loginStorage.usuario);
@@ -71,12 +71,10 @@
   
 
     useEffect(() => {
+      console.log("ESTOY EN EL APPPPP", loginStorage)
       getUser();
-    }, []);
-
-    useEffect(() => {
       dispatch(fetchProducts());
-    }, [dispatch]);
+    }, [dispatch, loginStorage]);
 
     if (isLoading) {
       return <div>Loading...</div>;

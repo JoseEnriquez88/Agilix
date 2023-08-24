@@ -42,7 +42,7 @@ function Login() {
           
         );
         console.log("EL LOGIN",loginStorage)
-        window.location.href = 'http://localhost:5173/general';
+        navigate("/general");
       } else {
         setError("Credenciales incorrectas. Por favor, inténtalo de nuevo.");
       }
