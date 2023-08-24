@@ -12,9 +12,10 @@ passport.use(
       callbackURL: "/auth/google/callback",
       scope: ["profile", "email"],
       passReqToCallback: true,
+      proxy: true,
     },
     (req, accessToken, refreshToken, profile, done) => {
-      return done(null, req.user);
+      return done(null, user);
     }
   )
 );
