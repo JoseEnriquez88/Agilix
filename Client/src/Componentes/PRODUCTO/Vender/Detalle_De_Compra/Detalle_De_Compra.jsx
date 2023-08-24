@@ -4,6 +4,7 @@ import styles from "./Detalle_De_Compra.module.css";
 import { quitarDelCarrito } from "../../../../Redux/carritoDeComprasSlice";
 import axios from "axios";
 import { getClientByDni } from "../../../../Redux/clientesSlice";
+import SearchIcon from '@mui/icons-material/Search';
 
 const DetalleDeCompra = () => {
   const carrito = useSelector((state) => state.carrito);
@@ -88,22 +89,23 @@ const DetalleDeCompra = () => {
     return (
         <div className={styles.ContenedorGeneral}>
             <div className={styles.ContenedorTitulo}>
-                <h2>Detalle de Compra</h2>
+                <h2 className={styles.detalles}>Detalle de Compra</h2>
             </div>
             <div className={styles.ContenedorProductosYTotal}>
                 <div className={styles.ContenedorProductos}>
                     <h2>Productos en el Carrito:</h2>
-                    <div>
-                        Cliente:
+                    <div  className={styles.search}>
+                        DNI del Cliente:
                         {!habilitarGenerarQR && <h3>{clientEncontrado.nombre}</h3>}
-                        <label>DNI:</label>
-                        <input
+        
+                        <input 
+                            className={styles.SearchCliente}
                             type="text"
                             placeholder="Ingrese DNI"
                             value={dniBusqueda}
                             onChange={(event) => setDniBusqueda(event.target.value)} //setear dniBusqueda
                         />
-                        <button onClick={handleBuscarPorDNI}>Buscar</button>
+                       <button className= {styles.ButtonSearch} onClick={handleBuscarPorDNI}><SearchIcon/></button>
                     </div>
                     {carrito.map((item, index) => (
                         <div key={index} className={styles.ContenedorCard}>
@@ -119,15 +121,16 @@ const DetalleDeCompra = () => {
                 </div>
                 <div className={styles.ContenedorTotal}>
                     <h2 className={styles.Total}>Total de la compra: ${precioTotalCarrito}</h2>
+                    <h3 className={styles.escanea}>Escanea QR:</h3>
                     <div className={styles.ContenedorQR}>
                         {qrGenerado && <img className={styles.imagenQR} src='https://www.mercadopago.com/instore/merchant/qr/84881780/0e64ee574a0a442f9619410ab3e11bbd33e88a1f14e94cd5941993d725caf3d1.png' />}
                     </div>
                 </div>
             </div>
-            <div styles={styles.ContenedorBotones}>
-                <button disabled={habilitarGenerarQR || precioTotalCarrito <= 0} onClick={handleGenerarQR}>Generar orden</button>
-                <button disabled={!qrGenerado} onClick={handlerEliminarQR}>Eliminar orden</button>
-                <button className={styles.botonAtras} onClick={handleVolverAtras}>Volver</button>
+            <div className={styles.ContenedorBotones}>
+                <button  className={styles.botonGenerar}disabled={habilitarGenerarQR || precioTotalCarrito <= 0} onClick={handleGenerarQR}>Generar orden</button>
+                <button  className={styles.botonEliminaror} disabled={!qrGenerado} onClick={handlerEliminarQR}>Eliminar orden</button>
+                <button   className={styles.botonVolver}onClick={handleVolverAtras}>Volver</button>
             </div>
 
 

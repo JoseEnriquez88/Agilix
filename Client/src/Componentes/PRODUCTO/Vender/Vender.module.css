@@ -30,7 +30,11 @@
     align-items: center;
 }
 
+
 .BotonBack {
+    width: 30%;
+    height:30%;
+    border: none;
     padding-top: 0.5rem;
     color: white;
     font-size: 1.3rem;
@@ -46,6 +50,8 @@
 }
 
 .BotonCarrito {
+    width: 30px;
+    height: 30px;
     padding-top: 0.5rem;
     color: white;
     font-size: 1.3rem;
