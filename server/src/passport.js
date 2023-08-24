@@ -11,10 +11,10 @@ passport.use(
       clientSecret: CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
       scope: ["profile", "email"],
-      //passReqToCallback: true,
+      passReqToCallback: true,
     },
-    (accessToken, refreshToken, profile, done) => {
-      return done(null, profile);
+    (req, accessToken, refreshToken, profile, done) => {
+      return done(null, req.user);
     }
   )
 );
