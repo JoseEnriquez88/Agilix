@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import styles from "./styles.module.css";
 import { useState } from "react";
@@ -15,7 +15,6 @@ function Login() {
     contraseña: "",
   });
   const loginStorage = useSelector((state) => state.usuarios.loginStorage);
-  // const { allUsuarios, loginStorage }=useSelector ((state)=>state.usuarios);
   const [error, setError] = useState("");
   const dispatch = useDispatch();
   const googleAuth = () => {
@@ -92,8 +91,8 @@ function Login() {
         </div>
       </div>
     </div>
+
   );
 }
 
 export default Login;
-

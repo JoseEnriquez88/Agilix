@@ -28,7 +28,6 @@
   import Login from "./Componentes/login/Login";
   import Registro from './Componentes/Registro/Registro';
   import Logged from "./Componentes/Views/Logged/Logged";
-
   import { fetchProducts } from "./Redux/productSlice";
   import { useEffect, useState } from "react";
   import { useDispatch } from "react-redux";
@@ -72,7 +71,6 @@
       getUser();
       dispatch(fetchProducts());
     }, [dispatch, loginStorage]);
-
     if (isLoading) {
       return <div>Loading...</div>;
     }
@@ -113,5 +111,5 @@
       </div>
     );
   }
-
   export default App;
+
