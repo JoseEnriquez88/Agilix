@@ -25,13 +25,12 @@ routerAuth.get("/login/failed", (req, res) => {
   res.status(401).json({ error: true, message: "Fallo en la Autentificacion" });
 });
 
-routerAuth.get(
-  "/google/callback",
+routerAuth.get("/google/callback", (req, res) => {
   passport.authenticate("google", {
     successRedirect: "/",
     failureRedirect: "/login/failed",
-  })
-);
+  });
+});
 
 routerAuth.get(
   "/google",
