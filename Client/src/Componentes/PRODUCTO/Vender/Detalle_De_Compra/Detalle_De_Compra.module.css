@@ -82,7 +82,9 @@
     border: none;
     height: 40px;
     border-radius: 10px;
+    padding-bottom: 15px;
     width: 150px;
+
 }
 
 .search {
@@ -198,6 +200,7 @@
     touch-action: manipulation;
     will-change: transform;
 }
+
 .botonEliminaror:disabled {
     pointer-events: none;
   }
@@ -242,3 +245,4 @@
     box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
     transform: translateY(-2px);
   }
+

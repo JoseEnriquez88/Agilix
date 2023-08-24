@@ -48,7 +48,7 @@ export const Sidebar = () => {
       >
         {!anchoReducido ? (
           <>
-            <h5>CUENTA / USUARIO</h5>
+            <h5>GENERAL</h5>
             <NavLink
               className={styles.NavLink}
               to="/"
