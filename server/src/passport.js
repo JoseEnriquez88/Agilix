@@ -14,7 +14,7 @@ passport.use(
       passReqToCallback: true,
       // proxy: true,
     },
-    function (accessToken, refreshToken, profile, done) {
+    (accessToken, refreshToken, profile, done) => {
       return done(null, profile);
     }
   )
