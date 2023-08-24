@@ -15,6 +15,7 @@ const Vender = () => {
     const handleRecargarProductos = () => {
         dispatch(fetchProducts());
       };
+      const productosConEstadoTrue = productos.allProducts.filter((producto) => producto.estado === true);
     return (
         <div className={styles.ContenedorVender}>
             <button onClick={handleRecargarProductos} className={styles.BotonBack}>
@@ -22,11 +23,11 @@ const Vender = () => {
             </button>
             <div className={styles.ContenedorBotonBackYCarrito}>
                 <NavLink to='/' className={styles.BotonBack}>
-                    <ArrowBackIosNewIcon className={styles.IconoBack}/>
+                    <ArrowBackIosNewIcon />
                 </NavLink>
 
                 <NavLink to='/detalle_de_compra' className={styles.BotonCarrito}>
-                    <ShoppingCartIcon/> Carrito
+                   <ShoppingCartIcon className={styles.carritoLogo}/> 
                 </NavLink>
             </div>
             <div>
@@ -37,8 +38,8 @@ const Vender = () => {
             </div>
             <div className={styles.ContenedorGeneralCards}>
                 <div className={styles.ContenedorCards}>
-                    {productos.allProducts ? (
-                        productos.allProducts.map(({ id, nombre, img, precio,stock }) => (
+                {productosConEstadoTrue.length > 0 ? (
+                        productosConEstadoTrue.map(({ id, nombre, img, precio,stock }) => (
                             <Card key={id} id={id} nombre={nombre} img={img} precio={precio} stock={stock} />
                         ))
                     ) : (

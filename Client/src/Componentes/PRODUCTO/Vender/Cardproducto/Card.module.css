@@ -8,11 +8,24 @@
     
 
 }
+.Incrementar{
+    border-radius:30px ;
+    background-color: rgb(255, 187, 0);
+    font-size: 17px;
+    margin-left:20px ;
+}
+.Decrementar{
+    border-radius:30px ;
+    background-color: rgb(255, 187, 0);
+    font-size: 17px;
+   margin-right: 20px;
+}
 .Contenedorinpunt{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    
 }
 
 .ContenedorImg {
@@ -30,20 +43,21 @@
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    width: 60%;
+    width: 45%;
     height: 100%;
     font-size: 1rem;
     margin-left: 50px;
 }
-.input{
+.Input{
+    color: rgb(255, 255, 255);
+    background-color: #3a3939;
     height: 25px;
-    width: 95px;
-    padding-left: 75px;
+    width: 35px;
+    padding-left: 25px;
     font-size: 18px;
     border-radius: 5px;
     border: 2px solid transparent;
     transition: border 0.2s;
-    border: 2px solid transparent;
 }
 .input:focus {
     outline: none;
