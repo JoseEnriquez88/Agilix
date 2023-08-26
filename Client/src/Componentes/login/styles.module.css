@@ -29,6 +29,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  top: 20px;
 }
 
 .from_heading {
@@ -50,6 +51,7 @@
   background-color: #181818;
   color: white;
 }
+
 
 .btn {
   width: 230px;
